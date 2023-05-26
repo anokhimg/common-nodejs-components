@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "productState",
+  "title": "ProductState",
+  "type": "object",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "refreshInterval": {
+          "type": "string"
+        },
+        "updateStrategy": {
+          "type": "string",
+          "enum": ["scd1", "scd2"]
+        },
+        "logicalSchemaUrn": {
+          "type": "string",
+          "pattern": "^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$"
+        },
+        "logicalSchema": {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object"
+            },
+            "required": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "partitionColumns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "encodingOptions": {
+          "type": "object",
+          "properties": {
+            "encodingType": {
+              "type": "string",
+              "enum": ["HASH", "ENCRYPT"]
+            },
+            "columnsToEncode": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "updateStrategyOptions": {
+          "type": "object",
+          "properties": {
+            "actualTimeColumn": {
+              "type": "string"
+            },
+            "timeTrackingColumn": {
+              "type": "string"
+            },
+            "uniqueKeyColumns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            },
+            "changeTrackingColumns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          },
+          "required": ["actualTimeColumn", "timeTrackingColumn","uniqueKeyColumns","changeTrackingColumns"]
+        }
+      },
+      "required": ["refreshInterval", "updateStrategy","updateStrategyOptions"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "refreshInterval": {
+          "type": "string"
+        },
+        "updateStrategy": {
+          "type": "string",
+          "enum": ["append", "overwrite"]
+        },
+        "logicalSchemaUrn": {
+          "type": "string",
+          "pattern": "^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$"
+        },
+        "logicalSchema": {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object"
+            },
+            "required": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "partitionColumns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "encodingOptions": {
+          "type": "object",
+          "properties": {
+            "encodingType": {
+              "type": "string",
+              "enum": ["HASH", "ENCRYPT"]
+            },
+            "columnsToEncode": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "updateStrategyOptions": {
+          "type": "object"
+        }
+      },
+      "required": ["refreshInterval", "updateStrategy"]
+    }
+  ]
+}

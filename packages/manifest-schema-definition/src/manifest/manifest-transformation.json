@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "transformation",
+  "title": "Transformation",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "alias": { "type": "string", "minLength": 3, "maxLength": 50, "pattern": "^[A-Za-z0-9_]+$" },
+      "type": { "type": "string" },
+      "description": { "type": "string" },
+      "query": { "type": "string" },
+      "sequenceNo": { "type": "string" },
+      "codeLocation": { "type": "string" }
+    },
+    "required": ["alias", "type", "sequenceNo"]
+  },
+  "minItems": 1
+}

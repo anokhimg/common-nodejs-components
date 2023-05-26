@@ -1,0 +1,30 @@
+{
+  "name": "@xsightme/arangodb-provider",
+  "version": "0.0.15",
+  "description": "NodeJS Xsight ArangoDB Provider",
+  "homepage": "https://github.com/XSIGHTME/nodejs-commons#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:XSIGHTME/common-nodejs-components.git"
+  },
+  "scripts": {
+    "test": "jest -c ../../jest.config.js",
+    "build": "tsc",
+    "clean": "rm -r ./dist"
+  },
+  "bugs": {
+    "url": "https://github.com/XSIGHTME/nodejs-commons/issues"
+  },
+  "dependencies": {
+    "@xsightme/errors": "^0.0.5",
+    "@xsightme/logger": "^0.0.2",
+    "arangojs": "^7.8.0",
+    "http-status": "^1.5.0"
+  },
+  "gitHead": "411e41f5e94703b0ee0bf93df4a39d919c76bf92"
+}
