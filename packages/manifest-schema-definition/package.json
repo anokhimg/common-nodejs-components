@@ -1,6 +1,6 @@
 {
   "name": "@xsightme/manifest-schema-definition",
-  "version": "0.1.0-2",
+  "version": "0.1.0-3",
   "description": "Manifest schema definition",
   "scripts": {
     "build": "tsc"
