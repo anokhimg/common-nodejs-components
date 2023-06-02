@@ -1,9 +1,10 @@
 {
   "name": "@xsightme/manifest-schema-definition",
-  "version": "0.1.0-3",
+  "version": "0.1.0-6",
   "description": "Manifest schema definition",
   "scripts": {
-    "build": "tsc"
+    "build": "npm run generate-types && tsc",
+    "generate-types": "ts-node src/generate-types.ts"
   },
   "repository": {
     "type": "git",
@@ -13,6 +14,9 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.11.19",
+    "json-schema-to-typescript": "^13.0.1",
+    "glob": "^7.1.6",
+    "glob-promise": "^4.2.2",
     "ts-node": "^10.9.1"
   },
   "publishConfig": {
@@ -24,5 +28,8 @@
     "dist/**/*",
     "src/manifest/**/*.json"
   ],
-  "gitHead": "d04d63f60bcaf1824075ec52e023205de0d5f4ae"
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1"
+  }
 }

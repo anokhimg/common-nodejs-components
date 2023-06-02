@@ -20,14 +20,11 @@
             "type": "string",
             "maxLength": 600
           },
-          "tags": {
-            "$ref": "tags"
-          },
           "syncType": {
             "$ref": "syncType"
           },
-          "dataSetUrn": {
-            "$ref": "dataSetUrn"
+          "connectionUrn": {
+            "$ref": "connectionUrn"
           },
           "entity": {
             "type": "object",
@@ -71,7 +68,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": ["type", "alias", "connectionUrn", "entity"]
       },
       {
         "type": "object",
@@ -87,14 +84,11 @@
             "type": "string",
             "maxLength": 600
           },
-          "tags": {
-            "$ref": "tags"
-          },
           "syncType": {
             "$ref": "syncType"
           },
-          "dataSetUrn": {
-            "$ref": "dataSetUrn"
+          "connectionUrn": {
+            "$ref": "connectionUrn"
           },
           "entity": {
             "type": "object",
@@ -143,7 +137,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": ["type", "alias", "connectionUrn", "entity"]
       },
       {
         "type": "object",
@@ -159,14 +153,11 @@
             "type": "string",
             "maxLength": 600
           },
-          "tags": {
-            "$ref": "tags"
-          },
           "syncType": {
             "$ref": "syncType"
           },
-          "dataSetUrn": {
-            "$ref": "dataSetUrn"
+          "connectionUrn": {
+            "$ref": "connectionUrn"
           },
           "entity": {
             "type": "object",
@@ -210,7 +201,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": ["type", "alias", "connectionUrn", "entity"]
       },
       {
         "type": "object",
@@ -226,14 +217,11 @@
             "type": "string",
             "maxLength": 600
           },
-          "tags": {
-            "$ref": "tags"
-          },
           "syncType": {
             "$ref": "syncType"
           },
-          "dataSetUrn": {
-            "$ref": "dataSetUrn"
+          "connectionUrn": {
+            "$ref": "connectionUrn"
           },
           "entity": {
             "type": "object",
@@ -263,7 +251,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": ["type", "alias", "connectionUrn", "entity"]
       },
       {
         "type": "object",
@@ -281,9 +269,6 @@
           "description": {
             "type": "string",
             "maxLength": 600
-          },
-          "tags": {
-            "$ref": "tags"
           },
           "syncType": {
             "$ref": "syncType"

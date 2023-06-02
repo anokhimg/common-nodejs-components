@@ -90,7 +90,7 @@
                 ],
                 "description": "The data will be pushed to the configured dataSet"
               },
-              "dataSetUrn": {
+              "connectionUrn": {
                 "type": "string",
                 "description": "",
                 "pattern": "^(?:urn|URN):(?:dv|DV):dataset:[A-Za-z0-9\\-]+$"
@@ -98,7 +98,7 @@
             },
             "required": [
               "type",
-              "dataSetUrn"
+              "connectionUrn"
             ]
           }
         ]
