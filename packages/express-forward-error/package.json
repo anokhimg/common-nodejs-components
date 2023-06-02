@@ -1,0 +1,27 @@
+{
+  "name": "@xsightme/express-forward-error",
+  "version": "0.0.1",
+  "description": "NodeJS Xsight express middleware to properly propagate errors in async route handlers",
+  "homepage": "https://github.com/XSIGHTME/nodejs-commons#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:XSIGHTME/common-nodejs-components.git"
+  },
+  "scripts": {
+    "test": "jest -c ../../jest.config.js",
+    "build": "tsc",
+    "clean": "rm -r ./dist"
+  },
+  "bugs": {
+    "url": "https://github.com/XSIGHTME/nodejs-commons/issues"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13"
+  },
+  "gitHead": "411e41f5e94703b0ee0bf93df4a39d919c76bf92"
+}
