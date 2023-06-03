@@ -26,7 +26,7 @@
           "connectionUrn": {
             "$ref": "connectionUrn"
           },
-          "entity": {
+          "dataSet": {
             "type": "object",
             "properties": {
               "path": {
@@ -35,15 +35,7 @@
               "variables": {
                 "type": "array",
                 "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  }
+                  "type": "string"
                 }
               },
               "advanceOptions": {
@@ -68,7 +60,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "connectionUrn", "entity"]
+        "required": ["type", "alias"]
       },
       {
         "type": "object",
@@ -90,7 +82,7 @@
           "connectionUrn": {
             "$ref": "connectionUrn"
           },
-          "entity": {
+          "dataSet": {
             "type": "object",
             "properties": {
               "path": {
@@ -99,15 +91,7 @@
               "variables": {
                 "type": "array",
                 "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  }
+                  "type": "string"
                 }
               },
               "advanceOptions": {
@@ -137,7 +121,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "connectionUrn", "entity"]
+        "required": ["type", "alias"]
       },
       {
         "type": "object",
@@ -159,7 +143,7 @@
           "connectionUrn": {
             "$ref": "connectionUrn"
           },
-          "entity": {
+          "dataSet": {
             "type": "object",
             "properties": {
               "path": {
@@ -168,15 +152,7 @@
               "variables": {
                 "type": "array",
                 "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  }
+                  "type": "string"
                 }
               },
               "advanceOptions": {
@@ -201,7 +177,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "connectionUrn", "entity"]
+        "required": ["type", "alias"]
       },
       {
         "type": "object",
@@ -223,7 +199,7 @@
           "connectionUrn": {
             "$ref": "connectionUrn"
           },
-          "entity": {
+          "dataSet": {
             "type": "object",
             "properties": {
               "tableName": {
@@ -251,7 +227,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "connectionUrn", "entity"]
+        "required": ["type", "alias"]
       },
       {
         "type": "object",

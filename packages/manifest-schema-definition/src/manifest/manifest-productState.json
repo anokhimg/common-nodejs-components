@@ -7,7 +7,11 @@
     {
       "type": "object",
       "properties": {
-        "refreshInterval": {
+        "updateType":{
+          "type":"string",
+          "enum": ["on-demand","scheduled"]
+        },
+        "updateSchedule": {
           "type": "string"
         },
         "updateStrategy": {
@@ -80,15 +84,19 @@
               "minItems": 1
             }
           },
-          "required": ["actualTimeColumn", "timeTrackingColumn","uniqueKeyColumns","changeTrackingColumns"]
+          "required": ["timeTrackingColumn","uniqueKeyColumns","changeTrackingColumns"]
         }
       },
-      "required": ["refreshInterval", "updateStrategy","updateStrategyOptions"]
+      "required": ["updateSchedule", "updateStrategy","updateStrategyOptions"]
     },
     {
       "type": "object",
       "properties": {
-        "refreshInterval": {
+        "updateType":{
+          "type":"string",
+          "enum": ["on-demand","scheduled"]
+        },
+        "updateSchedule": {
           "type": "string"
         },
         "updateStrategy": {
@@ -141,7 +149,7 @@
           "type": "object"
         }
       },
-      "required": ["refreshInterval", "updateStrategy"]
+      "required": ["updateSchedule", "updateStrategy"]
     }
   ]
 }

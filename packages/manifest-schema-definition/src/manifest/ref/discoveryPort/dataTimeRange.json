@@ -6,14 +6,9 @@
 	"description": "Needs to be used based on data product type",
 	"properties": {
 		"fromMinDataDate": {
-			"type": "string",
-			"format": "date-time"
+			"type": "string"
 		},
 		"toMinDataDate": {
-			"type": "string",
-			"format": "date-time"
-		},
-		"timeColumn": {
 			"type": "string"
 		}
 	}

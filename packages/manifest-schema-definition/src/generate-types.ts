@@ -40,7 +40,7 @@ class TypesGenerator {
       },
     });
 
-    await writeFile('src/types.ts', data);
+    await writeFile('src/types/index.ts', data);
   }
 }
 

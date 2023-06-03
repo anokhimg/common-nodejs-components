@@ -1,6 +1,6 @@
 {
   "name": "@xsightme/manifest-schema-definition",
-  "version": "0.1.0-6",
+  "version": "0.1.0-7",
   "description": "Manifest schema definition",
   "scripts": {
     "build": "npm run generate-types && tsc",
@@ -23,7 +23,7 @@
     "access": "restricted"
   },
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist/**/*",
     "src/manifest/**/*.json"

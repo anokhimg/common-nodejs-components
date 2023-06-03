@@ -10,7 +10,7 @@
     "inputPorts": {},
     "transformation": {},
     "stateManagement": {},
-    "outPutPort": {},
+    "outputPort": {},
     "controlPort": {}
   },
   "required": [
@@ -19,7 +19,7 @@
     "inputPorts",
     "stateManagement",
     "transformation",
-    "outPutPort",
+    "outputPort",
     "controlPort"
   ]
 }

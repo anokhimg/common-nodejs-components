@@ -34,7 +34,7 @@
     "dataTimeRange" : {
       "$ref": "dataTimeRange"
     },
-    "industryDomain":  {
+    "domain":  {
       "type": "array",
       "items": {
         "type": "string",
