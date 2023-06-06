@@ -19,7 +19,10 @@ import alias from './manifest/ref/inputPort/alias.json';
 import dataTimeRange from './manifest/ref/discoveryPort/dataTimeRange.json';
 import regulatoryFields from './manifest/ref/discoveryPort/regulatoryFields.json';
 
-export const schema = Object.freeze(root);
+const manifestSchema = Object.freeze(root);
+
+export default manifestSchema;
+
 const privateRefs = [
   manifestDiscoveryPort,
   manifestInputPorts,
@@ -48,4 +51,6 @@ export const ajv = new Ajv({
   schemas: privateRefs,
 });
 
-export const validate = ajv.compile(schema);
+export const validate = ajv.compile(manifestSchema);
+
+export * from './schema-types';

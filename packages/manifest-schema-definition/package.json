@@ -1,10 +1,14 @@
 {
   "name": "@xsightme/manifest-schema-definition",
-  "version": "0.1.0-7",
+  "version": "0.1.0-8",
   "description": "Manifest schema definition",
   "scripts": {
     "build": "npm run generate-types && tsc",
-    "generate-types": "ts-node src/generate-types.ts"
+    "generate-types": "ts-node src/generate-types.ts",
+    "test": "jest -c jest.config.js",
+    "lint": "esw --ext .js,.jsx,.ts,.tsx ./src --color",
+    "lint:watch": "esw --ext .js,.jsx,.ts,.tsx ./src --color --watch",
+    "lint:fix": "esw --ext .js,.jsx,.ts,.tsx ./src --color --fix"
   },
   "repository": {
     "type": "git",
@@ -23,7 +27,7 @@
     "access": "restricted"
   },
   "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist/**/*",
     "src/manifest/**/*.json"
