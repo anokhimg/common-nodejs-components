@@ -37,19 +37,12 @@
             }
           }
         },
-        "partitionColumns": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "minItems": 1
-        },
         "encodingOptions": {
           "type": "object",
           "properties": {
             "encodingType": {
               "type": "string",
-              "enum": ["HASH", "ENCRYPT"]
+              "enum": ["hash", "encrypt"]
             },
             "columnsToEncode": {
               "type": "array",
@@ -63,9 +56,6 @@
         "updateStrategyOptions": {
           "type": "object",
           "properties": {
-            "actualTimeColumn": {
-              "type": "string"
-            },
             "timeTrackingColumn": {
               "type": "string"
             },
@@ -122,19 +112,12 @@
             }
           }
         },
-        "partitionColumns": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "minItems": 1
-        },
         "encodingOptions": {
           "type": "object",
           "properties": {
             "encodingType": {
               "type": "string",
-              "enum": ["HASH", "ENCRYPT"]
+              "enum": ["hash", "encrypt"]
             },
             "columnsToEncode": {
               "type": "array",

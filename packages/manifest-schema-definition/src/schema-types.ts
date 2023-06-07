@@ -95,7 +95,7 @@ export type InputPort = (
     }
   | {
       type: "dataproduct";
-      alias: string;
+      alias: Alias;
       description?: string;
       syncType?: SyncType;
       dataProductUrn: string;
@@ -109,7 +109,7 @@ export type InputPort = (
  */
 export type Transformation = [
   {
-    alias: string;
+    alias: Alias;
     type: "sql";
     description?: string;
     query: string;
@@ -117,7 +117,7 @@ export type Transformation = [
     [k: string]: unknown;
   },
   ...{
-    alias: string;
+    alias: Alias;
     type: "sql";
     description?: string;
     query: string;
@@ -141,12 +141,8 @@ export type ProductState =
         required?: [string, ...string[]];
         [k: string]: unknown;
       };
-      /**
-       * @minItems 1
-       */
-      partitionColumns?: [string, ...string[]];
       encodingOptions?: {
-        encodingType?: "HASH" | "ENCRYPT";
+        encodingType?: "hash" | "encrypt";
         /**
          * @minItems 1
          */
@@ -154,7 +150,6 @@ export type ProductState =
         [k: string]: unknown;
       };
       updateStrategyOptions: {
-        actualTimeColumn?: string;
         timeTrackingColumn: string;
         /**
          * @minItems 1
@@ -183,12 +178,8 @@ export type ProductState =
         required?: [string, ...string[]];
         [k: string]: unknown;
       };
-      /**
-       * @minItems 1
-       */
-      partitionColumns?: [string, ...string[]];
       encodingOptions?: {
-        encodingType?: "HASH" | "ENCRYPT";
+        encodingType?: "hash" | "encrypt";
         /**
          * @minItems 1
          */
@@ -352,35 +343,25 @@ export interface OutputPort {
   subscriptionChannels: [
     (
       | {
-          channelType?: "JDBC";
-          queryType?: "SQL";
+          channelType?: "jdbc";
+          queryType?: "sql";
           [k: string]: unknown;
         }
       | {
-          channelType?: "REST-API";
-          queryType?: "SQL" | "GREMLIN" | "OLAP";
-          [k: string]: unknown;
-        }
-      | {
-          channelType?: "GRAPHQL";
-          queryType?: "GRAPHQL";
+          channelType?: "rest-api";
+          queryType?: "sql";
           [k: string]: unknown;
         }
     ),
     ...(
       | {
-          channelType?: "JDBC";
-          queryType?: "SQL";
+          channelType?: "jdbc";
+          queryType?: "sql";
           [k: string]: unknown;
         }
       | {
-          channelType?: "REST-API";
-          queryType?: "SQL" | "GREMLIN" | "OLAP";
-          [k: string]: unknown;
-        }
-      | {
-          channelType?: "GRAPHQL";
-          queryType?: "GRAPHQL";
+          channelType?: "rest-api";
+          queryType?: "sql";
           [k: string]: unknown;
         }
     )[]
@@ -390,21 +371,31 @@ export interface OutputPort {
    */
   updateChannels?: [
     {
-      type: "s3-csv" | "s3-parquet" | "s3-json" | "vertica-table" | "postgres-table";
+      type: "vertica-table" | "postgres-table";
       /**
        * The data will be pushed to the configured dataSet
        */
       syncType?: "push";
-      dataSetUrn: string;
+      connectionUrn?: ConnectionUrn;
+      dataSet?: {
+        tableName: string;
+        variables?: string[];
+        [k: string]: unknown;
+      };
       [k: string]: unknown;
     },
     ...{
-      type: "s3-csv" | "s3-parquet" | "s3-json" | "vertica-table" | "postgres-table";
+      type: "vertica-table" | "postgres-table";
       /**
        * The data will be pushed to the configured dataSet
        */
       syncType?: "push";
-      dataSetUrn: string;
+      connectionUrn?: ConnectionUrn;
+      dataSet?: {
+        tableName: string;
+        variables?: string[];
+        [k: string]: unknown;
+      };
       [k: string]: unknown;
     }[]
   ];

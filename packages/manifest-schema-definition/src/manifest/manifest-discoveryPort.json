@@ -20,7 +20,7 @@
     "longDescription": {
       "type": "string",
       "description": "Long Description",
-      "maxLength": 5000
+      "maxLength": 50000
     },
     "tags": {
       "type": "array",

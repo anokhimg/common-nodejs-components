@@ -1,6 +1,7 @@
 import Ajv from 'ajv';
-import root from './manifest/root.json';
+import _ from 'lodash';
 
+import root from './manifest/root.json';
 import manifestDiscoveryPort from './manifest/manifest-discoveryPort.json';
 import manifestInputPorts from './manifest/manifest-inputPort.json';
 import manifestTransformation from './manifest/manifest-transformation.json';
@@ -15,13 +16,9 @@ import connectionUrn from './manifest/ref/inputPort/connectionUrn.json';
 import incrementalStrategy from './manifest/ref/inputPort/incrementalStrategy.json';
 import s3CsvDataSet from './manifest/ref/inputPort/s3CsvDataSet.json';
 import syncType from './manifest/ref/inputPort/syncType.json';
-import alias from './manifest/ref/inputPort/alias.json';
+import alias from './manifest/ref/alias.json';
 import dataTimeRange from './manifest/ref/discoveryPort/dataTimeRange.json';
 import regulatoryFields from './manifest/ref/discoveryPort/regulatoryFields.json';
-
-const manifestSchema = Object.freeze(root);
-
-export default manifestSchema;
 
 const privateRefs = [
   manifestDiscoveryPort,
@@ -41,16 +38,43 @@ const privateRefs = [
   dataQualityCheckCommon,
   dataQualityCheckExpression,
   dataQualityCheckSingleCheck,
+  root,
 ];
 
-export const refs = Object.freeze(privateRefs);
-
-export const ajv = new Ajv({
+const ajv = new Ajv({
   allErrors: true,
   strictTuples: false,
   schemas: privateRefs,
 });
 
-export const validate = ajv.compile(manifestSchema);
+export const validate = ajv.compile(root);
+
+function dereference(obj: any, id = null) {
+  if (id == null) {
+    id = obj.$id;
+  }
+  _.forOwn(obj, (value, key, objLevel) => {
+    if (value.$ref) {
+      let schemaRef;
+      if (_.startsWith(value.$ref, '#')) {
+        schemaRef = id + value.$ref.substr(1);
+      } else {
+        schemaRef = value.$ref;
+      }
+      if (schemaRef) {
+        objLevel[key] = dereference(ajv.getSchema(schemaRef)?.schema, id);
+      }
+    }
+    if (_.isObject(value)) {
+      dereference(value, id);
+    }
+  });
+  return obj;
+}
+
+let schema = ajv.getSchema('root');
+let manifestSchema = dereference(schema?.schema);
+
+export default manifestSchema;
 
 export * from './schema-types';

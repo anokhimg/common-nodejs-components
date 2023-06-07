@@ -18,7 +18,8 @@
           },
           "description": {
             "type": "string",
-            "maxLength": 600
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
@@ -74,7 +75,8 @@
           },
           "description": {
             "type": "string",
-            "maxLength": 600
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
@@ -135,7 +137,8 @@
           },
           "description": {
             "type": "string",
-            "maxLength": 600
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
@@ -191,7 +194,8 @@
           },
           "description": {
             "type": "string",
-            "maxLength": 600
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
@@ -237,14 +241,12 @@
             "enum": ["dataproduct"]
           },
           "alias": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 500,
-            "pattern": "^[A-Za-z0-9_]+$"
+            "$ref": "alias"
           },
           "description": {
             "type": "string",
-            "maxLength": 600
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
