@@ -23,7 +23,7 @@ export type InputPort = (
       connectionUrn?: ConnectionUrn;
       dataSet?: {
         path: string;
-        variables?: string[];
+        variables?: unknown[];
         advanceOptions?: S3CsvDataSet;
         [k: string]: unknown;
       };
@@ -41,7 +41,7 @@ export type InputPort = (
       connectionUrn?: ConnectionUrn;
       dataSet?: {
         path: string;
-        variables?: string[];
+        variables?: unknown[];
         advanceOptions?: {
           mergeSchema?: boolean;
           [k: string]: unknown;
@@ -62,7 +62,7 @@ export type InputPort = (
       connectionUrn?: ConnectionUrn;
       dataSet?: {
         path: string;
-        variables?: string[];
+        variables?: unknown[];
         advanceOptions?: {
           [k: string]: unknown;
         };
@@ -199,7 +199,7 @@ export type DataQualityCheckExpression = "==" | "<" | ">" | "<=" | ">=";
 
 export interface ManifestSchema {
   version: "0.1.0";
-  alias: string;
+  alias: Alias;
   discoveryPort: DiscoveryPort;
   inputPorts?: InputPort;
   transformation?: Transformation;

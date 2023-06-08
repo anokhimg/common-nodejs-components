@@ -1,6 +1,8 @@
 import Ajv from 'ajv';
 import _ from 'lodash';
 
+import { ManifestSchema } from './schema-types';
+
 import root from './manifest/root.json';
 import manifestDiscoveryPort from './manifest/manifest-discoveryPort.json';
 import manifestInputPorts from './manifest/manifest-inputPort.json';
@@ -63,6 +65,8 @@ function dereference(obj: any, id = null) {
       }
       if (schemaRef) {
         objLevel[key] = dereference(ajv.getSchema(schemaRef)?.schema, id);
+        delete objLevel[key].$schema;
+        delete objLevel[key].$id;
       }
     }
     if (_.isObject(value)) {
@@ -72,9 +76,9 @@ function dereference(obj: any, id = null) {
   return obj;
 }
 
+export * from './schema-types';
+
 let schema = ajv.getSchema('root');
-let manifestSchema = dereference(schema?.schema);
+let manifestSchema: ManifestSchema = dereference(schema?.schema);
 
 export default manifestSchema;
-
-export * from './schema-types';

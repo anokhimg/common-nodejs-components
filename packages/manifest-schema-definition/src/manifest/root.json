@@ -6,13 +6,12 @@
   "properties": {
     "version": {
       "type": "string",
-      "enum": ["0.1.0"]
+      "enum": [
+        "0.1.0"
+      ]
     },
     "alias": {
-      "type": "string",
-      "minLength": 3,
-      "maxLength": 50,
-      "pattern": "^[A-Za-z0-9_]+$"
+      "$ref": "alias"
     },
     "discoveryPort": {
       "$ref": "discoveryPort"
