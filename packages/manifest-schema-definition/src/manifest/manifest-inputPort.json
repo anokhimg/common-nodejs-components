@@ -64,7 +64,9 @@
         },
         "required": [
           "type",
-          "alias"
+          "alias",
+          "connectionUrn",
+          "dataSet"
         ]
       },
       {
@@ -130,7 +132,9 @@
         },
         "required": [
           "type",
-          "alias"
+          "alias",
+          "connectionUrn",
+          "dataSet"
         ]
       },
       {
@@ -191,7 +195,9 @@
         },
         "required": [
           "type",
-          "alias"
+          "alias",
+          "connectionUrn",
+          "dataSet"
         ]
       },
       {
@@ -250,7 +256,9 @@
         },
         "required": [
           "type",
-          "alias"
+          "alias",
+          "connectionUrn",
+          "dataSet"
         ]
       },
       {

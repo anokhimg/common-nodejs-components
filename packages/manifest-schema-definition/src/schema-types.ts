@@ -20,8 +20,8 @@ export type InputPort = (
       alias: Alias;
       description?: string;
       syncType?: SyncType;
-      connectionUrn?: ConnectionUrn;
-      dataSet?: {
+      connectionUrn: ConnectionUrn;
+      dataSet: {
         path: string;
         variables?: unknown[];
         advanceOptions?: S3CsvDataSet;
@@ -38,8 +38,8 @@ export type InputPort = (
       alias: Alias;
       description?: string;
       syncType?: SyncType;
-      connectionUrn?: ConnectionUrn;
-      dataSet?: {
+      connectionUrn: ConnectionUrn;
+      dataSet: {
         path: string;
         variables?: unknown[];
         advanceOptions?: {
@@ -59,8 +59,8 @@ export type InputPort = (
       alias: Alias;
       description?: string;
       syncType?: SyncType;
-      connectionUrn?: ConnectionUrn;
-      dataSet?: {
+      connectionUrn: ConnectionUrn;
+      dataSet: {
         path: string;
         variables?: unknown[];
         advanceOptions?: {
@@ -79,8 +79,8 @@ export type InputPort = (
       alias: Alias;
       description?: string;
       syncType?: SyncType;
-      connectionUrn?: ConnectionUrn;
-      dataSet?: {
+      connectionUrn: ConnectionUrn;
+      dataSet: {
         tableName: string;
         advanceOptions?: {
           [k: string]: unknown;
