@@ -21,7 +21,7 @@
     "url": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/issues"
   },
   "dependencies": {
-    "@dataverseee/logger": "^0.0.2",
+    "@dataverse/logger": "^0.0.2",
     "unleash-client": "^3.16.0"
   },
   "devDependencies": {
