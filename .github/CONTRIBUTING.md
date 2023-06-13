@@ -1,4 +1,4 @@
-# Contributing to xsight-infra repository
+# Contributing to dataverse-infra repository
 
 First off, thanks for taking the time to contribute!
 
@@ -27,12 +27,12 @@ into committer Github account
 - Clone the forked repository to your local system (to be named as `origin`)
     ```bash
     # replace shivam-maf with your Github username
-    git clone git@github.com:shivam-maf/xsight-infra.git
+    git clone git@github.com:shivam-maf/dataverse-infra.git
     ```
 
 - Add a Git remote for the original repository (to be named as `upstream`)
     ```bash
-    git remote add upstream git@github.com:xsight/xsight-infra.git
+    git remote add upstream git@github.com:dataverse/dataverse-infra.git
     ```
     - In case the repository was already forked, update the develop branch
         ```bash

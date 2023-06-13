@@ -1,8 +1,8 @@
 {
-  "name": "@xsightme/express-jwt-validator",
+  "name": "@dataverse/express-jwt-validator",
   "version": "0.0.7",
-  "description": "NodeJS Xsight jwt validator",
-  "homepage": "https://github.com/XSIGHTME/nodejs-commons#readme",
+  "description": "NodeJS dataverse jwt validator",
+  "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:XSIGHTME/common-nodejs-components.git"
+    "url": "git+https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components.git"
   },
   "scripts": {
     "test": "jest -c ../../jest.config.js",
@@ -18,7 +18,7 @@
     "clean": "rm -r ./dist"
   },
   "bugs": {
-    "url": "https://github.com/XSIGHTME/nodejs-commons/issues"
+    "url": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/issues"
   },
   "dependencies": {
     "express-jwt": "^8.4.1",

@@ -1,4 +1,4 @@
-import { Config as LoggerConfig } from '@xsightme/logger';
+import { Config as LoggerConfig } from '@dataverse/logger';
 import { AqlValue, GeneratedAqlQuery } from 'arangojs/aql';
 import { DocumentMetadata } from 'arangojs/documents';
 import ArangoDBProvider, { ArangoError } from '..';
@@ -68,7 +68,7 @@ jest.mock('arangojs', () => {
   };
 });
 
-describe('@xsightme/arangodb', () => {
+describe('@dataverse/arangodb', () => {
   let testObject: ArangoDBProvider;
   const username = 'user';
   const password = 'password';

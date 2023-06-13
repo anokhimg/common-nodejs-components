@@ -1,5 +1,5 @@
-import { ResourceNotFoundError } from '@xsightme/errors';
-import { Config as LoggerConfig } from '@xsightme/logger';
+import { ResourceNotFoundError } from '@dataverse/errors';
+import { Config as LoggerConfig } from '@dataverse/logger';
 import VaultProvider, { RequiredVaultOptionsMissing, VaultAccessError, VaultOptions } from '..';
 
 const mockUserpassLogin = jest.fn();
@@ -23,7 +23,7 @@ jest.mock('node-vault', () => {
   });
 });
 
-describe('@xsightme/vault-provider', () => {
+describe('@dataverse/vault-provider', () => {
   let testObject: VaultProvider;
   const config: VaultOptions = {
     vaultAddr: 'vaultAddress',

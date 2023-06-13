@@ -1,4 +1,4 @@
-# `@xsightme/toggle-provider`
+# `@dataverse/toggle-provider`
 
 This package provides a common interface for feature toggle provider functionality as well as default feature toggle provider implementation leveraging Unleash server client.
 
@@ -16,12 +16,12 @@ This package provides a common interface for feature toggle provider functionali
 | environment     | Which environment in Unleash to connect to                        |
 
 For logger configuration properties see the
-[logger documentation](https://github.com/XSIGHTME/common-nodejs-components/blob/develop/packages/logger/README.md)
+[logger documentation](https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/blob/develop/packages/logger/README.md)
 
 ## Usage
 
 ```typescript
-import { UnleashToggleProvider } from '@xsightme/toggle-provider';
+import { UnleashToggleProvider } from '@dataverseeeeee/toggle-provider';
 
 const config = {
   url: 'https://URL to your unleash instance/api',

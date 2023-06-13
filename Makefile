@@ -9,7 +9,7 @@ CURRENT_PATH := $(shell pwd)
 AMM := ${HOME}/amm
 PARENT_DIR := $(shell dirname $(CURRENT_PATH))
 # Define Repo details:
-ORG_NAME := XSIGHTME
+ORG_NAME := DATAVERSE
 REPO_NAME := TestRepo
 TEAM_NAME := tribe-bedrock
 TARGET_PATH := ${PARENT_DIR}/${REPO_NAME}

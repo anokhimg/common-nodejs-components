@@ -1,11 +1,11 @@
-# `@xsight/arangodb-provider`
+# `@dataverse/arangodb-provider`
 
 > TODO: description
 
 ## Usage
 
 ```
-const arangodbProvider = require('@xsight/arangodb-provider');
+const arangodbProvider = require('@dataverse/arangodb-provider');
 
 // TODO: DEMONSTRATE API
 ```

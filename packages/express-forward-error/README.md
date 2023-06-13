@@ -1,4 +1,4 @@
-# `@xsightme/forward-error`
+# `@dataverse/forward-error`
 
 Small utility to properly propagate errors in async based express route handlers.
 
@@ -6,7 +6,7 @@ Small utility to properly propagate errors in async based express route handlers
 
 ```
 // usage with express route handler
-import { forwardError } from '@xsightme/forward-error';
+import { forwardError } from '@dataverse/forward-error';
 
 getResource: RequestHandler = forwardError(async (req: Request, res: Response): Promise<void> => {
     throw new Error(); // error is propagated to express error handler middleware

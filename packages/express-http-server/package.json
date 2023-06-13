@@ -1,8 +1,8 @@
 {
-  "name": "@xsightme/express-http-server",
+  "name": "@dataverse/express-http-server",
   "version": "0.0.15",
-  "description": "NodeJS Xsight express http server",
-  "homepage": "https://github.com/XSIGHTME/nodejs-commons#readme",
+  "description": "NodeJS dataverse express http server",
+  "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:XSIGHTME/common-nodejs-components.git"
+    "url": "git+https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components.git"
   },
   "scripts": {
     "test": "jest -c ../../jest.config.js",
@@ -18,7 +18,7 @@
     "clean": "rm -r ./dist"
   },
   "bugs": {
-    "url": "https://github.com/XSIGHTME/nodejs-commons/issues"
+    "url": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/issues"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.2",
@@ -29,10 +29,10 @@
     "supertest": "^6.1.6"
   },
   "dependencies": {
-    "@xsightme/errors": "^0.0.5",
-    "@xsightme/express-forward-error": "^0.0.1",
-    "@xsightme/express-jwt-validator": "^0.0.7",
-    "@xsightme/logger": "^0.0.2",
+    "@dataverse/errors": "^0.0.5",
+    "@dataverse/express-forward-error": "^0.0.1",
+    "@dataverse/express-jwt-validator": "^0.0.7",
+    "@dataverse/logger": "^0.0.2",
     "cookie-parser": "~1.4.4",
     "express": "~4.18.2",
     "express-openapi-validator": "^4.13.8",

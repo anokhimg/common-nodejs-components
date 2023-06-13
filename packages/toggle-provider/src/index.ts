@@ -1,4 +1,4 @@
-import { Logger, getLogger, Config as LoggerConfig } from '@xsightme/logger';
+import { Logger, getLogger, Config as LoggerConfig } from '@dataversee/logger';
 import { startUnleash, Unleash, InMemStorageProvider } from 'unleash-client';
 
 export interface ToggleProviderConfig {

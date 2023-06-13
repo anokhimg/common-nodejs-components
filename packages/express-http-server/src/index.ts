@@ -5,7 +5,7 @@ import httpStatus from 'http-status';
 import helmet from 'helmet';
 import * as swaggerUI from 'swagger-ui-express';
 import YAML from 'yamljs';
-import { Logger, getLogger, Config as LoggerConfig } from '@xsightme/logger';
+import { Logger, getLogger, Config as LoggerConfig } from '@dataverse/logger';
 import { GLOBAL, API } from './constants';
 import ApiError, {
   DetailedError,
@@ -15,9 +15,9 @@ import ApiError, {
   UnsupportedMediaTypeError,
   NotAcceptableError,
   EndpointNotFoundError,
-} from '@xsightme/errors';
+} from '@dataverse/errors';
 import cookieParser from 'cookie-parser';
-import { UnauthorizedError as JwtUnauthorizedError } from '@xsightme/express-jwt-validator';
+import { UnauthorizedError as JwtUnauthorizedError } from '@dataverse/express-jwt-validator';
 
 export { API, GLOBAL } from './constants';
 

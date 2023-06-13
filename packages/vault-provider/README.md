@@ -1,6 +1,6 @@
-# `@xsightme/vault-provider`
+# `@dataverse/vault-provider`
 
-> node-vault Facade to use in Xsight NodeJS projects
+> node-vault Facade to use in dataverse NodeJS projects
 
 ## Config
 
@@ -15,9 +15,9 @@
 ## Usage
 
 ```js
-import VaultProvider from '@xsightme/vault-provider';
-import { VaultOptions } from '@xsightme/kafka-provider';
-import { Config as LoggerConfig } from '@xsightme/logger';
+import VaultProvider from '@dataverse/vault-provider';
+import { VaultOptions } from '@dataverse/kafka-provider';
+import { Config as LoggerConfig } from '@dataverse/logger';
 import { vaultAddr, vaultAuthType, vaultPassword, vaultSecretPath, vaultUser } from '../config/config';
 
 const config: VaultOptions = {

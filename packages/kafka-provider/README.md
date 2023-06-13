@@ -1,6 +1,6 @@
-# `@xsight/kafka-provider`
+# `@dataverse/kafka-provider`
 
-> KafkaJS Facade to use in Xsight NodeJS projects
+> KafkaJS Facade to use in dataverse NodeJS projects
 
 ## Config
 
@@ -13,9 +13,9 @@
 ## Usage
 
 ```js
-import KafkaClientProvider from '@xsightme/kafka-provider';
-import { KafkaConfig } from '@xsightme/kafka-provider/src/types/kafka-config.interface';
-import { Config as LoggerConfig } from '@xsightme/logger';
+import KafkaClientProvider from '@dataverse/kafka-provider';
+import { KafkaConfig } from '@dataverse/kafka-provider/src/types/kafka-config.interface';
+import { Config as LoggerConfig } from '@dataverse/logger';
 import {
   appName,
   kafkaBrokers,

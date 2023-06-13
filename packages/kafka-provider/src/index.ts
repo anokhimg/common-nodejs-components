@@ -1,4 +1,4 @@
-import { Config as LoggerConfig, getLogger, Logger } from '@xsightme/logger';
+import { Config as LoggerConfig, getLogger, Logger } from '@dataverse/logger';
 import {
   Admin,
   Consumer,

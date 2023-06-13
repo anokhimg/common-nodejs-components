@@ -1,4 +1,4 @@
-# `@xsightme/logger`
+# `@dataverse/logger`
 
 Logger with support for json and key value based logs.
 
@@ -15,7 +15,7 @@ Logger with support for json and key value based logs.
 ## Usage
 
 ```typescript
-import { getLogger, Config } from '@xsightme/logger';
+import { getLogger, Config } from '@dataverse/logger';
 
 const config: Config = {
       appName: 'test-app-name',

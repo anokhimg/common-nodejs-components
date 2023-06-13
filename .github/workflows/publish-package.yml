@@ -14,7 +14,7 @@ jobs:
         id: vault-secrets
         uses: hashicorp/vault-action@v2.3.1
         with:
-          url: https://vault.cicd-cip.xsight.me
+          url: https://vault.cicd-cip.dataverse.me
           method: kubernetes
           path: kubernetes-cicd-cip/
           role: github-runners-cicd-cip
@@ -30,7 +30,7 @@ jobs:
           always-auth: 'true'
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
-          scope: '@XSIGHTME'
+          scope: '@dataverse'
 
       - run: npm ci
 

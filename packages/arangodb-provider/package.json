@@ -1,8 +1,8 @@
 {
-  "name": "@xsightme/arangodb-provider",
+  "name": "@dataverse/arangodb-provider",
   "version": "0.0.15",
-  "description": "NodeJS Xsight ArangoDB Provider",
-  "homepage": "https://github.com/XSIGHTME/nodejs-commons#readme",
+  "description": "NodeJS Dataverse ArangoDB Provider",
+  "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:XSIGHTME/common-nodejs-components.git"
+    "url": "git+https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components.git"
   },
   "scripts": {
     "test": "jest -c ../../jest.config.js",
@@ -18,11 +18,11 @@
     "clean": "rm -r ./dist"
   },
   "bugs": {
-    "url": "https://github.com/XSIGHTME/nodejs-commons/issues"
+    "url": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/issues"
   },
   "dependencies": {
-    "@xsightme/errors": "^0.0.5",
-    "@xsightme/logger": "^0.0.2",
+    "@dataverse/errors": "^0.0.5",
+    "@dataverse/logger": "^0.0.2",
     "arangojs": "^7.8.0",
     "http-status": "^1.5.0"
   },

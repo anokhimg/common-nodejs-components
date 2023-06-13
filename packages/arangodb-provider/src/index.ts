@@ -1,5 +1,5 @@
-import ApiError, { ResourceNotFoundError } from '@xsightme/errors';
-import { Config as LoggerConfig, getLogger, Logger } from '@xsightme/logger';
+import ApiError, { ResourceNotFoundError } from '@dataverse/errors';
+import { Config as LoggerConfig, getLogger, Logger } from '@dataverse/logger';
 import { aql, Database } from 'arangojs';
 import { AqlQuery } from 'arangojs/aql';
 import { ArrayCursor } from 'arangojs/cursor';

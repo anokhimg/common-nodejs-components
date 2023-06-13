@@ -26,7 +26,7 @@ const config: Config = {
   jwtJwksUri: 'sampleJwksUri',
 };
 
-describe('@xsightme/jwt-validator', () => {
+describe('@dataverse/jwt-validator', () => {
   it('should be able to construct an instance with sample config', () => {
     const validateJwt = jwtValidator(config);
     const request = {} as any;

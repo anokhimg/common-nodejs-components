@@ -1,4 +1,4 @@
-# `@xsightme/oauth-client`
+# `@dataverse/oauth-client`
 
 Helper for exchanging authentication credentials
 
@@ -9,17 +9,17 @@ Helper for exchanging authentication credentials
 | OAuthUrl                                    | OAuth Url for exchanging credentils                                   |
 
 For logger configuration properties see the
-[logger documentation](https://github.com/XSIGHTME/common-nodejs-components/blob/develop/packages/logger/README.md)
+[logger documentation](https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/blob/develop/packages/logger/README.md)
 
 For resilient executor configuration properties see the
-[resilient executor documentation](https://github.com/XSIGHTME/common-nodejs-components/blob/develop/packages/http-resilient-executor/README.md)
+[resilient executor documentation](https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/blob/develop/packages/http-resilient-executor/README.md)
 
 
 ## Usage
 
 ```typescript
 /** init oauthclient instance (should use 1 instance per app) */
-import { OAuthClient } from '@xsightme/oauth-client';
+import { OAuthClient } from '@dataverse/oauth-client';
 
 const loggerConfig = : { logLevel: 'cli', logStyle: 'debug', appName: 'nodejs-commons', moduleName: 'ResilientExecutor' }, // logger configuration
 
@@ -34,8 +34,8 @@ await oauthClient.exchangeCredentialsForToken({
 /** with resilient executor */
 
 /** init oauthclient instance (should use 1 instance per app) */
-import { OAuthClient } from '@xsightme/oauth-client';
-import { ResilientExecutor } from '@xsightme/http-resilient-executor';
+import { OAuthClient } from '@dataverse/oauth-client';
+import { ResilientExecutor } from '@dataverse/http-resilient-executor';
 
 const resilientConfig = {
   logger: { logLevel: 'cli', logStyle: 'debug', appName: 'nodejs-commons', moduleName: 'ResilientExecutor' }, // logger configuration

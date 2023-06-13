@@ -1,6 +1,6 @@
 import { forwardError } from '../index';
 
-describe('@xsightme/forward-error', () => {
+describe('@dataverse/forward-error', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });

@@ -1,4 +1,4 @@
-# `@xsightme/express-http-server`
+# `@dataverse/express-http-server`
 
 Express http server for initializing middleware, error handlers, routes, openapi validator and logger.
 
@@ -13,14 +13,14 @@ Express http server for initializing middleware, error handlers, routes, openapi
 
 
 For logger configuration properties see the
-[logger documentation](https://github.com/XSIGHTME/common-nodejs-components/blob/develop/packages/logger/README.md)
+[logger documentation](https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/blob/develop/packages/logger/README.md)
 
 
 ## Usage
 
 ```typescript
 
-import { App } from '@xsightme/express-http-server';
+import { App } from '@dataverse/express-http-server';
 
 /**required env values */
 const appConfig = {

@@ -1,4 +1,4 @@
-# `@xsightme/http-resilient-executor`
+# `@dataverse/http-resilient-executor`
 
 Helper for creating retry policies , circuit breaker for functions and external requests
 
@@ -11,14 +11,14 @@ Helper for creating retry policies , circuit breaker for functions and external 
 | httpResilienceCBConsecutiveThreshold        | Maximum attempts to open CircuitBreaker                               |
 
 For logger configuration properties see the
-[logger documentation](https://github.com/XSIGHTME/common-nodejs-components/blob/develop/packages/logger/README.md)
+[logger documentation](https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/blob/develop/packages/logger/README.md)
 
 
 ## Usage
 
 ```typescript
 // init ResilientExecutor instance (should use 1 instance per app)
-import { ResilientExecutor } from '@xsightme/http-resilient-executor';
+import { ResilientExecutor } from '@dataverse/http-resilient-executor';
 
 const config = {
   /** logger configuration */

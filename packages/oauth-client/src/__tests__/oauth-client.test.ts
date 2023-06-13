@@ -8,7 +8,7 @@ export const oauthClient = new OAuthClient('https://auth.dummy.test.url/oauth2/t
   moduleName: 'OAuthClient',
 });
 
-describe('@xsightme/oauth-client', () => {
+describe('@dataverse/oauth-client', () => {
   it('should return error if unable to call oauth endpoint', async () => {
     // mocking OAuth endpoint
     nock('https://auth.dummy.test.url').post('/oauth2/token').replyWithError({

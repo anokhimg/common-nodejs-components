@@ -9,7 +9,7 @@ import ApiError, {
   UnsupportedMediaTypeError,
 } from './../index';
 
-describe('@xsightme/errors', () => {
+describe('@dataverse/errors', () => {
   describe('ExtendableError', () => {
     it('should take an existing error and keep the stack trace', () => {
       const oldError = new Error('SomeError');

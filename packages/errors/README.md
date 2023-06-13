@@ -1,4 +1,4 @@
-# `@xsightme/errors`
+# `@dataverse/errors`
 
 Common errors used in the system
 
@@ -32,7 +32,7 @@ throw new TimeoutError(err);
 
 ## Using existing errors from the package
 ```
-import { UnauthorizedError, ResourceNotFoundError } from '@xsightme/errors';
+import { UnauthorizedError, ResourceNotFoundError } from '@dataverse/errors';
 
 /** UnauthorizedError */
 if (err instanceof UnauthorizedError) {

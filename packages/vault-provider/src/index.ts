@@ -1,5 +1,5 @@
-import ApiError, { ResourceNotFoundError } from '@xsightme/errors';
-import { Config as LoggerConfig, getLogger, Logger } from '@xsightme/logger';
+import ApiError, { ResourceNotFoundError } from '@dataverse/errors';
+import { Config as LoggerConfig, getLogger, Logger } from '@dataverse/logger';
 import httpStatus from 'http-status';
 import vaultClient, { client } from 'node-vault';
 

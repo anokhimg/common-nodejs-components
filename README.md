@@ -77,7 +77,7 @@ lerna add winston packages/arangodb-provider
 
 ```bash
 # To init new package either copy existing one or run
-lerna create @xsightme/my-new-package
+lerna create @dataverse/my-new-package
 ```
 
 > Note: If a new package is created and published, the access should be explicitly set from the package settings in GitHub. Go to the repo and click on the Packages link located on the right pane. Click on the package that is published. Click on the <abbr title="If you're the publisher you should see this link.">Settings link</abbr> on the right pane. Then, under the Manage Access section, check the "Inherit access from source repository (recommended)" checkbox.

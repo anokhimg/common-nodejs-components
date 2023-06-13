@@ -1,10 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
 
 import httpStatus from 'http-status';
-import ApiError from '@xsightme/errors';
-import { Executor } from '@xsightme/http-resilient-executor';
+import ApiError from '@dataverse/errors';
+import { Executor } from '@dataverse/http-resilient-executor';
 import cacheManager from 'cache-manager';
-import { Logger, getLogger, Config as LoggerConfig } from '@xsightme/logger';
+import { Logger, getLogger, Config as LoggerConfig } from '@dataverse/logger';
 
 const memoryCache = cacheManager.caching({ store: 'memory', max: 100, ttl: 3600 /*seconds*/ });
 
