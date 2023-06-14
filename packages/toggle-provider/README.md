@@ -21,7 +21,7 @@ For logger configuration properties see the
 ## Usage
 
 ```typescript
-import { UnleashToggleProvider } from '@dataverseeeeee/toggle-provider';
+import { UnleashToggleProvider } from '@dataverse/toggle-provider';
 
 const config = {
   url: 'https://URL to your unleash instance/api',

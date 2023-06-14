@@ -1,4 +1,4 @@
-import { Logger, getLogger, Config as LoggerConfig } from '@dataversee/logger';
+import { Logger, getLogger, Config as LoggerConfig } from '@dataverse/logger';
 import { startUnleash, Unleash, InMemStorageProvider } from 'unleash-client';
 
 export interface ToggleProviderConfig {
