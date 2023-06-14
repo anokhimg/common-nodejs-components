@@ -9,42 +9,51 @@
       "type": "string",
       "description": "Name of the data product. The name should be unique within the organization.",
       "minLength": 3,
-      "maxLength": 256
+      "maxLength": 100
     },
     "shortDescription": {
       "type": "string",
       "description": "Short description that describes the products in few words.",
       "minLength": 3,
-      "maxLength": 100
+      "maxLength": 256
     },
     "longDescription": {
       "type": "string",
-      "description": "Long Description"
+      "description": "Long Description",
+      "maxLength": 50000
     },
     "tags": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "maxLength": 60
       },
+      "maxItems": 10,
       "description": "Tags"
     },
     "dataTimeRange" : {
       "$ref": "dataTimeRange"
     },
-    "industryDomain": {
-      "type": "string"
+    "domain":  {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 60
+      },
+      "maxItems": 10,
+      "description": "industryDomain"
     },
-    "function": {
-      "type": "string"
+    "function":   {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 60
+      },
+      "maxItems": 10,
+      "description": "function"
     },
     "regulatoryFields": {
       "$ref": "regulatoryFields"
-    },
-    "sampleData": {
-      "type": "object"
-    },
-    "collaterals": {
-      "type": "object"
     }
   },
   "required": ["name"]

@@ -5,55 +5,46 @@
   "title": "Input Port",
   "description": "Input Port definition",
   "items": {
-    "oneOf":[
+    "oneOf": [
       {
         "type": "object",
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["s3-csv"]
+            "enum": [
+              "s3-csv"
+            ]
           },
-          "alias":{
+          "alias": {
             "$ref": "alias"
           },
           "description": {
             "type": "string",
-            "maxLength": 600
-          },
-          "tags": {
-            "$ref": "tags"
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
           },
-          "dataSetUrn": {
-            "$ref": "dataSetUrn"
+          "connectionUrn": {
+            "$ref": "connectionUrn"
           },
-          "entity": {
+          "dataSet": {
             "type": "object",
             "properties": {
               "path": {
                 "type": "string"
               },
               "variables": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                }
+                "type": "array"
               },
               "advanceOptions": {
                 "$ref": "s3CsvDataSet"
               }
             },
-            "required": ["path"]
+            "required": [
+              "path"
+            ]
           },
           "filter": {
             "type": "string"
@@ -71,50 +62,44 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": [
+          "type",
+          "alias",
+          "connectionUrn",
+          "dataSet"
+        ]
       },
       {
         "type": "object",
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["s3-parquet"]
+            "enum": [
+              "s3-parquet"
+            ]
           },
-          "alias":{
+          "alias": {
             "$ref": "alias"
           },
           "description": {
             "type": "string",
-            "maxLength": 600
-          },
-          "tags": {
-            "$ref": "tags"
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
           },
-          "dataSetUrn": {
-            "$ref": "dataSetUrn"
+          "connectionUrn": {
+            "$ref": "connectionUrn"
           },
-          "entity": {
+          "dataSet": {
             "type": "object",
             "properties": {
               "path": {
                 "type": "string"
               },
               "variables": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                }
+                "type": "array"
               },
               "advanceOptions": {
                 "type": "object",
@@ -125,7 +110,9 @@
                 }
               }
             },
-            "required": ["path"]
+            "required": [
+              "path"
+            ]
           },
           "filter": {
             "type": "string"
@@ -143,56 +130,52 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": [
+          "type",
+          "alias",
+          "connectionUrn",
+          "dataSet"
+        ]
       },
       {
         "type": "object",
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["s3-json"]
+            "enum": [
+              "s3-json"
+            ]
           },
-          "alias":{
+          "alias": {
             "$ref": "alias"
           },
           "description": {
             "type": "string",
-            "maxLength": 600
-          },
-          "tags": {
-            "$ref": "tags"
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
           },
-          "dataSetUrn": {
-            "$ref": "dataSetUrn"
+          "connectionUrn": {
+            "$ref": "connectionUrn"
           },
-          "entity": {
+          "dataSet": {
             "type": "object",
             "properties": {
               "path": {
                 "type": "string"
               },
               "variables": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                }
+                "type": "array"
               },
               "advanceOptions": {
                 "type": "object"
               }
             },
-            "required": ["path"]
+            "required": [
+              "path"
+            ]
           },
           "filter": {
             "type": "string"
@@ -210,32 +193,38 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": [
+          "type",
+          "alias",
+          "connectionUrn",
+          "dataSet"
+        ]
       },
       {
         "type": "object",
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["vertica-table", "postgres-table"]
+            "enum": [
+              "vertica-table",
+              "postgres-table"
+            ]
           },
-          "alias":{
+          "alias": {
             "$ref": "alias"
           },
           "description": {
             "type": "string",
-            "maxLength": 600
-          },
-          "tags": {
-            "$ref": "tags"
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
           },
-          "dataSetUrn": {
-            "$ref": "dataSetUrn"
+          "connectionUrn": {
+            "$ref": "connectionUrn"
           },
-          "entity": {
+          "dataSet": {
             "type": "object",
             "properties": {
               "tableName": {
@@ -245,7 +234,9 @@
                 "type": "object"
               }
             },
-            "required": ["tableName"]
+            "required": [
+              "tableName"
+            ]
           },
           "filter": {
             "type": "string"
@@ -263,27 +254,29 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": [
+          "type",
+          "alias",
+          "connectionUrn",
+          "dataSet"
+        ]
       },
       {
         "type": "object",
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["dataproduct"]
+            "enum": [
+              "dataproduct"
+            ]
           },
           "alias": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 500,
-            "pattern": "^[A-Za-z0-9_]+$"
+            "$ref": "alias"
           },
           "description": {
             "type": "string",
-            "maxLength": 600
-          },
-          "tags": {
-            "$ref": "tags"
+            "minLength": 3,
+            "maxLength": 256
           },
           "syncType": {
             "$ref": "syncType"
@@ -303,7 +296,11 @@
             }
           }
         },
-        "required": ["alias", "dataProductUrn", "type"]
+        "required": [
+          "alias",
+          "dataProductUrn",
+          "type"
+        ]
       }
     ]
   }

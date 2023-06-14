@@ -7,7 +7,11 @@
     {
       "type": "object",
       "properties": {
-        "refreshInterval": {
+        "updateType":{
+          "type":"string",
+          "enum": ["on-demand","scheduled"]
+        },
+        "updateSchedule": {
           "type": "string"
         },
         "updateStrategy": {
@@ -33,19 +37,12 @@
             }
           }
         },
-        "partitionColumns": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "minItems": 1
-        },
         "encodingOptions": {
           "type": "object",
           "properties": {
             "encodingType": {
               "type": "string",
-              "enum": ["HASH", "ENCRYPT"]
+              "enum": ["hash", "encrypt"]
             },
             "columnsToEncode": {
               "type": "array",
@@ -59,9 +56,6 @@
         "updateStrategyOptions": {
           "type": "object",
           "properties": {
-            "actualTimeColumn": {
-              "type": "string"
-            },
             "timeTrackingColumn": {
               "type": "string"
             },
@@ -80,15 +74,19 @@
               "minItems": 1
             }
           },
-          "required": ["actualTimeColumn", "timeTrackingColumn","uniqueKeyColumns","changeTrackingColumns"]
+          "required": ["timeTrackingColumn","uniqueKeyColumns","changeTrackingColumns"]
         }
       },
-      "required": ["refreshInterval", "updateStrategy","updateStrategyOptions"]
+      "required": ["updateSchedule", "updateStrategy","updateStrategyOptions"]
     },
     {
       "type": "object",
       "properties": {
-        "refreshInterval": {
+        "updateType":{
+          "type":"string",
+          "enum": ["on-demand","scheduled"]
+        },
+        "updateSchedule": {
           "type": "string"
         },
         "updateStrategy": {
@@ -114,19 +112,12 @@
             }
           }
         },
-        "partitionColumns": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "minItems": 1
-        },
         "encodingOptions": {
           "type": "object",
           "properties": {
             "encodingType": {
               "type": "string",
-              "enum": ["HASH", "ENCRYPT"]
+              "enum": ["hash", "encrypt"]
             },
             "columnsToEncode": {
               "type": "array",
@@ -141,7 +132,7 @@
           "type": "object"
         }
       },
-      "required": ["refreshInterval", "updateStrategy"]
+      "required": ["updateSchedule", "updateStrategy"]
     }
   ]
 }

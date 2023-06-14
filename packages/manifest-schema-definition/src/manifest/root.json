@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "root",
+  "title": "Manifest Schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "enum": [
+        "0.1.0"
+      ]
+    },
+    "alias": {
+      "$ref": "alias"
+    },
+    "discoveryPort": {
+      "$ref": "discoveryPort"
+    },
+    "inputPorts": {
+      "$ref": "inputPort"
+    },
+    "transformation": {
+      "$ref": "transformation"
+    },
+    "productState": {
+      "$ref": "productState"
+    },
+    "outputPort": {
+      "$ref": "outputPort"
+    },
+    "controlPort": {
+      "$ref": "controlPort"
+    }
+  },
+  "required": [
+    "version",
+    "discoveryPort",
+    "alias"
+  ]
+}

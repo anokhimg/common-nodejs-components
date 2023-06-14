@@ -7,7 +7,7 @@
       "type": "string"
     },
     "header": {
-      "type": "string"
+      "type": "boolean"
     },
     "charset": {
       "type": "string"
