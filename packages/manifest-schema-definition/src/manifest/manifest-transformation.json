@@ -6,30 +6,14 @@
   "items": {
     "type": "object",
     "properties": {
-      "alias": {
-        "$ref": "alias"
-      },
-      "type": {
-        "type": "string",
-        "enum": ["sql"]
-      },
-      "description": {
-        "type": "string",
-        "minLength": 3,
-        "maxLength": 256
-      },
-      "query": {
-        "type": "string"
-      },
-      "sequenceNo": {
-        "type": "number"
-      }
+      "alias": { "type": "string", "minLength": 3, "maxLength": 50, "pattern": "^[A-Za-z0-9_]+$" },
+      "type": { "type": "string" },
+      "description": { "type": "string" },
+      "query": { "type": "string" },
+      "sequenceNo": { "type": "string" },
+      "codeLocation": { "type": "string" }
     },
-    "required": [
-      "alias",
-      "type",
-      "query"
-    ]
+    "required": ["alias", "type", "sequenceNo"]
   },
   "minItems": 1
 }
