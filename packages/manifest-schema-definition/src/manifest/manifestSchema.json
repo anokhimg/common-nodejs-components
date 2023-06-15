@@ -23,7 +23,7 @@
     "transformation": {
       "type": "array"
     },
-    "productState": {
+    "stateManagement": {
       "type": "object"
     },
     "outputPort": {

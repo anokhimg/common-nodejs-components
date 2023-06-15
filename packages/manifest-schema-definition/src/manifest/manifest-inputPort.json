@@ -29,32 +29,6 @@
           "dataSetUrn": {
             "$ref": "dataSetUrn"
           },
-          "entity": {
-            "type": "object",
-            "properties": {
-              "path": {
-                "type": "string"
-              },
-              "variables": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "advanceOptions": {
-                "$ref": "s3CsvDataSet"
-              }
-            },
-            "required": ["path"]
-          },
           "filter": {
             "type": "string"
           },
@@ -71,7 +45,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": ["type", "alias", "dataSetUrn"]
       },
       {
         "type": "object",
@@ -96,37 +70,6 @@
           "dataSetUrn": {
             "$ref": "dataSetUrn"
           },
-          "entity": {
-            "type": "object",
-            "properties": {
-              "path": {
-                "type": "string"
-              },
-              "variables": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "advanceOptions": {
-                "type": "object",
-                "properties": {
-                  "mergeSchema": {
-                    "type": "boolean"
-                  }
-                }
-              }
-            },
-            "required": ["path"]
-          },
           "filter": {
             "type": "string"
           },
@@ -143,7 +86,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": ["type", "alias", "dataSetUrn"]
       },
       {
         "type": "object",
@@ -168,32 +111,6 @@
           "dataSetUrn": {
             "$ref": "dataSetUrn"
           },
-          "entity": {
-            "type": "object",
-            "properties": {
-              "path": {
-                "type": "string"
-              },
-              "variables": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "advanceOptions": {
-                "type": "object"
-              }
-            },
-            "required": ["path"]
-          },
           "filter": {
             "type": "string"
           },
@@ -210,7 +127,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": ["type", "alias", "dataSetUrn"]
       },
       {
         "type": "object",
@@ -235,18 +152,6 @@
           "dataSetUrn": {
             "$ref": "dataSetUrn"
           },
-          "entity": {
-            "type": "object",
-            "properties": {
-              "tableName": {
-                "type": "string"
-              },
-              "advanceOptions": {
-                "type": "object"
-              }
-            },
-            "required": ["tableName"]
-          },
           "filter": {
             "type": "string"
           },
@@ -263,7 +168,7 @@
             "$ref": "incrementalStrategy"
           }
         },
-        "required": ["type", "alias", "dataSetUrn", "entity"]
+        "required": ["type", "alias", "dataSetUrn"]
       },
       {
         "type": "object",
