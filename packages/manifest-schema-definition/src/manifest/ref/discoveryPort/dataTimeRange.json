@@ -10,6 +10,9 @@
 		},
 		"toMinDataDate": {
 			"type": "string"
+		},
+		"timeColumn": {
+			"type": "string"
 		}
 	}
 }
