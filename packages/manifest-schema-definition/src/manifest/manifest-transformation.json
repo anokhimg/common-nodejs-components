@@ -13,7 +13,7 @@
       "sequenceNo": { "type": "string" },
       "codeLocation": { "type": "string" }
     },
-    "required": ["alias", "type", "sequenceNo"]
+    "required": ["alias", "type", "query"]
   },
   "minItems": 1
 }
