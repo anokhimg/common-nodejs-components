@@ -9,6 +9,7 @@ import {
   Producer,
   ProducerBatch,
   RecordMetadata,
+  SASLOptions,
   TopicMessages,
 } from 'kafkajs';
 import { v4 as uuidv4 } from 'uuid';
@@ -109,13 +110,15 @@ export class KafkaClientProvider {
 
   private initKafka(username: string, password: string): Kafka {
     let sasl = undefined;
-    if (username !== '' && password !== '') {
+    if (username !== '' && password !== '' && !this.config.sasl) {
       sasl = { mechanism: 'plain' as const, username, password };
+    } else if (this.config.sasl) {
+      sasl = this.config.sasl
     }
     const kafka = new Kafka({
       clientId: this.config.clientName,
       brokers: this.config.brokers,
-      sasl,
+      sasl: sasl as SASLOptions,
       ssl: this.config.ssl ?? true,
       logLevel: logLevel.INFO,
       connectionTimeout: this.config.connectionTimeout,

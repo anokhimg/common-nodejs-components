@@ -1,4 +1,4 @@
-import { BrokersFunction } from 'kafkajs';
+import { BrokersFunction, SASLOptions } from 'kafkajs';
 
 export interface KafkaConfig {
   clientName: string;
@@ -6,4 +6,5 @@ export interface KafkaConfig {
   connectionTimeout?: number;
   sessionTimeout?: number;
   ssl?: boolean;
+  sasl?: SASLOptions
 }
