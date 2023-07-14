@@ -10,7 +10,7 @@
       "type": { "type": "string" },
       "description": { "type": "string" },
       "query": { "type": "string" },
-      "sequenceNo": { "type": "string" },
+      "sequenceNo": { "type": "number" },
       "codeLocation": { "type": "string" }
     },
     "required": ["alias", "type", "query"]
