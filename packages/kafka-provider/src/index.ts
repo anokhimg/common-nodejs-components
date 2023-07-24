@@ -4,6 +4,7 @@ import {
   Consumer,
   ConsumerSubscribeTopics,
   EachMessagePayload,
+  ITopicConfig,
   Kafka,
   logLevel,
   Producer,
@@ -113,7 +114,7 @@ export class KafkaClientProvider {
     if (username !== '' && password !== '' && !this.config.sasl) {
       sasl = { mechanism: 'plain' as const, username, password };
     } else if (this.config.sasl) {
-      sasl = this.config.sasl
+      sasl = this.config.sasl;
     }
     const kafka = new Kafka({
       clientId: this.config.clientName,
@@ -124,6 +125,18 @@ export class KafkaClientProvider {
       connectionTimeout: this.config.connectionTimeout,
     });
     return kafka;
+  }
+
+  public async createTopics(topics: ITopicConfig[]) {
+    await this.admin.createTopics({
+      topics: topics,
+    });
+  }
+
+  public async deleteTopics(topics: string[]) {
+    await this.admin.deleteTopics({
+      topics,
+    });
   }
 }
 
