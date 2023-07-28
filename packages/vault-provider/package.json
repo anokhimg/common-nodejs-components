@@ -1,6 +1,6 @@
 {
   "name": "@dataverse/vault-provider",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "NodeJS dataverse Vault Provider",
   "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
   "main": "dist/index.js",
