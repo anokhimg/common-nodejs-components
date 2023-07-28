@@ -62,9 +62,12 @@ export class VaultProvider {
 
   public async write(entityId: string, value: any): Promise<any> {
     try {
-      return await this.client.write(`${this.options.vaultSecretPath}/${entityId}`, { data: { value } });
+      return this.client.write(`${this.options.vaultSecretPath}/${entityId}`, { data: { value } });
     } catch (err) {
-      this.handleError(err as Error, entityId);
+      let shouldRedoOperation = this.handleError(err as Error, entityId);
+      if (shouldRedoOperation) {
+        return await this.write(entityId, value);
+      }
     }
   }
 
@@ -73,15 +76,21 @@ export class VaultProvider {
       const response = await this.client.read(`${this.options.vaultSecretPath}/${entityId}`);
       return response.data.data.value;
     } catch (err) {
-      this.handleError(err as Error, entityId);
+      let shouldRedoOperation = this.handleError(err as Error, entityId);
+      if (shouldRedoOperation) {
+        return await this.read(entityId);
+      }
     }
   }
 
   public async delete(entityId: string): Promise<any> {
     try {
-      return await this.client.delete(`${this.options.vaultSecretPath}/${entityId}`);
+      return this.client.delete(`${this.options.vaultSecretPath}/${entityId}`);
     } catch (err) {
-      this.handleError(err as Error, entityId);
+      let shouldRedoOperation = this.handleError(err as Error, entityId);
+      if (shouldRedoOperation) {
+        return await this.delete(entityId);
+      }
     }
   }
 
@@ -92,7 +101,13 @@ export class VaultProvider {
     if (err.name === 'RequestError') {
       throw new VaultAccessError(err);
     }
-    throw err;
+    console.log(err.name);
+    if (err.name == 'permission denied') {
+      this.initialize();
+      return true;
+    } else {
+      throw err;
+    }
   }
 
   private async vaultAuth(): Promise<any> {

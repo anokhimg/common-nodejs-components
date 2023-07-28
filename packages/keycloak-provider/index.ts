@@ -10,7 +10,6 @@ export class KayCloakAdminError extends ApiError {
   }
 }
 
-
 export interface Config {
   keycloak_username: string;
   keycloak_client_id: string;
@@ -20,14 +19,19 @@ export interface Config {
   keycloak_base_url: string;
 }
 
-
 export class KeyCloakAdminProvider {
   private logger?: Logger;
+
   private keycloak_username: string;
+
   private keycloak_client_id: string;
+
   private keycloak_client_secret: string;
+
   private keycloak_grant_type: string;
+
   private keycloak_realm_name: string;
+
   private keycloak_base_url: string;
 
   constructor(config: Config, loggerConfig?: LoggerConfig) {
@@ -63,33 +67,22 @@ export class KeyCloakAdminProvider {
       const response: any = await axios.request(config);
       return response.data.access_token;
     } catch (error: any) {
+      // eslint-disable-next-line @typescript-eslint/no-throw-literal
       throw new KayCloakAdminError(`Could not get a access token`, error);
     }
   }
 
-
-  public async createUser(
-    organization: string,
-    email: string,
-    firstName?: string,
-    lastName?: string,
-    workspaceId?: string,
-  ): Promise<any> {
-    const requestData = {
-      username: email,
-      email: email,
-      enabled: true,
-      firstName: firstName,
-      lastName: lastName,
-      attributes: {
-        'custom:org': [organization],
-        'custom:workspaceId': [workspaceId],
-      },
-    };
+  public async createUser(userData: {
+    email: string;
+    firstName?: string;
+    lastName?: string;
+    workspaceId?: string;
+    attributes: object;
+  }): Promise<any> {
     const accessToken = await this.getAccessToken();
 
     try {
-      this.logger?.debug('Creating a new user in keycloak: %O', requestData);
+      this.logger?.debug('Creating a new user in keycloak: %O', userData);
       await axios.request({
         method: 'post',
         url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/`,
@@ -97,11 +90,11 @@ export class KeyCloakAdminProvider {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
         },
-        data: requestData,
+        data: userData,
       });
       const { data } = await axios.request({
         method: 'get',
-        url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/?username=${email}`,
+        url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/?username=${userData.email}`,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
@@ -109,7 +102,8 @@ export class KeyCloakAdminProvider {
       });
       return data[0].id;
     } catch (error: any) {
-      throw new KayCloakAdminError(`Could not create a new user: ${email}`, error);
+      // eslint-disable-next-line @typescript-eslint/no-throw-literal
+      throw new KayCloakAdminError(`Could not create a new user: ${userData.email}`, error);
     }
   }
 
@@ -120,12 +114,15 @@ export class KeyCloakAdminProvider {
     } else {
       try {
         this.logger?.debug('Getting a user in keycloak: %O');
-        const response = await axios.get(`${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/${username}`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
+        const response = await axios.get(
+          `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/${username}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
           },
-        });
+        );
         const transformedResponse: AdminGetUserResponse = {
           Enabled: response.data.enabled,
           UserCreateDate: new Date(response.data.createdTimestamp),
@@ -145,6 +142,7 @@ export class KeyCloakAdminProvider {
         };
         return transformedResponse;
       } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-throw-literal
         throw new KayCloakAdminError(`Error while getting a user with ${username}`, error);
       }
     }
@@ -161,10 +159,11 @@ export class KeyCloakAdminProvider {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${accessToken}`,
-          }
+          },
         });
         return response.data;
       } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-throw-literal
         throw new KayCloakAdminError(`Error while getting a users`, error);
       }
     }
@@ -177,14 +176,18 @@ export class KeyCloakAdminProvider {
     } else {
       try {
         this.logger?.debug('deleting a user in keycloak: %O');
-        const response = await axios.delete(`${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/${username}`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
+        const response = await axios.delete(
+          `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/${username}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
           },
-        });
+        );
         return response;
       } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-throw-literal
         throw new KayCloakAdminError(`Error while deleting a user with ${username}`, error);
       }
     }
