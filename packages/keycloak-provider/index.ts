@@ -148,19 +148,22 @@ export class KeyCloakAdminProvider {
     }
   }
 
-  public async getUserList(): Promise<any> {
+  public async getUserList(queryParams?: string): Promise<any> {
     const accessToken = await this.getAccessToken();
     if (!accessToken) {
       throw new Error('Keycloak admin client is not initialized');
     } else {
       try {
         this.logger?.debug('Getting a user in keycloak: %O');
-        const response = await axios.get(`${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
+        const response = await axios.get(
+          `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users` + (queryParams ? queryParams : ''),
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
           },
-        });
+        );
         return response.data;
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-throw-literal
