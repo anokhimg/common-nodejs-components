@@ -61,6 +61,23 @@
                 ]
               }
             }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "channelType": {
+                "type": "string",
+                "enum": [
+                  "Postgres"
+                ]
+              },
+              "queryType": {
+                "type": "string",
+                "enum": [
+                  "SQL"
+                ]
+              }
+            }
           }
         ]
       },
