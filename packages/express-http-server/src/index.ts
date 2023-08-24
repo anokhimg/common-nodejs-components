@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response, Express, Router } from 'express';
+import cors from 'cors';
 import * as OpenApiValidator from 'express-openapi-validator';
 import expressWinston from 'express-winston';
 import httpStatus from 'http-status';
@@ -28,6 +29,8 @@ interface Config {
   openapiBaseSchema?: string;
   openapiSpec?: any;
   env: string;
+  shouldCheckOpenApiBaseSchema?: boolean
+  requestPayloadLimit?:string
 
   /**
    * Allows you to disable default body parsers (urlencoded, json & cookie-parser)
@@ -49,17 +52,19 @@ export class App {
   private dynamicRouter?: express.Router;
 
   constructor(appConfig: Config) {
-    if (!appConfig.openapiBaseSchema && !appConfig.openapiSpec) {
+    let shouldCheckOpenApiBaseSchema = appConfig.shouldCheckOpenApiBaseSchema === false ? appConfig.shouldCheckOpenApiBaseSchema: true
+    if (shouldCheckOpenApiBaseSchema && !appConfig.openapiBaseSchema && !appConfig.openapiSpec) {
       throw new Error('Error in app configuration either openapiBaseSchema or openapiSpec have to be provided.');
     }
 
     this.logger = getLogger(appConfig.logger);
     this.config = appConfig;
     this.app = express();
+    this.app.use(cors())
 
     if (!this.config.customBodyParser) {
       this.app.use(express.urlencoded({ extended: true }));
-      this.app.use(express.json());
+      this.app.use(express.json({limit: appConfig.requestPayloadLimit}));
       this.app.use(cookieParser());
     } else {
       this.config.customBodyParser(this.app);
@@ -76,7 +81,9 @@ export class App {
     this.reloadDynamicRouter(this.config.openapiSpec); // we need to create new instance first
     this.registerDynamicRouter();
 
+    if(this.config.openapiSpec){
     this.initOpenApiValidation(this.config.openapiSpec);
+    }
 
     // Regular routes, error translation and error handling has to come last
     this.initRoutes();
@@ -141,8 +148,11 @@ export class App {
     this.logger.info('Reloading dynamic routes...');
     this.dynamicRouter = Router();
 
-    this.initSwaggerUI(openApiSpec);
-    this.initOpenApiValidation(openApiSpec);
+    if(openApiSpec){
+      this.initSwaggerUI(openApiSpec);
+      this.initOpenApiValidation(openApiSpec);
+    }
+
   }
 
   private initSwaggerUI(openApiSpec?: any) {
