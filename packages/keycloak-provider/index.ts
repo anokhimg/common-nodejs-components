@@ -76,6 +76,9 @@ export class KeyCloakAdminProvider {
     email: string;
     firstName?: string;
     lastName?: string;
+    username?: string;
+    emailVerified?: boolean;
+    enabled?: boolean;
     workspaceId?: string;
     attributes: object;
   }): Promise<any> {
