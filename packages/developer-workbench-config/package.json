@@ -2,12 +2,18 @@
   "name": "@dataverse/developer-workbench-config",
   "version": "0.0.1",
   "description": "developer-workbench-config",
+  "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/issues"
   },
   "author": "accenture",
   "license": "ISC",
@@ -18,8 +24,6 @@
   "publishConfig": {
     "access": "restricted"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist/**/*"
   ],

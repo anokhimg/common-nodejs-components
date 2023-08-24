@@ -62,5 +62,3 @@ src/**/*.map
 *.iml
 
 .env
-
-.npmrc
