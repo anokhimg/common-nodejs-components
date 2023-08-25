@@ -1,7 +1,33 @@
-import config from './config/componentConfig'
+import {
+  extract,
+  transform,
+  load,
+  dataQualityCheck,
+  dataQualityCheckConfig,
+  dataProfiling,
+  dataProfilingConfig,
+  insightExtract,
+  insightLoad,
+  loggingOptions,
+  loggingOptionsConfig,
+  stateStoreTypeMapping,
+  curatedExtract,
+  aggregatedExtract,
+} from './config/componentConfig';
 
-const finalConfig = {
- ...config
+export const config = {
+  extract,
+  transform,
+  load,
+  dataQualityCheck,
+  dataQualityCheckConfig,
+  dataProfiling,
+  dataProfilingConfig,
+  insightExtract,
+  insightLoad,
+  loggingOptions,
+  loggingOptionsConfig,
+  stateStoreTypeMapping,
+  curatedExtract,
+  aggregatedExtract,
 };
-
-export default finalConfig;
