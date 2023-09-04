@@ -20136,7 +20136,7 @@ export const load = [
     },
   },
   {
-    nameOfComponent: 'saveDataToIcebergTable',
+    nameOfComponent: 'loadDataIceberg',
     displayName: 'Iceberg Table',
     typeOfComponent: 'Load',
     dataProfilingPossible: true,
@@ -20146,7 +20146,7 @@ export const load = [
         fields: [
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'stepName',
             isOptional: false,
             directInput: false,
@@ -20164,7 +20164,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'tableName',
             isOptional: false,
             directInput: false,
@@ -20181,7 +20181,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'warehousePath',
             isOptional: false,
             directInput: false,
@@ -20198,7 +20198,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'catalogName',
             isOptional: false,
             directInput: false,
@@ -20216,7 +20216,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'writeMode',
             isOptional: false,
             directInput: false,
@@ -20234,7 +20234,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'catalogType',
             isOptional: true,
             isOptionalInSchema: false,
@@ -20255,7 +20255,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'persistDataFrame',
             defaultValue: false,
             visualType: 'checkbox',
@@ -20277,7 +20277,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'encodingType',
             isOptional: true,
             directInput: false,
@@ -20295,7 +20295,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'columnsToEncode',
             isOptional: true,
             directInput: false,
@@ -20313,7 +20313,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Transform',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'primaryKey',
             isOptional: true,
             directInput: false,
@@ -20331,7 +20331,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Transform',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'changeTrackingColumns',
             isOptional: true,
             directInput: false,
@@ -20349,7 +20349,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Transform',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'timestampColumn',
             isOptional: true,
             directInput: false,
@@ -20367,7 +20367,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'partitionColumns',
             isOptional: true,
             directInput: false,
@@ -20386,7 +20386,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'enableDataReconciliation',
             defaultValue: false,
             visualType: 'checkbox',
@@ -20408,7 +20408,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'enforceSchema',
             defaultValue: true,
             visualType: 'checkbox',
@@ -20431,7 +20431,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'enforceSchemaMethod',
             defaultValue: 'Warning',
             isOptional: true,
@@ -20457,7 +20457,7 @@ export const load = [
         fields: [
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'endPoint',
             isOptional: true,
             directInput: false,
@@ -20475,7 +20475,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'accessKey',
             isOptional: true,
             directInput: false,
@@ -20494,7 +20494,7 @@ export const load = [
           },
           {
             typeOfComponent: 'Load',
-            nameOfComponent: 'saveDataToIcebergTable',
+            nameOfComponent: 'loadDataIceberg',
             inputFieldName: 'secretKey',
             isOptional: true,
             directInput: false,
@@ -21609,7 +21609,7 @@ export const loggingOptionsConfig = {
 };
 
 export const stateStoreTypeMapping = {
-  saveDataToIcebergTable: 'iceberg',
+  loadDataIceberg: 'iceberg',
   writeDataFrameToRedshiftTable: 'redshift',
   saveTableDB: 'mysql_mariadb',
   cpImportDataframe: 'mariadb_columnstore',

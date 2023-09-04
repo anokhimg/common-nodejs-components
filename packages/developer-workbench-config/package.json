@@ -1,6 +1,6 @@
 {
   "name": "@dataverse/developer-workbench-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "developer-workbench-config",
   "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
   "main": "dist/index.js",
