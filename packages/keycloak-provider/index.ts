@@ -98,11 +98,7 @@ export class KeyCloakAdminProvider {
         });
       } catch (error: any) {
         if (
-          error &&
-          error.response &&
-          error.response.data &&
-          error.response.data.errorMessage &&
-          error.response.data.errorMessage === 'User exists with same username'
+          error?.response?.data?.errorMessage === 'User exists with same username'
         ) {
           const resp = await axios.request({
             method: 'get',
