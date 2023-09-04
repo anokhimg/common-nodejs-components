@@ -4,7 +4,7 @@ import ApiError from '@dataverse/errors';
 import qs from 'qs';
 import { AdminGetUserResponse } from './types/AdminGetUserResponse';
 
-export class KayCloakAdminError extends ApiError {
+export class KeyCloakAdminError extends ApiError {
   constructor(message: string, error?: any) {
     super(message, {}, error);
   }
@@ -68,7 +68,7 @@ export class KeyCloakAdminProvider {
       return response.data.access_token;
     } catch (error: any) {
       // eslint-disable-next-line @typescript-eslint/no-throw-literal
-      throw new KayCloakAdminError(`Could not get a access token`, error);
+      throw new KeyCloakAdminError(`Could not get a access token`, error);
     }
   }
 
@@ -86,15 +86,43 @@ export class KeyCloakAdminProvider {
 
     try {
       this.logger?.debug('Creating a new user in keycloak: %O', userData);
-      await axios.request({
-        method: 'post',
-        url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/`,
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-        data: userData,
-      });
+      try {
+        await axios.request({
+          method: 'post',
+          url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/`,
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+          data: userData,
+        });
+      } catch (error: any) {
+        if (
+          error?.response?.data?.errorMessage === 'User exists with same username'
+        ) {
+          const resp = await axios.request({
+            method: 'get',
+            url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/?username=${userData.email}`,
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          const id = resp.data[0].id;
+          await axios.request({
+            method: 'put',
+            url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/${id}`,
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
+            data: userData,
+          });
+          return id;
+        } else {
+          throw error;
+        }
+      }
       const { data } = await axios.request({
         method: 'get',
         url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/?username=${userData.email}`,
@@ -106,7 +134,7 @@ export class KeyCloakAdminProvider {
       return data[0].id;
     } catch (error: any) {
       // eslint-disable-next-line @typescript-eslint/no-throw-literal
-      throw new KayCloakAdminError(`Could not create a new user: ${userData.email}`, error);
+      throw new KeyCloakAdminError(`Could not create a new user: ${userData.email}`, error);
     }
   }
 
@@ -146,7 +174,7 @@ export class KeyCloakAdminProvider {
         return transformedResponse;
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-throw-literal
-        throw new KayCloakAdminError(`Error while getting a user with ${username}`, error);
+        throw new KeyCloakAdminError(`Error while getting a user with ${username}`, error);
       }
     }
   }
@@ -170,7 +198,7 @@ export class KeyCloakAdminProvider {
         return response.data;
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-throw-literal
-        throw new KayCloakAdminError(`Error while getting a users`, error);
+        throw new KeyCloakAdminError(`Error while getting a users`, error);
       }
     }
   }
@@ -194,7 +222,7 @@ export class KeyCloakAdminProvider {
         return response;
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-throw-literal
-        throw new KayCloakAdminError(`Error while deleting a user with ${username}`, error);
+        throw new KeyCloakAdminError(`Error while deleting a user with ${username}`, error);
       }
     }
   }
