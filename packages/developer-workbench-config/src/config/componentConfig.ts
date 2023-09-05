@@ -6076,8 +6076,6 @@ export const extract = [
             typeOfComponent: 'Extract',
             nameOfComponent: 'readDataIceberg',
             inputFieldName: 'columnsToDecrypt',
-            defaultValue: false,
-            visualType: 'checkbox',
             isOptional: true,
             isOptionalInSchema: false,
             directInput: false,
