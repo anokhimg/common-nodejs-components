@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export const extract = [
   {
     nameOfComponent: 'inputParquet',
@@ -31,26 +33,6 @@ export const extract = [
           {
             typeOfComponent: 'Extract',
             nameOfComponent: 'inputParquet',
-            inputFieldName: 'dataSetUrn',
-            isOptional: true,
-            directInput: false,
-            formInput: '',
-            formInputType: 'String',
-            formInputValidValues: '',
-            isAdvanceOption: '',
-            subInputFieldName: '',
-            subFormInputType: '',
-            subFormInputValidValues: '',
-            directOutput: '',
-            otherOutput: '',
-            displayName: 'Data Set Urn',
-            dataverse: {
-              isDisabled: true,
-            },
-          },
-          {
-            typeOfComponent: 'Extract',
-            nameOfComponent: 'inputParquet',
             inputFieldName: 'path',
             isOptional: false,
             directInput: false,
@@ -63,12 +45,10 @@ export const extract = [
             subFormInputValidValues: '',
             directOutput: '',
             otherOutput: '',
-            specialValidation: '',
             displayName: 'Path',
             dataverse: {
               isDisabled: true,
             },
-            rowSpace: 0,
           },
           {
             typeOfComponent: 'Extract',
@@ -286,7 +266,6 @@ export const extract = [
           required: false,
           properties: {
             persistDataFrame: { type: 'string', required: false },
-            dataSetUrn: { type: 'string', required: false },
             columnsToDecrypt: { type: 'array', required: false, items: { type: 'string' } },
             advanceOptions: {
               type: 'object',
@@ -353,28 +332,6 @@ export const extract = [
             inputFieldName: 'path',
             displayName: 'Path',
             isOptional: false,
-            directInput: false,
-            formInput: '',
-            formInputType: 'String',
-            formInputValidValues: '',
-            isAdvanceOption: '',
-            subInputFieldName: '',
-            subFormInputType: '',
-            subFormInputValidValues: '',
-            directOutput: '',
-            otherOutput: '',
-            specialValidation: '',
-            dataverse: {
-              isDisabled: true,
-            },
-            rowSpace: 0,
-          },
-          {
-            typeOfComponent: 'Extract',
-            nameOfComponent: 'inputDelimited',
-            inputFieldName: 'dataSetUrn',
-            displayName: 'Data Set Urn',
-            isOptional: true,
             directInput: false,
             formInput: '',
             formInputType: 'String',
@@ -1104,7 +1061,6 @@ export const extract = [
           type: 'object',
           required: false,
           properties: {
-            dataSetUrn: { type: 'string', required: false },
             persistDataFrame: { type: 'boolean', required: false },
             columnsToDecrypt: { type: 'array', required: false, items: { type: 'string' } },
             advanceOptions: {
@@ -5743,7 +5699,8 @@ export const extract = [
             enableDataReconciliation: { type: 'boolean', required: false },
             enforceSchema: { type: 'boolean', required: false },
             enforceSchemaMethod: { type: 'string', required: false },
-
+            tillTimestamp: { type: 'string', required: false },
+            fromTimestamp: { type: 'string', required: false },
             otherConfigs: {
               type: 'object',
               required: false,
@@ -21655,3 +21612,19 @@ export const stateStoreTypeMapping = {
   saveTableDB: 'mysql_mariadb',
   cpImportDataframe: 'mariadb_columnstore',
 };
+
+export const sourceExtract = _.cloneDeep(extract);
+sourceExtract.forEach((component: any) => {
+  let pathIndex = component.sectionDetails.basic.fields.findIndex((t: any) => t.inputFieldName === 'path');
+  if (pathIndex !== -1) {
+    let field: any = _.cloneDeep(component.sectionDetails.basic.fields[pathIndex]);
+    field.inputFieldName = 'dataSetUrn';
+    field.displayName = 'Data Set URN';
+    field.isOptional = true;
+    let schema: any = { ...component.sampleSchema };
+    component.sectionDetails.basic.fields.push(field);
+    component.sectionDetails.basic.fields[pathIndex].rowSpace = 0;
+    schema.properties.optional.properties.dataSetUrn = { type: 'string', required: false };
+    component.sampleSchema = schema;
+  }
+});

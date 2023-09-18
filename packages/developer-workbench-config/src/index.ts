@@ -13,6 +13,7 @@ import {
   stateStoreTypeMapping,
   curatedExtract,
   aggregatedExtract,
+  sourceExtract,
 } from './config/componentConfig';
 
 export const config = {
@@ -30,4 +31,5 @@ export const config = {
   stateStoreTypeMapping,
   curatedExtract,
   aggregatedExtract,
+  sourceExtract,
 };
