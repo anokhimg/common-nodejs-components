@@ -66,20 +66,27 @@ class AWSProvider {
 
   private logger?: Logger;
 
-  constructor(credentials: AWSProviderCredentials, loggerConfig?: LoggerConfig) {
+  constructor(loggerConfig?: LoggerConfig) {
     this.logger = loggerConfig ? getLogger(loggerConfig) : undefined;
+  }
 
-    // Initialize AWS SDK with credentials
-    this.s3 = new AWS.S3({
-      credentials,
-    });
+  public async initializeAWSConnection(credentials: AWSProviderCredentials) {
+    try {
+      // Initialize AWS SDK with credentials
+      this.s3 = new AWS.S3({
+        credentials,
+      });
 
-    // Initialize the Cost Explorer
-    this.ce = new AWS.CostExplorer({
-      credentials,
-    });
+      // Initialize the Cost Explorer
+      this.ce = new AWS.CostExplorer({
+        credentials,
+      });
 
-    this.logger?.info(`Connected AWS to SDK successfully`);
+      this.logger?.info(`Connected AWS to SDK successfully`);
+    } catch (err) {
+      this.logger?.error(err instanceof Error ? err.message : err);
+      throw err;
+    }
   }
 
   async uploadFile(bucketName: string, key: string, fileData: Buffer): Promise<string> {
@@ -94,7 +101,7 @@ class AWSProvider {
       this.logger?.info(`File uploaded successfully: ${result.Location}`);
       return result.Location;
     } catch (error) {
-      this.logger?.info(`Error uploading file: ${error}`);
+      this.logger?.error(`Error uploading file: ${error}`);
       throw error;
     }
   }
@@ -110,7 +117,7 @@ class AWSProvider {
       this.logger?.info(`Object retrieved successfully: ${key}`);
       return data?.Body?.toString() || '';
     } catch (error) {
-      this.logger?.info(`Error retrieving object: ${error}`);
+      this.logger?.error(`Error retrieving object: ${error}`);
       throw error;
     }
   }
@@ -125,7 +132,7 @@ class AWSProvider {
       await this.s3.deleteObject(params).promise();
       this.logger?.info(`Object deleted successfully: ${key}`);
     } catch (error) {
-      this.logger?.info(`Error deleting object: ${error}`);
+      this.logger?.error(`Error deleting object: ${error}`);
       throw error;
     }
   }
@@ -141,7 +148,7 @@ class AWSProvider {
         return costData;
       } else {
         // No data available for the specified date range
-        this.logger?.info(`DataUnavailableException: ${costData}`);
+        this.logger?.error(`DataUnavailableException: ${costData}`);
         return {
           error: 'DataUnavailableException',
           message: 'No cost data available for the specified date range.',
@@ -150,14 +157,14 @@ class AWSProvider {
     } catch (error: any) {
       // Handle the DataUnavailableException
       if (error.code === 'DataUnavailableException') {
-        this.logger?.info(`DataUnavailableException: ${error}`);
+        this.logger?.error(`DataUnavailableException: ${error}`);
         return {
           error: 'DataUnavailableException',
           message: 'Cost data is not available for the specified time period.',
         };
       } else {
         // Handle other errors
-        this.logger?.info(`Error querying cost data: ${error}`);
+        this.logger?.error(`Error querying cost data: ${error}`);
         return {
           error: JSON.stringify(error),
           message: 'Cost data could not be fetched.',
