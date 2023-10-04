@@ -495,6 +495,10 @@ export class ArangoDBProvider {
       builder.prepareQuery(),
     );
   }
+
+  public registerFunction = (name: string, code: string) => {
+    return this.db.createFunction(name, code);
+  };
 }
 
 export default ArangoDBProvider;
