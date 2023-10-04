@@ -29,11 +29,11 @@
               "items": {
                 "type": "object",
                 "properties": {
-                  "type":{
-                    "type":"string"
+                  "type": {
+                    "type": "string"
                   },
-                  "description":{
-                    "type":"string"
+                  "description": {
+                    "type": "string"
                   }
                 }
               },
@@ -88,10 +88,10 @@
               "minItems": 1
             }
           },
-          "required": ["actualTimeColumn", "timeTrackingColumn","uniqueKeyColumns","changeTrackingColumns"]
+          "required": ["actualTimeColumn", "timeTrackingColumn", "uniqueKeyColumns", "changeTrackingColumns"]
         }
       },
-      "required": ["refreshInterval", "updateStrategy","updateStrategyOptions"]
+      "required": ["refreshInterval", "updateStrategy", "updateStrategyOptions"]
     },
     {
       "type": "object",
@@ -150,6 +150,59 @@
         }
       },
       "required": ["refreshInterval", "updateStrategy"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "stepName": {
+          "type": "string"
+        },
+        "updateStrategy": {
+          "type": "string",
+          "enum": ["scd1", "scd2", "Append", "Overwrite"]
+        },
+        "inputDataFrame": {
+          "type": "string"
+        },
+        "tableName": {
+          "type": "string"
+        },
+        "warehousePath": {
+          "type": "string"
+        },
+        "catalogName": { "type": "string" },
+        "updateStrategyOptions": {
+          "type": "object",
+          "properties": {
+            "actualTimeColumn": {
+              "type": "string"
+            },
+            "timeTrackingColumn": {
+              "type": "string"
+            },
+            "uniqueKeyColumns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            },
+            "changeTrackingColumns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          },
+          "required": ["actualTimeColumn", "timeTrackingColumn", "uniqueKeyColumns", "changeTrackingColumns"]
+        },
+        "stateType": { "type": "string" },
+        "stateName": { "type": "string" },
+        "optional": { "type": "object" },
+        "type": { "type": "string" }
+      },
+      "required": ["refreshInterval", "updateStrategy", "updateStrategyOptions"]
     }
   ]
 }
