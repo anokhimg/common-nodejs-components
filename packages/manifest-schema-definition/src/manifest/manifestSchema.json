@@ -5,8 +5,7 @@
   "type": "object",
   "properties": {
     "version": {
-      "type": "string",
-      "enum": ["0.1.0"]
+      "type": "string"
     },
     "alias": {
       "type": "string",
