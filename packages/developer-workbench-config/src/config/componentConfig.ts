@@ -294,7 +294,7 @@ export const extract = [
       properties: [],
     },
     dataverse: {
-      type: 's3-parquet',
+      type: ['s3-parquet', 'parquet'],
     },
   },
   {
@@ -1125,7 +1125,7 @@ export const extract = [
       properties: [],
     },
     dataverse: {
-      type: 's3-csv',
+      type: ['s3-csv', 'csv'],
     },
   },
   {
@@ -7502,7 +7502,7 @@ export const curatedExtract = [
       properties: [],
     },
     dataverse: {
-      type: 'dataproduct',
+      type: ['dataproduct'],
     },
   },
 ];
