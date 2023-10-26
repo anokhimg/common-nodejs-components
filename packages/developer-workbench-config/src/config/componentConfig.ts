@@ -294,7 +294,7 @@ export const extract = [
       properties: [],
     },
     dataverse: {
-      type: 's3-parquet',
+      type: ['s3-parquet', 'parquet'],
     },
   },
   {
@@ -1125,7 +1125,7 @@ export const extract = [
       properties: [],
     },
     dataverse: {
-      type: 's3-csv',
+      type: ['s3-csv', 'csv'],
     },
   },
   {
@@ -7502,7 +7502,7 @@ export const curatedExtract = [
       properties: [],
     },
     dataverse: {
-      type: 'dataproduct',
+      type: ['dataproduct'],
     },
   },
 ];
@@ -22475,5 +22475,35 @@ sourceExtract.forEach((component: any) => {
     component.sectionDetails.basic.fields[pathIndex].rowSpace = 0;
     schema.properties.optional.properties.dataSetUrn = { type: 'string', required: false };
     component.sampleSchema = schema;
+  }
+});
+
+export const stateManagement = _.cloneDeep(extract);
+stateManagement.forEach((component: any) => {
+  component.dataProfilingPossible = true;
+  component.typeOfComponent = 'StateManagement';
+  if (component.UIDetails) {
+    component.UIDetails.input = [{ displayName: 'Input Data', type: 'dataset' }];
+    component.UIDetails.output = [];
+  }
+  if (component.sectionDetails) {
+    const sections = Object.keys(component.sectionDetails);
+    sections.forEach((sec) => {
+      if (component.sectionDetails[sec].fields && component.sectionDetails[sec].fields.length > 0) {
+        if (Array.isArray(component.sectionDetails[sec].fields[0])) {
+          component.sectionDetails[sec].fields.forEach((_arr: any, index: number) => {
+            component.sectionDetails[sec].fields[index].forEach((field: any) => {
+              field.typeOfComponent = 'StateManagement';
+              delete field.dataverse;
+            });
+          });
+        } else {
+          component.sectionDetails[sec].fields.forEach((field: any) => {
+            field.typeOfComponent = 'StateManagement';
+            delete field.dataverse;
+          });
+        }
+      }
+    });
   }
 });

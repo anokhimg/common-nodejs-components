@@ -19,8 +19,9 @@
       },
       {
         "type": "object",
+        "required":["alias","type","pythonFilePath"],
         "properties": {
-          "stepName": { "type": "string", "minLength": 3, "maxLength": 50, "pattern": "^[A-Za-z0-9_]+$" },
+          "alias": { "type": "string", "minLength": 3, "maxLength": 50, "pattern": "^[A-Za-z0-9_]+$" },
           "type": { "type": "string" },
           "arguments": { "type": "array", "items": { "type": "string" } },
           "pythonFilePath": { "type": "string" },
