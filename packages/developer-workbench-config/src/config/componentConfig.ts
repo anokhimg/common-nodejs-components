@@ -22477,8 +22477,16 @@ sourceExtract.forEach((component: any) => {
     component.sampleSchema = schema;
   }
 });
-
-export const stateManagement = _.cloneDeep(extract);
+const stateManagementKeys = [
+  'inputDelimited',
+  'inputParquet',
+  'readRedshiftTableByQuery',
+  'readMySqlDbUsingJdbc',
+  'readDataIceberg',
+];
+export const stateManagement = _.cloneDeep(
+  extract.filter((t) => stateManagementKeys.indexOf(t.nameOfComponent) !== -1),
+);
 stateManagement.forEach((component: any) => {
   component.dataProfilingPossible = true;
   component.typeOfComponent = 'StateManagement';
