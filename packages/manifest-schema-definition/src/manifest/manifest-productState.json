@@ -254,9 +254,6 @@
         "charToEscapeQuoteEscaping": { "type": "string" },
         "positiveInf": { "type": "string" },
         "negativeInf": { "type": "string" },
-        "accessKey": { "type": "string" },
-        "secretKey": { "type": "string" },
-        "endPoint": { "type": "string" },
         "schema": {
           "type": "array",
           "items": {
@@ -315,9 +312,6 @@
           "enforceSchemaMethod": { "type": "string" },
           "enforceSchema": { "type": "boolean" },
           "enableDataReconciliation": { "type": "boolean" },
-          "accessKey": { "type": "string" },
-          "secretKey": { "type": "string" },
-          "endPoint": { "type": "string" },
           "logicalSchema": {
             "type": "object",
             "properties": {
@@ -351,16 +345,13 @@
         },
         "then": {
           "additionalProperties": false,
-          "required": ["stepName", "connection", "query", "accessKey", "secretKey", "endPoint", "temporaryPathS3"],
+          "required": ["stepName", "connection", "query", "temporaryPathS3"],
           "properties": {
             "isStateManagement": { "type": "boolean" },
             "isDataProfilingEnabled": { "type": "boolean" },
             "stepName": { "type": "string" },
             "query": { "type": "string" },
             "connection": { "type": "string" },
-            "accessKey": { "type": "string" },
-            "secretKey": { "type": "string" },
-            "endPoint": { "type": "string" },
             "awsIAMRole": { "type": "string" },
             "temporaryPathS3": { "type": "string" },
             "isUser": { "type": "boolean" },
@@ -455,9 +446,6 @@
                 "warehousePath": { "type": "string" },
                 "catalogName": { "type": "string" },
                 "columnsToDecrypt": { "type": "array", "items": { "type": "string" } },
-                "accessKey": { "type": "string" },
-                "secretKey": { "type": "string" },
-                "endPoint": { "type": "string" },
                 "persistDataFrame": { "type": "boolean" },
                 "enforceSchemaMethod": { "type": "string" },
                 "enforceSchema": { "type": "boolean" },
