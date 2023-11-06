@@ -3893,7 +3893,6 @@ export const extract = [
             typeOfComponent: 'Extract',
             nameOfComponent: 'readRedshiftTableByQuery',
             inputFieldName: 'endPoint',
-            removed: true,
             isOptional: false,
             directInput: false,
             formInput: '',
@@ -4025,6 +4024,7 @@ export const extract = [
         stepName: { type: 'string', required: true },
         connection: { type: 'string', required: true },
         query: { type: 'string', required: true },
+        endPoint: { type: 'string', required: true },
         temporaryPathS3: { type: 'string', required: true },
         optional: {
           type: 'object',
