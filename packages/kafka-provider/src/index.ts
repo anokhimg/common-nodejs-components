@@ -51,11 +51,7 @@ export class KafkaClientProvider {
   public async shutdown(cb?: Function): Promise<void> {
     try {
       await Promise.all([this.admin.disconnect(), this.producer.disconnect()]);
-      //await Promise.all(this.consumers?.map((consumer) => consumer.disconnect()));
-      for (let i = 0; i < this.consumers.length; i++) {
-        const consumer = this.consumers[i];
-        await consumer.disconnect();
-      }
+      await Promise.all(this.consumers?.map((consumer) => consumer.disconnect()));
       this.logger?.info(`Kafka client "${this.config.clientName}" disconnected`);
       if (cb) {
         cb(null);
