@@ -20966,16 +20966,16 @@ export const load = [
             columnsToEncode: { required: false, type: 'array', items: { type: 'string' } },
             timestampColumn: {
               type: 'string',
-              required: true,
+              required: false,
             },
             primaryKey: {
               type: 'array',
-              required: true,
+              required: false,
               items: {
                 type: 'string',
               },
             },
-            partitionColumns: { type: 'array', required: true, items: { type: 'string' } },
+            partitionColumns: { type: 'array', required: false, items: { type: 'string' } },
             jsonSchema: {
               type: 'string',
               required: false,

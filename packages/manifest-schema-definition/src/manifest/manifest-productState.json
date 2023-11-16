@@ -2527,11 +2527,7 @@
                                                       }
                                                     },
                                                     "additionalProperties": true,
-                                                    "required": [
-                                                      "timestampColumn",
-                                                      "primaryKey",
-                                                      "partitionColumns"
-                                                    ]
+                                                    "required": []
                                                   },
                                                   "alias": {
                                                     "type": "string"
