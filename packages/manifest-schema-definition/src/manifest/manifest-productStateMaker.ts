@@ -182,7 +182,9 @@ const baseJson = {
           warehousePath: {
             type: 'string',
           },
-          catalogName: { type: 'string' },
+          catalogName: {
+            type: 'string',
+          },
           updateStrategyOptions: {
             type: 'object',
             properties: {
@@ -209,12 +211,73 @@ const baseJson = {
             },
             required: ['actualTimeColumn', 'timeTrackingColumn', 'uniqueKeyColumns', 'changeTrackingColumns'],
           },
-          stateType: { type: 'string' },
-          stateName: { type: 'string' },
-          optional: { type: 'object' },
-          type: { type: 'string' },
+          stateType: {
+            type: 'string',
+          },
+          stateName: {
+            type: 'string',
+          },
+          optional: {
+            type: 'object',
+          },
+          type: {
+            type: 'string',
+          },
         },
         required: ['refreshInterval', 'updateStrategy', 'updateStrategyOptions'],
+      },
+      {
+        type: 'object',
+        properties: {
+          refreshInterval: {
+            type: 'string',
+          },
+          tableName: {
+            type: 'string',
+          },
+          stateStoreType: {
+            type: 'string',
+          },
+          temporaryPath: {
+            type: 'string',
+          },
+          logicalSchemaUrn: {
+            type: 'string',
+            pattern: '^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$',
+          },
+          logicalSchema: {
+            type: 'object',
+            properties: {
+              properties: {
+                type: 'object',
+              },
+              required: {
+                type: 'array',
+                items: {
+                  type: 'string',
+                },
+                minItems: 1,
+              },
+            },
+          },
+          encodingOptions: {
+            type: 'object',
+            properties: {
+              encodingType: {
+                type: 'string',
+                enum: ['HASH', 'ENCRYPT'],
+              },
+              columnsToEncode: {
+                type: 'array',
+                items: {
+                  type: 'string',
+                },
+                minItems: 1,
+              },
+            },
+          },
+        },
+        required: ['refreshInterval', 'tableName', 'stateStoreType', 'temporaryPath'],
       },
     ],
   },
