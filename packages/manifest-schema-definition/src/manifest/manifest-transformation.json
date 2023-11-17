@@ -27,7 +27,8 @@
           "pythonFilePath": { "type": "string" },
           "optional": { "type": "object" },
           "sequence": { "type": "number" }
-        }
+        },
+        "required": ["stepName", "type"]
       }
     ]
   },

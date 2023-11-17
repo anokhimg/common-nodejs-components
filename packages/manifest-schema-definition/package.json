@@ -3,7 +3,7 @@
   "version": "0.1.4",
   "description": "Manifest schema definition",
   "scripts": {
-    "build": "tsc"
+    "build": "ts-node src/manifest/manifest-productStateMaker.ts && tsc"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,10 @@
     "dist/**/*",
     "src/manifest/**/*.json"
   ],
-  "gitHead": "d04d63f60bcaf1824075ec52e023205de0d5f4ae"
+  "gitHead": "d04d63f60bcaf1824075ec52e023205de0d5f4ae",
+  "dependencies": {
+    "@dataverse/developer-workbench-config": "^0.0.8",
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21"
+  }
 }
