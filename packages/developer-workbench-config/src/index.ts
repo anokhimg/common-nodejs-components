@@ -14,6 +14,7 @@ import {
   curatedExtract,
   aggregatedExtract,
   sourceExtract,
+  stateManagement,
 } from './config/componentConfig';
 
 export const config = {
@@ -32,4 +33,5 @@ export const config = {
   curatedExtract,
   aggregatedExtract,
   sourceExtract,
+  stateManagement,
 };

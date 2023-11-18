@@ -4,32 +4,217 @@
   "title": "ProductState",
   "type": "object",
   "if": {
-    "not": {
-      "properties": {
-        "isDynamic": {
-          "const": true
-        }
+    "properties": {
+      "isStateManagement": {
+        "const": true
       }
     }
   },
   "then": {
-    "oneOf": [
-      {
-        "type": "object",
+    "if": {
+      "properties": {
+        "type": {
+          "const": "inputDelimited"
+        }
+      }
+    },
+    "then": {
+      "required": [
+        "stepName",
+        "path"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "isStateManagement": {
+          "type": "boolean"
+        },
+        "isDataProfilingEnabled": {
+          "type": "boolean"
+        },
+        "stepName": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "persistDataFrame": {
+          "type": "boolean"
+        },
+        "columnsToDecrypt": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "header": {
+          "type": "boolean"
+        },
+        "delimiter": {
+          "type": "string"
+        },
+        "charset": {
+          "type": "string"
+        },
+        "multiline": {
+          "type": "boolean"
+        },
+        "inferSchema": {
+          "type": "boolean"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "nullValue": {
+          "type": "string"
+        },
+        "escape": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "ignoreLeadingWhiteSpace": {
+          "type": "boolean"
+        },
+        "ignoreTrailingWhiteSpace": {
+          "type": "boolean"
+        },
+        "enforceSchema": {
+          "type": "boolean"
+        },
+        "timestampFormat": {
+          "type": "string"
+        },
+        "emptyValue": {
+          "type": "boolean"
+        },
+        "nanValue": {
+          "type": "string"
+        },
+        "columnNameOfCorruptRecord": {
+          "type": "string"
+        },
+        "dateFormat": {
+          "type": "string"
+        },
+        "maxColumns": {
+          "type": "string"
+        },
+        "maxCharsPerColumn": {
+          "type": "string"
+        },
+        "samplingRatio": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "charToEscapeQuoteEscaping": {
+          "type": "string"
+        },
+        "positiveInf": {
+          "type": "string"
+        },
+        "negativeInf": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "dataType",
+              "nullable"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "dataType": {
+                "type": "string"
+              },
+              "nullable": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "enableDataReconciliation": {
+          "type": "boolean"
+        },
+        "enforceSchemaMethod": {
+          "type": "string"
+        },
+        "logicalSchema": {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "object"
+            },
+            "required": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              },
+              "minItems": 1
+            }
+          }
+        }
+      }
+    },
+    "else": {
+      "if": {
         "properties": {
-          "refreshInterval": {
+          "type": {
+            "const": "inputParquet"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "stepName",
+          "path"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "isStateManagement": {
+            "type": "boolean"
+          },
+          "isDataProfilingEnabled": {
+            "type": "boolean"
+          },
+          "stepName": {
             "type": "string"
           },
-          "updateStrategy": {
-            "type": "string",
-            "enum": [
-              "scd1",
-              "scd2"
-            ]
+          "path": {
+            "type": "string"
           },
-          "logicalSchemaUrn": {
-            "type": "string",
-            "pattern": "^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$"
+          "persistDataFrame": {
+            "type": "boolean"
+          },
+          "columnsToDecrypt": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "enforceSchemaMethod": {
+            "type": "string"
+          },
+          "enforceSchema": {
+            "type": "boolean"
+          },
+          "enableDataReconciliation": {
+            "type": "boolean"
           },
           "logicalSchema": {
             "type": "object",
@@ -53,368 +238,599 @@
                 "minItems": 1
               }
             }
-          },
-          "partitionColumns": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "minItems": 1
-          },
-          "encodingOptions": {
-            "type": "object",
-            "properties": {
-              "encodingType": {
-                "type": "string",
-                "enum": [
-                  "HASH",
-                  "ENCRYPT"
-                ]
-              },
-              "columnsToEncode": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "minItems": 1
-              }
-            }
-          },
-          "updateStrategyOptions": {
-            "type": "object",
-            "properties": {
-              "actualTimeColumn": {
-                "type": "string"
-              },
-              "timeTrackingColumn": {
-                "type": "string"
-              },
-              "uniqueKeyColumns": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "minItems": 1
-              },
-              "changeTrackingColumns": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "minItems": 1
-              }
-            },
-            "required": [
-              "actualTimeColumn",
-              "timeTrackingColumn",
-              "uniqueKeyColumns",
-              "changeTrackingColumns"
-            ]
           }
-        },
-        "required": [
-          "refreshInterval",
-          "updateStrategy",
-          "updateStrategyOptions"
-        ]
-      },
-      {
-        "type": "object",
-        "properties": {
-          "refreshInterval": {
-            "type": "string"
-          },
-          "updateStrategy": {
-            "type": "string",
-            "enum": [
-              "Append",
-              "Overwrite"
-            ]
-          },
-          "logicalSchemaUrn": {
-            "type": "string",
-            "pattern": "^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$"
-          },
-          "logicalSchema": {
-            "type": "object",
-            "properties": {
-              "properties": {
-                "type": "object"
-              },
-              "required": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "minItems": 1
-              }
-            }
-          },
-          "partitionColumns": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "minItems": 1
-          },
-          "encodingOptions": {
-            "type": "object",
-            "properties": {
-              "encodingType": {
-                "type": "string",
-                "enum": [
-                  "HASH",
-                  "ENCRYPT"
-                ]
-              },
-              "columnsToEncode": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "minItems": 1
-              }
-            }
-          },
-          "updateStrategyOptions": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "refreshInterval",
-          "updateStrategy"
-        ]
-      },
-      {
-        "type": "object",
-        "properties": {
-          "stepName": {
-            "type": "string"
-          },
-          "updateStrategy": {
-            "type": "string",
-            "enum": [
-              "scd1",
-              "scd2",
-              "Append",
-              "Overwrite"
-            ]
-          },
-          "inputDataFrame": {
-            "type": "string"
-          },
-          "tableName": {
-            "type": "string"
-          },
-          "warehousePath": {
-            "type": "string"
-          },
-          "catalogName": {
-            "type": "string"
-          },
-          "updateStrategyOptions": {
-            "type": "object",
-            "properties": {
-              "actualTimeColumn": {
-                "type": "string"
-              },
-              "timeTrackingColumn": {
-                "type": "string"
-              },
-              "uniqueKeyColumns": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "minItems": 1
-              },
-              "changeTrackingColumns": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "minItems": 1
-              }
-            },
-            "required": [
-              "actualTimeColumn",
-              "timeTrackingColumn",
-              "uniqueKeyColumns",
-              "changeTrackingColumns"
-            ]
-          },
-          "stateType": {
-            "type": "string"
-          },
-          "stateName": {
-            "type": "string"
-          },
-          "optional": {
-            "type": "object"
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "refreshInterval",
-          "updateStrategy",
-          "updateStrategyOptions"
-        ]
-      },
-      {
-        "type": "object",
-        "properties": {
-          "refreshInterval": {
-            "type": "string"
-          },
-          "tableName": {
-            "type": "string"
-          },
-          "stateStoreType": {
-            "type": "string"
-          },
-          "temporaryPath": {
-            "type": "string"
-          },
-          "logicalSchemaUrn": {
-            "type": "string",
-            "pattern": "^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$"
-          },
-          "logicalSchema": {
-            "type": "object",
-            "properties": {
-              "properties": {
-                "type": "object"
-              },
-              "required": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "minItems": 1
-              }
-            }
-          },
-          "encodingOptions": {
-            "type": "object",
-            "properties": {
-              "encodingType": {
-                "type": "string",
-                "enum": [
-                  "HASH",
-                  "ENCRYPT"
-                ]
-              },
-              "columnsToEncode": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "minItems": 1
-              }
-            }
-          }
-        },
-        "required": [
-          "refreshInterval",
-          "tableName",
-          "stateStoreType",
-          "temporaryPath"
-        ]
-      }
-    ]
-  },
-  "else": {
-    "if": {
-      "properties": {
-        "stateStoreType": {
-          "const": "saveTableDB"
         }
-      }
-    },
-    "then": {
-      "type": "object",
-      "properties": {
-        "connection": {
-          "type": "string"
-        },
-        "tableName": {
-          "type": "string"
-        },
-        "optional": {
-          "type": "object",
+      },
+      "else": {
+        "if": {
           "properties": {
+            "type": {
+              "const": "readRedshiftTableByQuery"
+            }
+          }
+        },
+        "then": {
+          "additionalProperties": false,
+          "required": [
+            "stepName",
+            "connection",
+            "query",
+            "temporaryPathS3"
+          ],
+          "properties": {
+            "isStateManagement": {
+              "type": "boolean"
+            },
+            "isDataProfilingEnabled": {
+              "type": "boolean"
+            },
+            "stepName": {
+              "type": "string"
+            },
+            "query": {
+              "type": "string"
+            },
+            "connection": {
+              "type": "string"
+            },
+            "awsIAMRole": {
+              "type": "string"
+            },
+            "temporaryPathS3": {
+              "type": "string"
+            },
+            "isUser": {
+              "type": "boolean"
+            },
             "persistDataFrame": {
               "type": "boolean"
             },
-            "addRunIdColumn": {
+            "enforceSchemaMethod": {
+              "type": "string"
+            },
+            "enforceSchema": {
               "type": "boolean"
             },
             "enableDataReconciliation": {
               "type": "boolean"
             },
-            "enforceSchema": {
-              "type": "boolean"
+            "logicalSchema": {
+              "type": "object",
+              "properties": {
+                "properties": {
+                  "type": "object"
+                },
+                "required": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "readMySqlDbUsingJdbc"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "stepName",
+              "connection",
+              "tableName/query"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "isStateManagement": {
+                "type": "boolean"
+              },
+              "stepName": {
+                "type": "string"
+              },
+              "connection": {
+                "type": "string"
+              },
+              "tableName/query": {
+                "type": "string"
+              },
+              "primaryKey": {
+                "type": "string"
+              },
+              "numRepartitions": {
+                "type": "string"
+              },
+              "persistDataFrame": {
+                "type": "boolean"
+              },
+              "enforceSchemaMethod": {
+                "type": "string"
+              },
+              "enforceSchema": {
+                "type": "boolean"
+              },
+              "enableDataReconciliation": {
+                "type": "boolean"
+              },
+              "logicalSchema": {
+                "type": "object",
+                "properties": {
+                  "properties": {
+                    "type": "object"
+                  },
+                  "required": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "minItems": 1
+                  }
+                }
+              },
+              "isDataProfilingEnabled": {
+                "type": "boolean"
+              }
+            }
+          },
+          "else": {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "readDataIceberg"
+                }
+              }
             },
-            "enforceSchemaMethod": {
+            "then": {
+              "required": [
+                "stepName",
+                "tableName",
+                "warehousePath",
+                "catalogName"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "isStateManagement": {
+                  "type": "boolean"
+                },
+                "stepName": {
+                  "type": "string"
+                },
+                "tableName": {
+                  "type": "string"
+                },
+                "warehousePath": {
+                  "type": "string"
+                },
+                "catalogName": {
+                  "type": "string"
+                },
+                "columnsToDecrypt": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "persistDataFrame": {
+                  "type": "boolean"
+                },
+                "enforceSchemaMethod": {
+                  "type": "string"
+                },
+                "enforceSchema": {
+                  "type": "boolean"
+                },
+                "enableDataReconciliation": {
+                  "type": "boolean"
+                },
+                "logicalSchema": {
+                  "type": "object",
+                  "properties": {
+                    "properties": {
+                      "type": "object"
+                    },
+                    "required": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "minItems": 1
+                    }
+                  }
+                },
+                "isDataProfilingEnabled": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "else": {
+              "required": [
+                "type"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "inputDelimited",
+                    "inputParquet",
+                    "readRedshiftTableByQuery",
+                    "readMySqlDbUsingJdbc",
+                    "readDataIceberg"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "else": {
+    "if": {
+      "not": {
+        "properties": {
+          "isDynamic": {
+            "const": true
+          }
+        }
+      }
+    },
+    "then": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "refreshInterval": {
+              "type": "string"
+            },
+            "updateStrategy": {
+              "type": "string",
+              "enum": [
+                "scd1",
+                "scd2"
+              ]
+            },
+            "logicalSchemaUrn": {
+              "type": "string",
+              "pattern": "^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$"
+            },
+            "logicalSchema": {
+              "type": "object",
+              "properties": {
+                "properties": {
+                  "type": "object"
+                },
+                "required": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "minItems": 1
+                }
+              }
+            },
+            "partitionColumns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            },
+            "encodingOptions": {
+              "type": "object",
+              "properties": {
+                "encodingType": {
+                  "type": "string",
+                  "enum": [
+                    "HASH",
+                    "ENCRYPT"
+                  ]
+                },
+                "columnsToEncode": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              }
+            },
+            "updateStrategyOptions": {
+              "type": "object",
+              "properties": {
+                "actualTimeColumn": {
+                  "type": "string"
+                },
+                "timeTrackingColumn": {
+                  "type": "string"
+                },
+                "uniqueKeyColumns": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                },
+                "changeTrackingColumns": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "actualTimeColumn",
+                "timeTrackingColumn",
+                "uniqueKeyColumns",
+                "changeTrackingColumns"
+              ]
+            }
+          },
+          "required": [
+            "refreshInterval",
+            "updateStrategy",
+            "updateStrategyOptions"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "refreshInterval": {
+              "type": "string"
+            },
+            "updateStrategy": {
+              "type": "string",
+              "enum": [
+                "Append",
+                "Overwrite"
+              ]
+            },
+            "logicalSchemaUrn": {
+              "type": "string",
+              "pattern": "^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$"
+            },
+            "logicalSchema": {
+              "type": "object",
+              "properties": {
+                "properties": {
+                  "type": "object"
+                },
+                "required": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              }
+            },
+            "partitionColumns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            },
+            "encodingOptions": {
+              "type": "object",
+              "properties": {
+                "encodingType": {
+                  "type": "string",
+                  "enum": [
+                    "HASH",
+                    "ENCRYPT"
+                  ]
+                },
+                "columnsToEncode": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              }
+            },
+            "updateStrategyOptions": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "refreshInterval",
+            "updateStrategy"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "stepName": {
+              "type": "string"
+            },
+            "updateStrategy": {
+              "type": "string",
+              "enum": [
+                "scd1",
+                "scd2",
+                "Append",
+                "Overwrite"
+              ]
+            },
+            "inputDataFrame": {
+              "type": "string"
+            },
+            "tableName": {
+              "type": "string"
+            },
+            "warehousePath": {
+              "type": "string"
+            },
+            "catalogName": {
+              "type": "string"
+            },
+            "updateStrategyOptions": {
+              "type": "object",
+              "properties": {
+                "actualTimeColumn": {
+                  "type": "string"
+                },
+                "timeTrackingColumn": {
+                  "type": "string"
+                },
+                "uniqueKeyColumns": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                },
+                "changeTrackingColumns": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "actualTimeColumn",
+                "timeTrackingColumn",
+                "uniqueKeyColumns",
+                "changeTrackingColumns"
+              ]
+            },
+            "stateType": {
+              "type": "string"
+            },
+            "stateName": {
+              "type": "string"
+            },
+            "optional": {
+              "type": "object"
+            },
+            "type": {
               "type": "string"
             }
           },
-          "additionalProperties": true,
-          "required": []
+          "required": [
+            "refreshInterval",
+            "updateStrategy",
+            "updateStrategyOptions"
+          ]
         },
-        "alias": {
-          "type": "string"
-        },
-        "logicalSchema": {
+        {
           "type": "object",
-          "additionalProperties": true,
-          "properties": {},
-          "required": []
-        },
-        "isProfilingEnabled": {
-          "type": "boolean"
-        },
-        "isDynamic": {
-          "type": "boolean"
-        },
-        "retentionVersions": {
-          "type": "string"
-        },
-        "stateStoreType": {
-          "type": "string"
-        },
-        "updateStrategy": {
-          "type": "string"
-        },
-        "updateStrategyOptions": {
-          "type": "string"
+          "properties": {
+            "refreshInterval": {
+              "type": "string"
+            },
+            "tableName": {
+              "type": "string"
+            },
+            "stateStoreType": {
+              "type": "string"
+            },
+            "temporaryPath": {
+              "type": "string"
+            },
+            "logicalSchemaUrn": {
+              "type": "string",
+              "pattern": "^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$"
+            },
+            "logicalSchema": {
+              "type": "object",
+              "properties": {
+                "properties": {
+                  "type": "object"
+                },
+                "required": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              }
+            },
+            "encodingOptions": {
+              "type": "object",
+              "properties": {
+                "encodingType": {
+                  "type": "string",
+                  "enum": [
+                    "HASH",
+                    "ENCRYPT"
+                  ]
+                },
+                "columnsToEncode": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          "required": [
+            "refreshInterval",
+            "tableName",
+            "stateStoreType",
+            "temporaryPath"
+          ]
         }
-      },
-      "required": [
-        "connection",
-        "tableName",
-        "alias",
-        "logicalSchema",
-        "isProfilingEnabled",
-        "isDynamic",
-        "retentionVersions",
-        "stateStoreType"
       ]
     },
     "else": {
       "if": {
         "properties": {
           "stateStoreType": {
-            "const": "writeDataFrameToParquet"
+            "const": "saveTableDB"
           }
         }
       },
       "then": {
         "type": "object",
         "properties": {
-          "path": {
+          "connection": {
+            "type": "string"
+          },
+          "tableName": {
             "type": "string"
           },
           "optional": {
@@ -422,43 +838,6 @@
             "properties": {
               "persistDataFrame": {
                 "type": "boolean"
-              },
-              "dynamicPartitionRequired": {
-                "type": "boolean"
-              },
-              "encodingType": {
-                "type": "string"
-              },
-              "columnsToEncode": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "partitionFiles": {
-                "type": "integer"
-              },
-              "partitionColumnList": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "advanceOptions": {
-                "type": "object",
-                "properties": {
-                  "endPoint": {
-                    "type": "string"
-                  },
-                  "accessKey": {
-                    "type": "string"
-                  },
-                  "secretKey": {
-                    "type": "string"
-                  }
-                },
-                "additionalProperties": true,
-                "required": []
               },
               "addRunIdColumn": {
                 "type": "boolean"
@@ -474,9 +853,7 @@
               }
             },
             "additionalProperties": true,
-            "required": [
-              "partitionColumnList"
-            ]
+            "required": []
           },
           "alias": {
             "type": "string"
@@ -507,7 +884,8 @@
           }
         },
         "required": [
-          "path",
+          "connection",
+          "tableName",
           "alias",
           "logicalSchema",
           "isProfilingEnabled",
@@ -520,16 +898,13 @@
         "if": {
           "properties": {
             "stateStoreType": {
-              "const": "writeDataFrameToCsv"
+              "const": "writeDataFrameToParquet"
             }
           }
         },
         "then": {
           "type": "object",
           "properties": {
-            "partitionFiles": {
-              "type": "integer"
-            },
             "path": {
               "type": "string"
             },
@@ -551,31 +926,19 @@
                     "type": "string"
                   }
                 },
-                "overwrite": {
-                  "type": "boolean"
+                "partitionFiles": {
+                  "type": "integer"
+                },
+                "partitionColumnList": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "advanceOptions": {
                   "type": "object",
                   "properties": {
-                    "dateFormat": {
-                      "type": "string"
-                    },
-                    "delimiter": {
-                      "type": "string"
-                    },
-                    "quote": {
-                      "type": "string"
-                    },
-                    "escape": {
-                      "type": "string"
-                    },
-                    "nullValue": {
-                      "type": "string"
-                    },
-                    "quoteAll": {
-                      "type": "boolean"
-                    },
-                    "timestampFormat": {
+                    "endPoint": {
                       "type": "string"
                     },
                     "accessKey": {
@@ -583,12 +946,6 @@
                     },
                     "secretKey": {
                       "type": "string"
-                    },
-                    "endPoint": {
-                      "type": "string"
-                    },
-                    "header": {
-                      "type": "boolean"
                     }
                   },
                   "additionalProperties": true,
@@ -608,7 +965,9 @@
                 }
               },
               "additionalProperties": true,
-              "required": []
+              "required": [
+                "partitionColumnList"
+              ]
             },
             "alias": {
               "type": "string"
@@ -639,7 +998,6 @@
             }
           },
           "required": [
-            "partitionFiles",
             "path",
             "alias",
             "logicalSchema",
@@ -653,51 +1011,41 @@
           "if": {
             "properties": {
               "stateStoreType": {
-                "const": "writeDataFrameToFileSFTP"
+                "const": "writeDataFrameToCsv"
               }
             }
           },
           "then": {
             "type": "object",
             "properties": {
-              "connection": {
-                "type": "string"
+              "partitionFiles": {
+                "type": "integer"
               },
-              "filePath": {
-                "type": "string"
-              },
-              "fileName": {
-                "type": "string"
-              },
-              "fileType": {
+              "path": {
                 "type": "string"
               },
               "optional": {
                 "type": "object",
                 "properties": {
-                  "localFilePath": {
-                    "type": "string"
-                  },
                   "persistDataFrame": {
                     "type": "boolean"
                   },
-                  "passOption": {
-                    "type": "object",
-                    "properties": {
-                      "pem": {
-                        "type": "string"
-                      },
-                      "pemPassphrase": {
-                        "type": "string"
-                      },
-                      "password": {
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": true,
-                    "required": []
+                  "dynamicPartitionRequired": {
+                    "type": "boolean"
                   },
-                  "csvOption": {
+                  "encodingType": {
+                    "type": "string"
+                  },
+                  "columnsToEncode": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "overwrite": {
+                    "type": "boolean"
+                  },
+                  "advanceOptions": {
                     "type": "object",
                     "properties": {
                       "dateFormat": {
@@ -705,9 +1053,6 @@
                       },
                       "delimiter": {
                         "type": "string"
-                      },
-                      "header": {
-                        "type": "boolean"
                       },
                       "quote": {
                         "type": "string"
@@ -719,10 +1064,22 @@
                         "type": "string"
                       },
                       "quoteAll": {
-                        "type": "string"
+                        "type": "boolean"
                       },
                       "timestampFormat": {
                         "type": "string"
+                      },
+                      "accessKey": {
+                        "type": "string"
+                      },
+                      "secretKey": {
+                        "type": "string"
+                      },
+                      "endPoint": {
+                        "type": "string"
+                      },
+                      "header": {
+                        "type": "boolean"
                       }
                     },
                     "additionalProperties": true,
@@ -773,10 +1130,8 @@
               }
             },
             "required": [
-              "connection",
-              "filePath",
-              "fileName",
-              "fileType",
+              "partitionFiles",
+              "path",
               "alias",
               "logicalSchema",
               "isProfilingEnabled",
@@ -789,39 +1144,80 @@
             "if": {
               "properties": {
                 "stateStoreType": {
-                  "const": "saveTableAPI"
+                  "const": "writeDataFrameToFileSFTP"
                 }
               }
             },
             "then": {
               "type": "object",
               "properties": {
-                "URL": {
+                "connection": {
                   "type": "string"
                 },
-                "userId": {
+                "filePath": {
                   "type": "string"
                 },
-                "viewID": {
+                "fileName": {
                   "type": "string"
                 },
-                "tempWriteOutPath": {
+                "fileType": {
                   "type": "string"
                 },
                 "optional": {
                   "type": "object",
                   "properties": {
+                    "localFilePath": {
+                      "type": "string"
+                    },
                     "persistDataFrame": {
                       "type": "boolean"
                     },
-                    "connectionTimeout": {
-                      "type": "integer"
+                    "passOption": {
+                      "type": "object",
+                      "properties": {
+                        "pem": {
+                          "type": "string"
+                        },
+                        "pemPassphrase": {
+                          "type": "string"
+                        },
+                        "password": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": true,
+                      "required": []
                     },
-                    "readTimeout": {
-                      "type": "integer"
-                    },
-                    "apiBodyLimit": {
-                      "type": "integer"
+                    "csvOption": {
+                      "type": "object",
+                      "properties": {
+                        "dateFormat": {
+                          "type": "string"
+                        },
+                        "delimiter": {
+                          "type": "string"
+                        },
+                        "header": {
+                          "type": "boolean"
+                        },
+                        "quote": {
+                          "type": "string"
+                        },
+                        "escape": {
+                          "type": "string"
+                        },
+                        "nullValue": {
+                          "type": "string"
+                        },
+                        "quoteAll": {
+                          "type": "string"
+                        },
+                        "timestampFormat": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": true,
+                      "required": []
                     },
                     "addRunIdColumn": {
                       "type": "boolean"
@@ -868,10 +1264,10 @@
                 }
               },
               "required": [
-                "URL",
-                "userId",
-                "viewID",
-                "tempWriteOutPath",
+                "connection",
+                "filePath",
+                "fileName",
+                "fileType",
                 "alias",
                 "logicalSchema",
                 "isProfilingEnabled",
@@ -884,20 +1280,23 @@
               "if": {
                 "properties": {
                   "stateStoreType": {
-                    "const": "sendDataToKafkaTopic"
+                    "const": "saveTableAPI"
                   }
                 }
               },
               "then": {
                 "type": "object",
                 "properties": {
-                  "keyColumn": {
+                  "URL": {
                     "type": "string"
                   },
-                  "topicName": {
+                  "userId": {
                     "type": "string"
                   },
-                  "connection": {
+                  "viewID": {
+                    "type": "string"
+                  },
+                  "tempWriteOutPath": {
                     "type": "string"
                   },
                   "optional": {
@@ -905,6 +1304,15 @@
                     "properties": {
                       "persistDataFrame": {
                         "type": "boolean"
+                      },
+                      "connectionTimeout": {
+                        "type": "integer"
+                      },
+                      "readTimeout": {
+                        "type": "integer"
+                      },
+                      "apiBodyLimit": {
+                        "type": "integer"
                       },
                       "addRunIdColumn": {
                         "type": "boolean"
@@ -951,9 +1359,10 @@
                   }
                 },
                 "required": [
-                  "keyColumn",
-                  "topicName",
-                  "connection",
+                  "URL",
+                  "userId",
+                  "viewID",
+                  "tempWriteOutPath",
                   "alias",
                   "logicalSchema",
                   "isProfilingEnabled",
@@ -966,17 +1375,20 @@
                 "if": {
                   "properties": {
                     "stateStoreType": {
-                      "const": "queryExecuteUpdate"
+                      "const": "sendDataToKafkaTopic"
                     }
                   }
                 },
                 "then": {
                   "type": "object",
                   "properties": {
-                    "connection": {
+                    "keyColumn": {
                       "type": "string"
                     },
-                    "query": {
+                    "topicName": {
+                      "type": "string"
+                    },
+                    "connection": {
                       "type": "string"
                     },
                     "optional": {
@@ -985,14 +1397,11 @@
                         "persistDataFrame": {
                           "type": "boolean"
                         },
-                        "dbServerType": {
-                          "type": "string"
+                        "addRunIdColumn": {
+                          "type": "boolean"
                         },
-                        "warehouse": {
-                          "type": "string"
-                        },
-                        "role": {
-                          "type": "string"
+                        "enableDataReconciliation": {
+                          "type": "boolean"
                         },
                         "enforceSchema": {
                           "type": "boolean"
@@ -1033,8 +1442,9 @@
                     }
                   },
                   "required": [
+                    "keyColumn",
+                    "topicName",
                     "connection",
-                    "query",
                     "alias",
                     "logicalSchema",
                     "isProfilingEnabled",
@@ -1047,7 +1457,7 @@
                   "if": {
                     "properties": {
                       "stateStoreType": {
-                        "const": "loadDataFileToTable"
+                        "const": "queryExecuteUpdate"
                       }
                     }
                   },
@@ -1057,44 +1467,23 @@
                       "connection": {
                         "type": "string"
                       },
-                      "temporaryPath": {
-                        "type": "string"
-                      },
-                      "tableName": {
+                      "query": {
                         "type": "string"
                       },
                       "optional": {
                         "type": "object",
                         "properties": {
-                          "delimiter": {
-                            "type": "string"
-                          },
-                          "escapeChar": {
-                            "type": "string"
-                          },
-                          "header": {
-                            "type": "boolean"
-                          },
-                          "columnList": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
-                          "newLineChar": {
-                            "type": "string"
-                          },
-                          "quoteChar": {
-                            "type": "string"
-                          },
                           "persistDataFrame": {
                             "type": "boolean"
                           },
-                          "addRunIdColumn": {
-                            "type": "boolean"
+                          "dbServerType": {
+                            "type": "string"
                           },
-                          "enableDataReconciliation": {
-                            "type": "boolean"
+                          "warehouse": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
                           },
                           "enforceSchema": {
                             "type": "boolean"
@@ -1104,9 +1493,7 @@
                           }
                         },
                         "additionalProperties": true,
-                        "required": [
-                          "columnList"
-                        ]
+                        "required": []
                       },
                       "alias": {
                         "type": "string"
@@ -1138,8 +1525,7 @@
                     },
                     "required": [
                       "connection",
-                      "temporaryPath",
-                      "tableName",
+                      "query",
                       "alias",
                       "logicalSchema",
                       "isProfilingEnabled",
@@ -1152,7 +1538,7 @@
                     "if": {
                       "properties": {
                         "stateStoreType": {
-                          "const": "cpImportDataframe"
+                          "const": "loadDataFileToTable"
                         }
                       }
                     },
@@ -1168,39 +1554,29 @@
                         "tableName": {
                           "type": "string"
                         },
-                        "userServer": {
-                          "type": "string"
-                        },
                         "optional": {
                           "type": "object",
                           "properties": {
-                            "localTemporaryPath": {
+                            "delimiter": {
                               "type": "string"
                             },
-                            "cpimportCommand": {
+                            "escapeChar": {
                               "type": "string"
                             },
-                            "passOption": {
-                              "type": "object",
-                              "properties": {
-                                "pem": {
-                                  "type": "string"
-                                },
-                                "password": {
-                                  "type": "string"
-                                },
-                                "pemPassphrase": {
-                                  "type": "string"
-                                }
-                              },
-                              "additionalProperties": true,
-                              "required": []
-                            },
-                            "sshRequired": {
+                            "header": {
                               "type": "boolean"
                             },
-                            "passwordRequired": {
-                              "type": "boolean"
+                            "columnList": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "newLineChar": {
+                              "type": "string"
+                            },
+                            "quoteChar": {
+                              "type": "string"
                             },
                             "persistDataFrame": {
                               "type": "boolean"
@@ -1219,7 +1595,9 @@
                             }
                           },
                           "additionalProperties": true,
-                          "required": []
+                          "required": [
+                            "columnList"
+                          ]
                         },
                         "alias": {
                           "type": "string"
@@ -1253,7 +1631,6 @@
                         "connection",
                         "temporaryPath",
                         "tableName",
-                        "userServer",
                         "alias",
                         "logicalSchema",
                         "isProfilingEnabled",
@@ -1266,7 +1643,7 @@
                       "if": {
                         "properties": {
                           "stateStoreType": {
-                            "const": "writeDataFrameToRedshiftTable"
+                            "const": "cpImportDataframe"
                           }
                         }
                       },
@@ -1276,24 +1653,46 @@
                           "connection": {
                             "type": "string"
                           },
+                          "temporaryPath": {
+                            "type": "string"
+                          },
                           "tableName": {
                             "type": "string"
                           },
-                          "accessKey": {
-                            "type": "string"
-                          },
-                          "secretKey": {
-                            "type": "string"
-                          },
-                          "endPoint": {
-                            "type": "string"
-                          },
-                          "temporaryPathS3": {
+                          "userServer": {
                             "type": "string"
                           },
                           "optional": {
                             "type": "object",
                             "properties": {
+                              "localTemporaryPath": {
+                                "type": "string"
+                              },
+                              "cpimportCommand": {
+                                "type": "string"
+                              },
+                              "passOption": {
+                                "type": "object",
+                                "properties": {
+                                  "pem": {
+                                    "type": "string"
+                                  },
+                                  "password": {
+                                    "type": "string"
+                                  },
+                                  "pemPassphrase": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": true,
+                                "required": []
+                              },
+                              "sshRequired": {
+                                "type": "boolean"
+                              },
+                              "passwordRequired": {
+                                "type": "boolean"
+                              },
                               "persistDataFrame": {
                                 "type": "boolean"
                               },
@@ -1308,43 +1707,10 @@
                               },
                               "enforceSchemaMethod": {
                                 "type": "string"
-                              },
-                              "isUser": {
-                                "type": "boolean"
-                              },
-                              "awsIAMRole": {
-                                "type": "string"
-                              },
-                              "changeTrackingColumns": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "encodingType": {
-                                "type": "string"
-                              },
-                              "columnsToEncode": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "timestampColumn": {
-                                "type": "string"
-                              },
-                              "primaryKey": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
                               }
                             },
                             "additionalProperties": true,
-                            "required": [
-                              "timestampColumn",
-                              "primaryKey"
-                            ]
+                            "required": []
                           },
                           "alias": {
                             "type": "string"
@@ -1376,11 +1742,9 @@
                         },
                         "required": [
                           "connection",
+                          "temporaryPath",
                           "tableName",
-                          "accessKey",
-                          "secretKey",
-                          "endPoint",
-                          "temporaryPathS3",
+                          "userServer",
                           "alias",
                           "logicalSchema",
                           "isProfilingEnabled",
@@ -1393,7 +1757,7 @@
                         "if": {
                           "properties": {
                             "stateStoreType": {
-                              "const": "writeDataFrameToSQLServerTable"
+                              "const": "writeDataFrameToRedshiftTable"
                             }
                           }
                         },
@@ -1404,6 +1768,18 @@
                               "type": "string"
                             },
                             "tableName": {
+                              "type": "string"
+                            },
+                            "accessKey": {
+                              "type": "string"
+                            },
+                            "secretKey": {
+                              "type": "string"
+                            },
+                            "endPoint": {
+                              "type": "string"
+                            },
+                            "temporaryPathS3": {
                               "type": "string"
                             },
                             "optional": {
@@ -1423,10 +1799,43 @@
                                 },
                                 "enforceSchemaMethod": {
                                   "type": "string"
+                                },
+                                "isUser": {
+                                  "type": "boolean"
+                                },
+                                "awsIAMRole": {
+                                  "type": "string"
+                                },
+                                "changeTrackingColumns": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "encodingType": {
+                                  "type": "string"
+                                },
+                                "columnsToEncode": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "timestampColumn": {
+                                  "type": "string"
+                                },
+                                "primaryKey": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
                                 }
                               },
                               "additionalProperties": true,
-                              "required": []
+                              "required": [
+                                "timestampColumn",
+                                "primaryKey"
+                              ]
                             },
                             "alias": {
                               "type": "string"
@@ -1459,6 +1868,10 @@
                           "required": [
                             "connection",
                             "tableName",
+                            "accessKey",
+                            "secretKey",
+                            "endPoint",
+                            "temporaryPathS3",
                             "alias",
                             "logicalSchema",
                             "isProfilingEnabled",
@@ -1471,71 +1884,22 @@
                           "if": {
                             "properties": {
                               "stateStoreType": {
-                                "const": "updateDataAxiomTableMySQL"
+                                "const": "writeDataFrameToSQLServerTable"
                               }
                             }
                           },
                           "then": {
                             "type": "object",
                             "properties": {
-                              "denormConnection": {
+                              "connection": {
                                 "type": "string"
                               },
-                              "axiomConnection": {
-                                "type": "string"
-                              },
-                              "viewID": {
-                                "type": "integer"
-                              },
-                              "userID": {
-                                "type": "integer"
-                              },
-                              "appURL": {
-                                "type": "string"
-                              },
-                              "userServer": {
-                                "type": "string"
-                              },
-                              "serverTemporaryPath": {
-                                "type": "string"
-                              },
-                              "updateOptionsAxiom": {
+                              "tableName": {
                                 "type": "string"
                               },
                               "optional": {
                                 "type": "object",
                                 "properties": {
-                                  "localTemporaryPath": {
-                                    "type": "string"
-                                  },
-                                  "cpimportCommand": {
-                                    "type": "string"
-                                  },
-                                  "passOption": {
-                                    "type": "object",
-                                    "properties": {
-                                      "pem": {
-                                        "type": "string"
-                                      },
-                                      "password": {
-                                        "type": "string"
-                                      },
-                                      "pemPassphrase": {
-                                        "type": "string"
-                                      }
-                                    },
-                                    "additionalProperties": true,
-                                    "required": []
-                                  },
-                                  "sshRequired": {
-                                    "type": "boolean"
-                                  },
-                                  "passwordRequired": {
-                                    "type": "boolean"
-                                  },
-                                  "deleteCondition": {
-                                    "type": "string"
-                                  },
                                   "persistDataFrame": {
                                     "type": "boolean"
                                   },
@@ -1584,14 +1948,8 @@
                               }
                             },
                             "required": [
-                              "denormConnection",
-                              "axiomConnection",
-                              "viewID",
-                              "userID",
-                              "appURL",
-                              "userServer",
-                              "serverTemporaryPath",
-                              "updateOptionsAxiom",
+                              "connection",
+                              "tableName",
                               "alias",
                               "logicalSchema",
                               "isProfilingEnabled",
@@ -1604,7 +1962,7 @@
                             "if": {
                               "properties": {
                                 "stateStoreType": {
-                                  "const": "updateDataAxiomTableRedshift"
+                                  "const": "updateDataAxiomTableMySQL"
                                 }
                               }
                             },
@@ -1626,16 +1984,10 @@
                                 "appURL": {
                                   "type": "string"
                                 },
-                                "accessKey": {
+                                "userServer": {
                                   "type": "string"
                                 },
-                                "secretKey": {
-                                  "type": "string"
-                                },
-                                "endPoint": {
-                                  "type": "string"
-                                },
-                                "temporaryPathS3": {
+                                "serverTemporaryPath": {
                                   "type": "string"
                                 },
                                 "updateOptionsAxiom": {
@@ -1644,6 +1996,34 @@
                                 "optional": {
                                   "type": "object",
                                   "properties": {
+                                    "localTemporaryPath": {
+                                      "type": "string"
+                                    },
+                                    "cpimportCommand": {
+                                      "type": "string"
+                                    },
+                                    "passOption": {
+                                      "type": "object",
+                                      "properties": {
+                                        "pem": {
+                                          "type": "string"
+                                        },
+                                        "password": {
+                                          "type": "string"
+                                        },
+                                        "pemPassphrase": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": true,
+                                      "required": []
+                                    },
+                                    "sshRequired": {
+                                      "type": "boolean"
+                                    },
+                                    "passwordRequired": {
+                                      "type": "boolean"
+                                    },
                                     "deleteCondition": {
                                       "type": "string"
                                     },
@@ -1660,12 +2040,6 @@
                                       "type": "boolean"
                                     },
                                     "enforceSchemaMethod": {
-                                      "type": "string"
-                                    },
-                                    "isUser": {
-                                      "type": "boolean"
-                                    },
-                                    "awsIAMRole": {
                                       "type": "string"
                                     }
                                   },
@@ -1706,10 +2080,8 @@
                                 "viewID",
                                 "userID",
                                 "appURL",
-                                "accessKey",
-                                "secretKey",
-                                "endPoint",
-                                "temporaryPathS3",
+                                "userServer",
+                                "serverTemporaryPath",
                                 "updateOptionsAxiom",
                                 "alias",
                                 "logicalSchema",
@@ -1723,7 +2095,7 @@
                               "if": {
                                 "properties": {
                                   "stateStoreType": {
-                                    "const": "updateDataAxiomTableSQLServer"
+                                    "const": "updateDataAxiomTableRedshift"
                                   }
                                 }
                               },
@@ -1743,6 +2115,18 @@
                                     "type": "integer"
                                   },
                                   "appURL": {
+                                    "type": "string"
+                                  },
+                                  "accessKey": {
+                                    "type": "string"
+                                  },
+                                  "secretKey": {
+                                    "type": "string"
+                                  },
+                                  "endPoint": {
+                                    "type": "string"
+                                  },
+                                  "temporaryPathS3": {
                                     "type": "string"
                                   },
                                   "updateOptionsAxiom": {
@@ -1767,6 +2151,12 @@
                                         "type": "boolean"
                                       },
                                       "enforceSchemaMethod": {
+                                        "type": "string"
+                                      },
+                                      "isUser": {
+                                        "type": "boolean"
+                                      },
+                                      "awsIAMRole": {
                                         "type": "string"
                                       }
                                     },
@@ -1807,6 +2197,10 @@
                                   "viewID",
                                   "userID",
                                   "appURL",
+                                  "accessKey",
+                                  "secretKey",
+                                  "endPoint",
+                                  "temporaryPathS3",
                                   "updateOptionsAxiom",
                                   "alias",
                                   "logicalSchema",
@@ -1820,31 +2214,37 @@
                                 "if": {
                                   "properties": {
                                     "stateStoreType": {
-                                      "const": "writeDataFrameToBigQueryTable"
+                                      "const": "updateDataAxiomTableSQLServer"
                                     }
                                   }
                                 },
                                 "then": {
                                   "type": "object",
                                   "properties": {
-                                    "projectId": {
+                                    "denormConnection": {
                                       "type": "string"
                                     },
-                                    "tableName": {
+                                    "axiomConnection": {
                                       "type": "string"
                                     },
-                                    "dataset": {
+                                    "viewID": {
+                                      "type": "integer"
+                                    },
+                                    "userID": {
+                                      "type": "integer"
+                                    },
+                                    "appURL": {
                                       "type": "string"
                                     },
-                                    "serviceAccountCredential": {
-                                      "type": "string"
-                                    },
-                                    "temporaryGcsBucketName": {
+                                    "updateOptionsAxiom": {
                                       "type": "string"
                                     },
                                     "optional": {
                                       "type": "object",
                                       "properties": {
+                                        "deleteCondition": {
+                                          "type": "string"
+                                        },
                                         "persistDataFrame": {
                                           "type": "boolean"
                                         },
@@ -1893,11 +2293,12 @@
                                     }
                                   },
                                   "required": [
-                                    "projectId",
-                                    "tableName",
-                                    "dataset",
-                                    "serviceAccountCredential",
-                                    "temporaryGcsBucketName",
+                                    "denormConnection",
+                                    "axiomConnection",
+                                    "viewID",
+                                    "userID",
+                                    "appURL",
+                                    "updateOptionsAxiom",
                                     "alias",
                                     "logicalSchema",
                                     "isProfilingEnabled",
@@ -1910,17 +2311,26 @@
                                   "if": {
                                     "properties": {
                                       "stateStoreType": {
-                                        "const": "writeDataFrameToSnowflakeTable"
+                                        "const": "writeDataFrameToBigQueryTable"
                                       }
                                     }
                                   },
                                   "then": {
                                     "type": "object",
                                     "properties": {
-                                      "connection": {
+                                      "projectId": {
                                         "type": "string"
                                       },
                                       "tableName": {
+                                        "type": "string"
+                                      },
+                                      "dataset": {
+                                        "type": "string"
+                                      },
+                                      "serviceAccountCredential": {
+                                        "type": "string"
+                                      },
+                                      "temporaryGcsBucketName": {
                                         "type": "string"
                                       },
                                       "optional": {
@@ -1928,34 +2338,6 @@
                                         "properties": {
                                           "persistDataFrame": {
                                             "type": "boolean"
-                                          },
-                                          "truncateColumns": {
-                                            "type": "boolean"
-                                          },
-                                          "warehouse": {
-                                            "type": "boolean"
-                                          },
-                                          "role": {
-                                            "type": "boolean"
-                                          },
-                                          "columnMap": {
-                                            "type": "array",
-                                            "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "inputColumn": {
-                                                  "type": "string"
-                                                },
-                                                "targetColumn": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "additionalProperties": true,
-                                              "required": [
-                                                "inputColumn",
-                                                "targetColumn"
-                                              ]
-                                            }
                                           },
                                           "addRunIdColumn": {
                                             "type": "boolean"
@@ -2002,8 +2384,11 @@
                                       }
                                     },
                                     "required": [
-                                      "connection",
+                                      "projectId",
                                       "tableName",
+                                      "dataset",
+                                      "serviceAccountCredential",
+                                      "temporaryGcsBucketName",
                                       "alias",
                                       "logicalSchema",
                                       "isProfilingEnabled",
@@ -2016,15 +2401,18 @@
                                     "if": {
                                       "properties": {
                                         "stateStoreType": {
-                                          "const": "dataProfiling"
+                                          "const": "writeDataFrameToSnowflakeTable"
                                         }
                                       }
                                     },
                                     "then": {
                                       "type": "object",
                                       "properties": {
-                                        "tableId": {
-                                          "type": "number"
+                                        "connection": {
+                                          "type": "string"
+                                        },
+                                        "tableName": {
+                                          "type": "string"
                                         },
                                         "optional": {
                                           "type": "object",
@@ -2032,8 +2420,33 @@
                                             "persistDataFrame": {
                                               "type": "boolean"
                                             },
-                                            "histogramThreshold": {
-                                              "type": "string"
+                                            "truncateColumns": {
+                                              "type": "boolean"
+                                            },
+                                            "warehouse": {
+                                              "type": "boolean"
+                                            },
+                                            "role": {
+                                              "type": "boolean"
+                                            },
+                                            "columnMap": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "inputColumn": {
+                                                    "type": "string"
+                                                  },
+                                                  "targetColumn": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "additionalProperties": true,
+                                                "required": [
+                                                  "inputColumn",
+                                                  "targetColumn"
+                                                ]
+                                              }
                                             },
                                             "addRunIdColumn": {
                                               "type": "boolean"
@@ -2046,23 +2459,10 @@
                                             },
                                             "enforceSchemaMethod": {
                                               "type": "string"
-                                            },
-                                            "criticalColumns": {
-                                              "type": "object",
-                                              "properties": {},
-                                              "patternProperties": {
-                                                "^[0-9A-Za-z_]+": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "additionalProperties": true,
-                                              "required": []
                                             }
                                           },
                                           "additionalProperties": true,
-                                          "required": [
-                                            "histogramThreshold"
-                                          ]
+                                          "required": []
                                         },
                                         "alias": {
                                           "type": "string"
@@ -2093,7 +2493,8 @@
                                         }
                                       },
                                       "required": [
-                                        "tableId",
+                                        "connection",
+                                        "tableName",
                                         "alias",
                                         "logicalSchema",
                                         "isProfilingEnabled",
@@ -2106,73 +2507,26 @@
                                       "if": {
                                         "properties": {
                                           "stateStoreType": {
-                                            "const": "writeDataFrameToHudiTable"
+                                            "const": "dataProfiling"
                                           }
                                         }
                                       },
                                       "then": {
                                         "type": "object",
                                         "properties": {
-                                          "tableWritePath": {
-                                            "type": "string"
-                                          },
-                                          "tableName": {
-                                            "type": "string"
-                                          },
-                                          "keyField": {
-                                            "type": "array",
-                                            "items": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "timestampIdentifierField": {
-                                            "type": "string"
-                                          },
-                                          "hudiWriteOperationType": {
-                                            "type": "string"
+                                          "tableId": {
+                                            "type": "number"
                                           },
                                           "optional": {
                                             "type": "object",
                                             "properties": {
-                                              "hudiTableType": {
-                                                "type": "string"
-                                              },
-                                              "partitionFields": {
-                                                "type": "array",
-                                                "items": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "otherConfigs": {
-                                                "type": "object",
-                                                "properties": {},
-                                                "patternProperties": {
-                                                  "^[0-9A-Za-z_]+": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "additionalProperties": true,
-                                                "required": []
-                                              },
-                                              "accessKey": {
-                                                "type": "string"
-                                              },
-                                              "secretKey": {
-                                                "type": "string"
-                                              },
-                                              "endPoint": {
-                                                "type": "string"
-                                              },
-                                              "encodingType": {
-                                                "type": "string"
-                                              },
-                                              "columnsToEncode": {
-                                                "type": "array",
-                                                "items": {
-                                                  "type": "string"
-                                                }
-                                              },
                                               "persistDataFrame": {
+                                                "type": "boolean"
+                                              },
+                                              "histogramThreshold": {
+                                                "type": "string"
+                                              },
+                                              "addRunIdColumn": {
                                                 "type": "boolean"
                                               },
                                               "enableDataReconciliation": {
@@ -2184,12 +2538,22 @@
                                               "enforceSchemaMethod": {
                                                 "type": "string"
                                               },
-                                              "dynamicPartitionRequired": {
-                                                "type": "boolean"
+                                              "criticalColumns": {
+                                                "type": "object",
+                                                "properties": {},
+                                                "patternProperties": {
+                                                  "^[0-9A-Za-z_]+": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "additionalProperties": true,
+                                                "required": []
                                               }
                                             },
                                             "additionalProperties": true,
-                                            "required": []
+                                            "required": [
+                                              "histogramThreshold"
+                                            ]
                                           },
                                           "alias": {
                                             "type": "string"
@@ -2220,11 +2584,7 @@
                                           }
                                         },
                                         "required": [
-                                          "tableWritePath",
-                                          "tableName",
-                                          "keyField",
-                                          "timestampIdentifierField",
-                                          "hudiWriteOperationType",
+                                          "tableId",
                                           "alias",
                                           "logicalSchema",
                                           "isProfilingEnabled",
@@ -2237,47 +2597,90 @@
                                         "if": {
                                           "properties": {
                                             "stateStoreType": {
-                                              "const": "sendEmailUsingNotificationEngine"
+                                              "const": "writeDataFrameToHudiTable"
                                             }
                                           }
                                         },
                                         "then": {
                                           "type": "object",
                                           "properties": {
-                                            "toEmail": {
+                                            "tableWritePath": {
                                               "type": "string"
                                             },
-                                            "subject": {
+                                            "tableName": {
+                                              "type": "string"
+                                            },
+                                            "keyField": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "timestampIdentifierField": {
+                                              "type": "string"
+                                            },
+                                            "hudiWriteOperationType": {
                                               "type": "string"
                                             },
                                             "optional": {
                                               "type": "object",
                                               "properties": {
+                                                "hudiTableType": {
+                                                  "type": "string"
+                                                },
+                                                "partitionFields": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "otherConfigs": {
+                                                  "type": "object",
+                                                  "properties": {},
+                                                  "patternProperties": {
+                                                    "^[0-9A-Za-z_]+": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "additionalProperties": true,
+                                                  "required": []
+                                                },
+                                                "accessKey": {
+                                                  "type": "string"
+                                                },
+                                                "secretKey": {
+                                                  "type": "string"
+                                                },
+                                                "endPoint": {
+                                                  "type": "string"
+                                                },
+                                                "encodingType": {
+                                                  "type": "string"
+                                                },
+                                                "columnsToEncode": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "string"
+                                                  }
+                                                },
                                                 "persistDataFrame": {
                                                   "type": "boolean"
                                                 },
-                                                "template": {
-                                                  "type": "string"
-                                                },
-                                                "ccEmailList": {
-                                                  "type": "string"
-                                                },
-                                                "typeOfEmail": {
-                                                  "type": "string"
+                                                "enableDataReconciliation": {
+                                                  "type": "boolean"
                                                 },
                                                 "enforceSchema": {
                                                   "type": "boolean"
                                                 },
                                                 "enforceSchemaMethod": {
                                                   "type": "string"
+                                                },
+                                                "dynamicPartitionRequired": {
+                                                  "type": "boolean"
                                                 }
                                               },
                                               "additionalProperties": true,
-                                              "required": [
-                                                "template",
-                                                "ccEmailList",
-                                                "typeOfEmail"
-                                              ]
+                                              "required": []
                                             },
                                             "alias": {
                                               "type": "string"
@@ -2308,8 +2711,11 @@
                                             }
                                           },
                                           "required": [
-                                            "toEmail",
-                                            "subject",
+                                            "tableWritePath",
+                                            "tableName",
+                                            "keyField",
+                                            "timestampIdentifierField",
+                                            "hudiWriteOperationType",
                                             "alias",
                                             "logicalSchema",
                                             "isProfilingEnabled",
@@ -2322,20 +2728,17 @@
                                           "if": {
                                             "properties": {
                                               "stateStoreType": {
-                                                "const": "queryExecuteUpdateBigQuery"
+                                                "const": "sendEmailUsingNotificationEngine"
                                               }
                                             }
                                           },
                                           "then": {
                                             "type": "object",
                                             "properties": {
-                                              "query": {
+                                              "toEmail": {
                                                 "type": "string"
                                               },
-                                              "projectId": {
-                                                "type": "string"
-                                              },
-                                              "serviceAccountCredential": {
+                                              "subject": {
                                                 "type": "string"
                                               },
                                               "optional": {
@@ -2343,6 +2746,15 @@
                                                 "properties": {
                                                   "persistDataFrame": {
                                                     "type": "boolean"
+                                                  },
+                                                  "template": {
+                                                    "type": "string"
+                                                  },
+                                                  "ccEmailList": {
+                                                    "type": "string"
+                                                  },
+                                                  "typeOfEmail": {
+                                                    "type": "string"
                                                   },
                                                   "enforceSchema": {
                                                     "type": "boolean"
@@ -2352,7 +2764,11 @@
                                                   }
                                                 },
                                                 "additionalProperties": true,
-                                                "required": []
+                                                "required": [
+                                                  "template",
+                                                  "ccEmailList",
+                                                  "typeOfEmail"
+                                                ]
                                               },
                                               "alias": {
                                                 "type": "string"
@@ -2383,9 +2799,8 @@
                                               }
                                             },
                                             "required": [
-                                              "query",
-                                              "projectId",
-                                              "serviceAccountCredential",
+                                              "toEmail",
+                                              "subject",
                                               "alias",
                                               "logicalSchema",
                                               "isProfilingEnabled",
@@ -2398,17 +2813,20 @@
                                             "if": {
                                               "properties": {
                                                 "stateStoreType": {
-                                                  "const": "deleteInsertDataToTable"
+                                                  "const": "queryExecuteUpdateBigQuery"
                                                 }
                                               }
                                             },
                                             "then": {
                                               "type": "object",
                                               "properties": {
-                                                "connection": {
+                                                "query": {
                                                   "type": "string"
                                                 },
-                                                "tableName": {
+                                                "projectId": {
+                                                  "type": "string"
+                                                },
+                                                "serviceAccountCredential": {
                                                   "type": "string"
                                                 },
                                                 "optional": {
@@ -2417,47 +2835,15 @@
                                                     "persistDataFrame": {
                                                       "type": "boolean"
                                                     },
-                                                    "dbServerType": {
-                                                      "type": "string"
-                                                    },
-                                                    "accessKey": {
-                                                      "type": "string"
-                                                    },
-                                                    "secretKey": {
-                                                      "type": "string"
-                                                    },
-                                                    "endPoint": {
-                                                      "type": "string"
-                                                    },
-                                                    "temporaryPathS3": {
-                                                      "type": "string"
-                                                    },
-                                                    "addRunIdColumn": {
-                                                      "type": "boolean"
-                                                    },
-                                                    "enableDataReconciliation": {
-                                                      "type": "boolean"
-                                                    },
                                                     "enforceSchema": {
                                                       "type": "boolean"
                                                     },
                                                     "enforceSchemaMethod": {
                                                       "type": "string"
-                                                    },
-                                                    "isUser": {
-                                                      "type": "boolean"
-                                                    },
-                                                    "awsIAMRole": {
-                                                      "type": "string"
                                                     }
                                                   },
                                                   "additionalProperties": true,
-                                                  "required": [
-                                                    "accessKey",
-                                                    "secretKey",
-                                                    "endPoint",
-                                                    "temporaryPathS3"
-                                                  ]
+                                                  "required": []
                                                 },
                                                 "alias": {
                                                   "type": "string"
@@ -2488,8 +2874,9 @@
                                                 }
                                               },
                                               "required": [
-                                                "connection",
-                                                "tableName",
+                                                "query",
+                                                "projectId",
+                                                "serviceAccountCredential",
                                                 "alias",
                                                 "logicalSchema",
                                                 "isProfilingEnabled",
@@ -2502,26 +2889,41 @@
                                               "if": {
                                                 "properties": {
                                                   "stateStoreType": {
-                                                    "const": "loadDataIceberg"
+                                                    "const": "deleteInsertDataToTable"
                                                   }
                                                 }
                                               },
                                               "then": {
                                                 "type": "object",
                                                 "properties": {
+                                                  "connection": {
+                                                    "type": "string"
+                                                  },
                                                   "tableName": {
-                                                    "type": "string"
-                                                  },
-                                                  "warehousePath": {
-                                                    "type": "string"
-                                                  },
-                                                  "catalogName": {
                                                     "type": "string"
                                                   },
                                                   "optional": {
                                                     "type": "object",
                                                     "properties": {
                                                       "persistDataFrame": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "dbServerType": {
+                                                        "type": "string"
+                                                      },
+                                                      "accessKey": {
+                                                        "type": "string"
+                                                      },
+                                                      "secretKey": {
+                                                        "type": "string"
+                                                      },
+                                                      "endPoint": {
+                                                        "type": "string"
+                                                      },
+                                                      "temporaryPathS3": {
+                                                        "type": "string"
+                                                      },
+                                                      "addRunIdColumn": {
                                                         "type": "boolean"
                                                       },
                                                       "enableDataReconciliation": {
@@ -2533,62 +2935,20 @@
                                                       "enforceSchemaMethod": {
                                                         "type": "string"
                                                       },
-                                                      "catalogType": {
+                                                      "isUser": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "awsIAMRole": {
                                                         "type": "string"
-                                                      },
-                                                      "advanceOptions": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "endPoint": {
-                                                            "type": "string"
-                                                          },
-                                                          "accessKey": {
-                                                            "type": "string"
-                                                          },
-                                                          "secretKey": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "additionalProperties": true,
-                                                        "required": [
-                                                          "endPoint",
-                                                          "accessKey",
-                                                          "secretKey"
-                                                        ]
-                                                      },
-                                                      "changeTrackingColumns": {
-                                                        "type": "array",
-                                                        "items": {
-                                                          "type": "string"
-                                                        }
-                                                      },
-                                                      "encodingType": {
-                                                        "type": "string"
-                                                      },
-                                                      "columnsToEncode": {
-                                                        "type": "array",
-                                                        "items": {
-                                                          "type": "string"
-                                                        }
-                                                      },
-                                                      "timestampColumn": {
-                                                        "type": "string"
-                                                      },
-                                                      "primaryKey": {
-                                                        "type": "array",
-                                                        "items": {
-                                                          "type": "string"
-                                                        }
-                                                      },
-                                                      "partitionColumns": {
-                                                        "type": "array",
-                                                        "items": {
-                                                          "type": "string"
-                                                        }
                                                       }
                                                     },
                                                     "additionalProperties": true,
-                                                    "required": []
+                                                    "required": [
+                                                      "accessKey",
+                                                      "secretKey",
+                                                      "endPoint",
+                                                      "temporaryPathS3"
+                                                    ]
                                                   },
                                                   "alias": {
                                                     "type": "string"
@@ -2619,9 +2979,8 @@
                                                   }
                                                 },
                                                 "required": [
+                                                  "connection",
                                                   "tableName",
-                                                  "warehousePath",
-                                                  "catalogName",
                                                   "alias",
                                                   "logicalSchema",
                                                   "isProfilingEnabled",
@@ -2634,7 +2993,7 @@
                                                 "if": {
                                                   "properties": {
                                                     "stateStoreType": {
-                                                      "const": "stateManagement"
+                                                      "const": "loadDataIceberg"
                                                     }
                                                   }
                                                 },
@@ -2650,43 +3009,22 @@
                                                     "catalogName": {
                                                       "type": "string"
                                                     },
-                                                    "stateType": {
-                                                      "type": "string"
-                                                    },
-                                                    "stateName": {
-                                                      "type": "string"
-                                                    },
                                                     "optional": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "encodingType": {
+                                                        "persistDataFrame": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "enableDataReconciliation": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "enforceSchema": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "enforceSchemaMethod": {
                                                           "type": "string"
                                                         },
-                                                        "columnsToEncode": {
-                                                          "type": "array",
-                                                          "items": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "partitionColumns": {
-                                                          "type": "array",
-                                                          "items": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "primaryKey": {
-                                                          "type": "array",
-                                                          "items": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "changeTrackingColumns": {
-                                                          "type": "array",
-                                                          "items": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "timestampColumn": {
+                                                        "catalogType": {
                                                           "type": "string"
                                                         },
                                                         "advanceOptions": {
@@ -2709,16 +3047,39 @@
                                                             "secretKey"
                                                           ]
                                                         },
-                                                        "persistDataFrame": {
-                                                          "type": "boolean"
+                                                        "changeTrackingColumns": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "encodingType": {
+                                                          "type": "string"
+                                                        },
+                                                        "columnsToEncode": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "timestampColumn": {
+                                                          "type": "string"
+                                                        },
+                                                        "primaryKey": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "partitionColumns": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "type": "string"
+                                                          }
                                                         }
                                                       },
                                                       "additionalProperties": true,
-                                                      "required": [
-                                                        "partitionColumns",
-                                                        "primaryKey",
-                                                        "timestampColumn"
-                                                      ]
+                                                      "required": []
                                                     },
                                                     "alias": {
                                                       "type": "string"
@@ -2752,8 +3113,6 @@
                                                     "tableName",
                                                     "warehousePath",
                                                     "catalogName",
-                                                    "stateType",
-                                                    "stateName",
                                                     "alias",
                                                     "logicalSchema",
                                                     "isProfilingEnabled",
@@ -2762,7 +3121,140 @@
                                                     "stateStoreType"
                                                   ]
                                                 },
-                                                "else": {}
+                                                "else": {
+                                                  "if": {
+                                                    "properties": {
+                                                      "stateStoreType": {
+                                                        "const": "stateManagement"
+                                                      }
+                                                    }
+                                                  },
+                                                  "then": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "tableName": {
+                                                        "type": "string"
+                                                      },
+                                                      "warehousePath": {
+                                                        "type": "string"
+                                                      },
+                                                      "catalogName": {
+                                                        "type": "string"
+                                                      },
+                                                      "stateType": {
+                                                        "type": "string"
+                                                      },
+                                                      "stateName": {
+                                                        "type": "string"
+                                                      },
+                                                      "optional": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "encodingType": {
+                                                            "type": "string"
+                                                          },
+                                                          "columnsToEncode": {
+                                                            "type": "array",
+                                                            "items": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "partitionColumns": {
+                                                            "type": "array",
+                                                            "items": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "primaryKey": {
+                                                            "type": "array",
+                                                            "items": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "changeTrackingColumns": {
+                                                            "type": "array",
+                                                            "items": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "timestampColumn": {
+                                                            "type": "string"
+                                                          },
+                                                          "advanceOptions": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "endPoint": {
+                                                                "type": "string"
+                                                              },
+                                                              "accessKey": {
+                                                                "type": "string"
+                                                              },
+                                                              "secretKey": {
+                                                                "type": "string"
+                                                              }
+                                                            },
+                                                            "additionalProperties": true,
+                                                            "required": [
+                                                              "endPoint",
+                                                              "accessKey",
+                                                              "secretKey"
+                                                            ]
+                                                          },
+                                                          "persistDataFrame": {
+                                                            "type": "boolean"
+                                                          }
+                                                        },
+                                                        "additionalProperties": true,
+                                                        "required": [
+                                                          "partitionColumns",
+                                                          "primaryKey",
+                                                          "timestampColumn"
+                                                        ]
+                                                      },
+                                                      "alias": {
+                                                        "type": "string"
+                                                      },
+                                                      "logicalSchema": {
+                                                        "type": "object",
+                                                        "additionalProperties": true,
+                                                        "properties": {},
+                                                        "required": []
+                                                      },
+                                                      "isProfilingEnabled": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "isDynamic": {
+                                                        "type": "boolean"
+                                                      },
+                                                      "retentionVersions": {
+                                                        "type": "string"
+                                                      },
+                                                      "stateStoreType": {
+                                                        "type": "string"
+                                                      },
+                                                      "updateStrategy": {
+                                                        "type": "string"
+                                                      },
+                                                      "updateStrategyOptions": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "tableName",
+                                                      "warehousePath",
+                                                      "catalogName",
+                                                      "stateType",
+                                                      "stateName",
+                                                      "alias",
+                                                      "logicalSchema",
+                                                      "isProfilingEnabled",
+                                                      "isDynamic",
+                                                      "retentionVersions",
+                                                      "stateStoreType"
+                                                    ]
+                                                  },
+                                                  "else": {}
+                                                }
                                               }
                                             }
                                           }
