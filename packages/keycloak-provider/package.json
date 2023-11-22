@@ -1,6 +1,6 @@
 {
   "name": "@dataverse/keycloak-provider",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "NodeJS Dataverse KeyCloak Provider",
   "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
   "main": "dist/index.js",
