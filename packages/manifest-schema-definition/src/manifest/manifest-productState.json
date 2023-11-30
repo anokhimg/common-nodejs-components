@@ -935,22 +935,6 @@
                     "type": "string"
                   }
                 },
-                "advanceOptions": {
-                  "type": "object",
-                  "properties": {
-                    "endPoint": {
-                      "type": "string"
-                    },
-                    "accessKey": {
-                      "type": "string"
-                    },
-                    "secretKey": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": true,
-                  "required": []
-                },
                 "addRunIdColumn": {
                   "type": "boolean"
                 },
@@ -1067,15 +1051,6 @@
                         "type": "boolean"
                       },
                       "timestampFormat": {
-                        "type": "string"
-                      },
-                      "accessKey": {
-                        "type": "string"
-                      },
-                      "secretKey": {
-                        "type": "string"
-                      },
-                      "endPoint": {
                         "type": "string"
                       },
                       "header": {
@@ -1770,12 +1745,6 @@
                             "tableName": {
                               "type": "string"
                             },
-                            "accessKey": {
-                              "type": "string"
-                            },
-                            "secretKey": {
-                              "type": "string"
-                            },
                             "endPoint": {
                               "type": "string"
                             },
@@ -1868,8 +1837,6 @@
                           "required": [
                             "connection",
                             "tableName",
-                            "accessKey",
-                            "secretKey",
                             "endPoint",
                             "temporaryPathS3",
                             "alias",
@@ -2911,15 +2878,6 @@
                                                       "dbServerType": {
                                                         "type": "string"
                                                       },
-                                                      "accessKey": {
-                                                        "type": "string"
-                                                      },
-                                                      "secretKey": {
-                                                        "type": "string"
-                                                      },
-                                                      "endPoint": {
-                                                        "type": "string"
-                                                      },
                                                       "temporaryPathS3": {
                                                         "type": "string"
                                                       },
@@ -2944,9 +2902,6 @@
                                                     },
                                                     "additionalProperties": true,
                                                     "required": [
-                                                      "accessKey",
-                                                      "secretKey",
-                                                      "endPoint",
                                                       "temporaryPathS3"
                                                     ]
                                                   },
@@ -3026,26 +2981,6 @@
                                                         },
                                                         "catalogType": {
                                                           "type": "string"
-                                                        },
-                                                        "advanceOptions": {
-                                                          "type": "object",
-                                                          "properties": {
-                                                            "endPoint": {
-                                                              "type": "string"
-                                                            },
-                                                            "accessKey": {
-                                                              "type": "string"
-                                                            },
-                                                            "secretKey": {
-                                                              "type": "string"
-                                                            }
-                                                          },
-                                                          "additionalProperties": true,
-                                                          "required": [
-                                                            "endPoint",
-                                                            "accessKey",
-                                                            "secretKey"
-                                                          ]
                                                         },
                                                         "changeTrackingColumns": {
                                                           "type": "array",

@@ -268,7 +268,7 @@ export const extract = [
           type: 'object',
           required: false,
           properties: {
-            persistDataFrame: { type: 'string', required: false },
+            persistDataFrame: { type: 'boolean', required: false },
             columnsToDecrypt: { type: 'array', required: false, items: { type: 'string' } },
             advanceOptions: {
               type: 'object',
@@ -3530,6 +3530,7 @@ export const extract = [
       output: [{ displayName: 'Output Data', type: 'dataset' }],
       properties: [],
     },
+    dataverse: { type: ['azure-sql', 'sql-server'] },
   },
   {
     nameOfComponent: 'readSAPHANAUsingJdbc',
@@ -3804,6 +3805,25 @@ export const extract = [
           {
             typeOfComponent: 'Extract',
             nameOfComponent: 'readRedshiftTableByQuery',
+            inputFieldName: 's3connections',
+            isOptional: true,
+            directInput: '',
+            formInput: 'from previously defined database connections',
+            formInputType: 'String',
+            formInputValidValues: [],
+            fillFormInputValuesFrom: 'connections',
+            isAdvanceOption: '',
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            specialValidation: '',
+            displayName: 'S3 Connection',
+          },
+          {
+            typeOfComponent: 'Extract',
+            nameOfComponent: 'readRedshiftTableByQuery',
             inputFieldName: 'query',
             isOptional: false,
             directInput: false,
@@ -4040,6 +4060,7 @@ export const extract = [
           type: 'object',
           required: false,
           properties: {
+            s3connections: { type: 'string', required: false },
             persistDataFrame: { type: 'boolean', required: false },
             enableDataReconciliation: { type: 'boolean', required: false },
             enforceSchema: { type: 'boolean', required: false },
@@ -4794,7 +4815,7 @@ export const extract = [
           type: 'object',
           required: false,
           properties: {
-            persistDataFrame: { type: 'string', required: false },
+            persistDataFrame: { type: 'boolean', required: false },
             enableDataReconciliation: { type: 'boolean', required: false },
             enforceSchema: { type: 'boolean', required: false },
             enforceSchemaMethod: { type: 'string', required: false },
@@ -5019,8 +5040,8 @@ export const extract = [
           required: false,
           properties: {
             persistDataFrame: { type: 'boolean', required: false },
-            warehouse: { type: 'string', required: true },
-            role: { type: 'string', required: true },
+            warehouse: { type: 'string', required: false },
+            role: { type: 'string', required: false },
             enableDataReconciliation: { type: 'boolean', required: false },
             enforceSchema: { type: 'boolean', required: false },
             enforceSchemaMethod: { type: 'string', required: false },
@@ -22213,20 +22234,56 @@ export const stateStoreTypeMapping = {
   cpImportDataframe: 'mariadb_columnstore',
 };
 
+const path = {
+  typeOfComponent: 'Extract',
+  nameOfComponent: 'inputParquet',
+  inputFieldName: 'path',
+  isOptional: false,
+  directInput: false,
+  formInput: '',
+  formInputType: 'String',
+  formInputValidValues: '',
+  isAdvanceOption: '',
+  subInputFieldName: '',
+  subFormInputType: '',
+  subFormInputValidValues: '',
+  directOutput: '',
+  otherOutput: '',
+  displayName: 'Path',
+  dataverse: {
+    isDisabled: true,
+  },
+};
 export const sourceExtract = _.cloneDeep(extract);
 sourceExtract.forEach((component: any) => {
   let pathIndex = component.sectionDetails.basic.fields.findIndex((t: any) => t.inputFieldName === 'path');
+  let connectionIndex = component.sectionDetails.basic.fields.findIndex((t: any) => t.inputFieldName === 'connection');
   if (pathIndex !== -1) {
-    let field: any = _.cloneDeep(component.sectionDetails.basic.fields[pathIndex]);
+    component.sectionDetails.basic.fields[pathIndex].rowSpace = 0;
+  }
+  if (component.dataverse && component.dataverse.type) {
+    let field: any = _.cloneDeep(path);
     field.inputFieldName = 'dataSetUrn';
     field.displayName = 'Data Set URN';
     field.isOptional = true;
     let schema: any = { ...component.sampleSchema };
     component.sectionDetails.basic.fields.push(field);
-    component.sectionDetails.basic.fields[pathIndex].rowSpace = 0;
     schema.properties.optional.properties.dataSetUrn = { type: 'string', required: false };
     component.sampleSchema = schema;
   }
+  if (connectionIndex === -1) {
+    let field: any = _.cloneDeep(path);
+    field.inputFieldName = 'connection';
+    field.displayName = 'Connection';
+    field.isOptional = false;
+    let schema: any = { ...component.sampleSchema };
+    component.sectionDetails.basic.fields.push(field);
+    schema.properties.connection = { type: 'string', required: true };
+    component.sampleSchema = schema;
+  }
+  Object.keys(component.sectionDetails).forEach((key) => {
+    component.sectionDetails[key].disabled = true;
+  });
 });
 const stateManagementKeys = [
   'inputDelimited',

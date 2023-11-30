@@ -573,7 +573,7 @@ const baseJson = {
   },
 };
 
-function prepareAJVSchema(schema: any) {
+function prepareAJVSchemaLoadJson(schema: any) {
   schema.required = [];
   Object.keys(schema.properties).forEach((p) => {
     if (schema.properties[p].required) {
@@ -582,11 +582,11 @@ function prepareAJVSchema(schema: any) {
     delete schema.properties[p].required;
     if (schema.properties[p].type === 'object') {
       schema.properties[p].additionalProperties = true;
-      prepareAJVSchema(schema.properties[p]);
+      prepareAJVSchemaLoadJson(schema.properties[p]);
     } else if (schema.properties[p].type === 'array') {
       if (schema.properties[p].items.type === 'object') {
         schema.properties[p].items.additionalProperties = true;
-        prepareAJVSchema(schema.properties[p].items);
+        prepareAJVSchemaLoadJson(schema.properties[p].items);
       }
     }
   });
@@ -633,7 +633,7 @@ config.config.load.forEach((component: any) => {
     delete schema.properties.inputDataFrame;
     delete schema.properties.sequence;
 
-    prepareAJVSchema(schema);
+    prepareAJVSchemaLoadJson(schema);
     let reference: any = baseJson;
     if (currentKey.length > 1) {
       currentKey.forEach((t, index) => {
