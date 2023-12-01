@@ -22254,10 +22254,25 @@ const path = {
     isDisabled: true,
   },
 };
+extract.forEach((component: any) => {
+  let connectionIndex = component.sectionDetails.basic.fields.findIndex((t: any) => t.inputFieldName === 'connection');
+  if (connectionIndex === -1) {
+    let field: any = _.cloneDeep(path);
+    field.inputFieldName = 'connection';
+    field.displayName = 'Connection';
+    field.isOptional = false;
+    field.formInputType = 'String';
+    field.formInputValidValues = [];
+    field.fillFormInputValuesFrom = 'connections';
+    let schema: any = { ...component.sampleSchema };
+    component.sectionDetails.basic.fields.push(field);
+    schema.properties.connection = { type: 'string', required: true };
+    component.sampleSchema = schema;
+  }
+});
 export const sourceExtract = _.cloneDeep(extract);
 sourceExtract.forEach((component: any) => {
   let pathIndex = component.sectionDetails.basic.fields.findIndex((t: any) => t.inputFieldName === 'path');
-  let connectionIndex = component.sectionDetails.basic.fields.findIndex((t: any) => t.inputFieldName === 'connection');
   if (pathIndex !== -1) {
     component.sectionDetails.basic.fields[pathIndex].rowSpace = 0;
   }
@@ -22269,16 +22284,6 @@ sourceExtract.forEach((component: any) => {
     let schema: any = { ...component.sampleSchema };
     component.sectionDetails.basic.fields.push(field);
     schema.properties.optional.properties.dataSetUrn = { type: 'string', required: false };
-    component.sampleSchema = schema;
-  }
-  if (connectionIndex === -1) {
-    let field: any = _.cloneDeep(path);
-    field.inputFieldName = 'connection';
-    field.displayName = 'Connection';
-    field.isOptional = false;
-    let schema: any = { ...component.sampleSchema };
-    component.sectionDetails.basic.fields.push(field);
-    schema.properties.connection = { type: 'string', required: true };
     component.sampleSchema = schema;
   }
   Object.keys(component.sectionDetails).forEach((key) => {
