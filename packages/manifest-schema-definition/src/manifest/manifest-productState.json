@@ -1754,6 +1754,9 @@
                             "optional": {
                               "type": "object",
                               "properties": {
+                                "s3connections": {
+                                  "type": "string"
+                                },
                                 "persistDataFrame": {
                                   "type": "boolean"
                                 },
