@@ -97,9 +97,7 @@ export class KeyCloakAdminProvider {
           data: userData,
         });
       } catch (error: any) {
-        if (
-          error?.response?.data?.errorMessage === 'User exists with same username'
-        ) {
+        if (error?.response?.data?.errorMessage === 'User exists with same username') {
           const resp = await axios.request({
             method: 'get',
             url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/?username=${userData.email}`,
@@ -224,6 +222,27 @@ export class KeyCloakAdminProvider {
         // eslint-disable-next-line @typescript-eslint/no-throw-literal
         throw new KeyCloakAdminError(`Error while deleting a user with ${username}`, error);
       }
+    }
+  }
+
+  public async updateUser(userData: any, id: string) {
+    try {
+      this.logger?.debug('Updating the user in keycloak: %O', userData);
+      const accessToken = await this.getAccessToken();
+      if (!accessToken) {
+        throw new Error('Keycloak admin client is not initialized');
+      }
+      await axios.request({
+        method: 'put',
+        url: `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users/${id}`,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        data: userData,
+      });
+    } catch (error) {
+      console.log(error);
     }
   }
 }
