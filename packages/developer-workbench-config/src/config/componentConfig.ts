@@ -16498,7 +16498,7 @@ export const load = [
             directInput: false,
             formInput: '',
             formInputType: 'String',
-            formInputValidValues: ['Overwrite', 'Append', 'Truncate', 'SCD1', 'SCD2'],
+            formInputValidValues: ['Overwrite', 'Append', 'TruncateAndOverwrite', 'SCD1', 'SCD2'],
             isAdvanceOption: true,
             subInputFieldName: '',
             subFormInputType: '',

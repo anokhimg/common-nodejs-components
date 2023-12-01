@@ -1,6 +1,6 @@
 {
   "name": "@dataverse/manifest-schema-definition",
-  "version": "0.1.7",
+  "version": "0.1.6",
   "description": "Manifest schema definition",
   "scripts": {
     "build": "ts-node src/manifest/manifest-productStateMaker.ts && ts-node src/manifest/manifest-inputPortMaker.ts  && tsc"
@@ -26,7 +26,7 @@
   ],
   "gitHead": "d04d63f60bcaf1824075ec52e023205de0d5f4ae",
   "dependencies": {
-    "@dataverse/developer-workbench-config": "^0.0.12",
+    "@dataverse/developer-workbench-config": "^0.0.10",
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21"
   }
