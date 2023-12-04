@@ -300,13 +300,13 @@
               },
               "enforceSchemaMethod": {
                 "type": "string"
+              },
+              "connection": {
+                "type": "string"
               }
             },
             "additionalProperties": true,
             "required": []
-          },
-          "connection": {
-            "type": "string"
           },
           "alias": {
             "type": "string"
@@ -318,7 +318,6 @@
         "required": [
           "type",
           "path",
-          "connection",
           "alias",
           "isDynamic"
         ]
@@ -459,13 +458,13 @@
                 },
                 "enforceSchemaMethod": {
                   "type": "string"
+                },
+                "connection": {
+                  "type": "string"
                 }
               },
               "additionalProperties": true,
               "required": []
-            },
-            "connection": {
-              "type": "string"
             },
             "alias": {
               "type": "string"
@@ -476,7 +475,6 @@
           },
           "required": [
             "path",
-            "connection",
             "alias",
             "isDynamic"
           ]
@@ -618,9 +616,6 @@
                     ]
                   }
                 },
-                "connection": {
-                  "type": "string"
-                },
                 "alias": {
                   "type": "string"
                 },
@@ -632,7 +627,6 @@
                 "path",
                 "sheetNames",
                 "cellAddress",
-                "connection",
                 "alias",
                 "isDynamic"
               ]
@@ -707,9 +701,6 @@
                     "additionalProperties": true,
                     "required": []
                   },
-                  "connection": {
-                    "type": "string"
-                  },
                   "alias": {
                     "type": "string"
                   },
@@ -721,7 +712,6 @@
                   "path",
                   "rowTag",
                   "rootTag",
-                  "connection",
                   "alias",
                   "isDynamic"
                 ]
@@ -762,9 +752,6 @@
                       "additionalProperties": true,
                       "required": []
                     },
-                    "connection": {
-                      "type": "string"
-                    },
                     "alias": {
                       "type": "string"
                     },
@@ -774,7 +761,6 @@
                   },
                   "required": [
                     "path",
-                    "connection",
                     "alias",
                     "isDynamic"
                   ]
@@ -812,9 +798,6 @@
                         "additionalProperties": true,
                         "required": []
                       },
-                      "connection": {
-                        "type": "string"
-                      },
                       "alias": {
                         "type": "string"
                       },
@@ -824,7 +807,6 @@
                     },
                     "required": [
                       "dataQuery",
-                      "connection",
                       "alias",
                       "isDynamic"
                     ]
@@ -1280,9 +1262,6 @@
                                         "additionalProperties": true,
                                         "required": []
                                       },
-                                      "connection": {
-                                        "type": "string"
-                                      },
                                       "alias": {
                                         "type": "string"
                                       },
@@ -1292,7 +1271,6 @@
                                     },
                                     "required": [
                                       "URL",
-                                      "connection",
                                       "alias",
                                       "isDynamic"
                                     ]
@@ -1351,9 +1329,6 @@
                                           "additionalProperties": true,
                                           "required": []
                                         },
-                                        "connection": {
-                                          "type": "string"
-                                        },
                                         "alias": {
                                           "type": "string"
                                         },
@@ -1363,7 +1338,6 @@
                                       },
                                       "required": [
                                         "URL",
-                                        "connection",
                                         "alias",
                                         "isDynamic"
                                       ]
@@ -1413,9 +1387,6 @@
                                             "additionalProperties": true,
                                             "required": []
                                           },
-                                          "connection": {
-                                            "type": "string"
-                                          },
                                           "alias": {
                                             "type": "string"
                                           },
@@ -1429,7 +1400,6 @@
                                           "dataset",
                                           "tableName/query",
                                           "serviceAccountCredential",
-                                          "connection",
                                           "alias",
                                           "isDynamic"
                                         ]
@@ -1555,9 +1525,6 @@
                                                 "additionalProperties": true,
                                                 "required": []
                                               },
-                                              "connection": {
-                                                "type": "string"
-                                              },
                                               "alias": {
                                                 "type": "string"
                                               },
@@ -1569,7 +1536,6 @@
                                               "type",
                                               "path",
                                               "dataFrameColumns",
-                                              "connection",
                                               "alias",
                                               "isDynamic"
                                             ]
@@ -1643,13 +1609,13 @@
                                                       },
                                                       "additionalProperties": true,
                                                       "required": []
+                                                    },
+                                                    "connection": {
+                                                      "type": "string"
                                                     }
                                                   },
                                                   "additionalProperties": true,
                                                   "required": []
-                                                },
-                                                "connection": {
-                                                  "type": "string"
                                                 },
                                                 "alias": {
                                                   "type": "string"
@@ -1661,7 +1627,6 @@
                                               "required": [
                                                 "type",
                                                 "path",
-                                                "connection",
                                                 "alias",
                                                 "isDynamic"
                                               ]
@@ -1756,13 +1721,13 @@
                                                         },
                                                         "enforceSchemaMethod": {
                                                           "type": "string"
+                                                        },
+                                                        "connection": {
+                                                          "type": "string"
                                                         }
                                                       },
                                                       "additionalProperties": true,
                                                       "required": []
-                                                    },
-                                                    "connection": {
-                                                      "type": "string"
                                                     },
                                                     "alias": {
                                                       "type": "string"
@@ -1775,7 +1740,6 @@
                                                     "tableName",
                                                     "warehousePath",
                                                     "catalogName",
-                                                    "connection",
                                                     "alias",
                                                     "isDynamic"
                                                   ]

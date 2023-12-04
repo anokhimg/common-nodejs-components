@@ -15896,7 +15896,7 @@ export const load = [
             delimiter: { type: 'string', required: false },
             escapeChar: { type: 'string', required: false },
             header: { type: 'boolean', required: false },
-            columnList: { type: 'array', required: true, items: { type: 'string' } },
+            columnList: { type: 'array', required: false, items: { type: 'string' } },
             newLineChar: { type: 'string', required: false },
             quoteChar: { type: 'string', required: false },
             persistDataFrame: { type: 'boolean', required: false },
@@ -22274,20 +22274,47 @@ const path = {
     isDisabled: true,
   },
 };
+const extractKeys = ['inputDelimited', 'inputParquet', 'readHudiTable', 'readDataIceberg'];
 extract.forEach((component: any) => {
-  let connectionIndex = component.sectionDetails.basic.fields.findIndex((t: any) => t.inputFieldName === 'connection');
-  if (connectionIndex === -1) {
-    let field: any = _.cloneDeep(path);
-    field.inputFieldName = 'connection';
-    field.displayName = 'Connection';
-    field.isOptional = false;
-    field.formInputType = 'String';
-    field.formInputValidValues = [];
-    field.fillFormInputValuesFrom = 'connections';
-    let schema: any = { ...component.sampleSchema };
-    component.sectionDetails.basic.fields.push(field);
-    schema.properties.connection = { type: 'string', required: true };
-    component.sampleSchema = schema;
+  if (extractKeys.includes(component.nameOfComponent)) {
+    let connectionIndex = component.sectionDetails.basic.fields.findIndex(
+      (t: any) => t.inputFieldName === 'connection',
+    );
+    if (connectionIndex === -1) {
+      let field: any = _.cloneDeep(path);
+      field.inputFieldName = 'connection';
+      field.displayName = 'Connection';
+      field.isOptional = true;
+      field.formInputType = 'String';
+      field.formInputValidValues = [];
+      field.fillFormInputValuesFrom = 'connections';
+      let schema: any = { ...component.sampleSchema };
+      component.sectionDetails.basic.fields.push(field);
+      schema.properties.optional.properties.connection = { type: 'string', required: false };
+      component.sampleSchema = schema;
+    }
+  }
+});
+const loadKeys = ['writeDataFrameToParquet', 'writeDataFrameToCsv', 'writeDataFrameToHudiTable', 'loadDataIceberg'];
+load.forEach((component: any) => {
+  if (loadKeys.includes(component.nameOfComponent)) {
+    let connectionIndex = component.sectionDetails.basic.fields.findIndex(
+      (t: any) => t.inputFieldName === 'connection',
+    );
+    if (connectionIndex === -1) {
+      let field: any = _.cloneDeep(path);
+      field.typeOfComponent = 'Load';
+      field.inputFieldName = 'connection';
+      field.displayName = 'Connection';
+      field.isOptional = true;
+      field.formInputType = 'String';
+      field.formInputValidValues = [];
+      field.fillFormInputValuesFrom = 'connections';
+      let schema: any = { ...component.sampleSchema };
+      component.sectionDetails.basic.fields.push(field);
+      schema.properties.optional.properties.connection = { type: 'string', required: false };
+      component.sampleSchema = schema;
+    }
   }
 });
 export const sourceExtract = _.cloneDeep(extract);

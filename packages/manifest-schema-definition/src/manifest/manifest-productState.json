@@ -946,6 +946,9 @@
                 },
                 "enforceSchemaMethod": {
                   "type": "string"
+                },
+                "connection": {
+                  "type": "string"
                 }
               },
               "additionalProperties": true,
@@ -1070,6 +1073,9 @@
                     "type": "boolean"
                   },
                   "enforceSchemaMethod": {
+                    "type": "string"
+                  },
+                  "connection": {
                     "type": "string"
                   }
                 },
@@ -1570,9 +1576,7 @@
                             }
                           },
                           "additionalProperties": true,
-                          "required": [
-                            "columnList"
-                          ]
+                          "required": []
                         },
                         "alias": {
                           "type": "string"
@@ -2647,6 +2651,9 @@
                                                 },
                                                 "dynamicPartitionRequired": {
                                                   "type": "boolean"
+                                                },
+                                                "connection": {
+                                                  "type": "string"
                                                 }
                                               },
                                               "additionalProperties": true,
@@ -3014,6 +3021,9 @@
                                                           "items": {
                                                             "type": "string"
                                                           }
+                                                        },
+                                                        "connection": {
+                                                          "type": "string"
                                                         }
                                                       },
                                                       "additionalProperties": true,
