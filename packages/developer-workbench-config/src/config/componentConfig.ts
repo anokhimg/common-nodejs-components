@@ -22310,6 +22310,7 @@ load.forEach((component: any) => {
       field.formInputType = 'String';
       field.formInputValidValues = [];
       field.fillFormInputValuesFrom = 'connections';
+      delete field.dataverse;
       let schema: any = { ...component.sampleSchema };
       component.sectionDetails.basic.fields.push(field);
       schema.properties.optional.properties.connection = { type: 'string', required: false };
