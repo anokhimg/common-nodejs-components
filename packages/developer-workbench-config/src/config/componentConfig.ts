@@ -274,7 +274,7 @@ export const extract = [
               type: 'object',
               required: false,
               properties: {
-                mergeSchema: { type: 'string', required: false },
+                mergeSchema: { type: 'boolean', required: false },
               },
             },
             jsonSchema: {
@@ -5734,7 +5734,7 @@ export const extract = [
             readTableType: { type: 'string', required: false },
             accessKey: { type: 'string', required: false },
             secretKey: { type: 'string', required: false },
-            mergeSchema: { type: 'string', required: false },
+            mergeSchema: { type: 'boolean', required: false },
             enableDataReconciliation: { type: 'boolean', required: false },
             enforceSchema: { type: 'boolean', required: false },
             enforceSchemaMethod: { type: 'string', required: false },

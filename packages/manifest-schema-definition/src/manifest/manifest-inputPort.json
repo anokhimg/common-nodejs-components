@@ -286,7 +286,7 @@
                 "type": "object",
                 "properties": {
                   "mergeSchema": {
-                    "type": "string"
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": true,
@@ -1582,7 +1582,7 @@
                                                       "type": "string"
                                                     },
                                                     "mergeSchema": {
-                                                      "type": "string"
+                                                      "type": "boolean"
                                                     },
                                                     "enableDataReconciliation": {
                                                       "type": "boolean"
