@@ -21661,8 +21661,8 @@ export const load = [
           properties: {
             primaryKey: { type: 'string', required: false },
             timestampColumn: { type: 'string', required: false },
-            changeTrackingColumns: { type: 'array', required: true, items: { type: 'string' } },
-            partitionColumns: { type: 'array', required: true, items: { type: 'string' } },
+            changeTrackingColumns: { type: 'array', required: false, items: { type: 'string' } },
+            partitionColumns: { type: 'array', required: false, items: { type: 'string' } },
             persistDataFrame: { type: 'boolean', required: false },
             encodingType: { type: 'string', required: false },
             columnsToEncode: { required: false, type: 'array', items: { type: 'string' } },

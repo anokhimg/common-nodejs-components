@@ -3262,10 +3262,7 @@
                                                             }
                                                           },
                                                           "additionalProperties": true,
-                                                          "required": [
-                                                            "changeTrackingColumns",
-                                                            "partitionColumns"
-                                                          ]
+                                                          "required": []
                                                         },
                                                         "alias": {
                                                           "type": "string"
