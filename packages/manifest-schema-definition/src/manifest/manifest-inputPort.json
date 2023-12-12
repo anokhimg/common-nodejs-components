@@ -1770,6 +1770,25 @@
                                                               "type": "string"
                                                             }
                                                           },
+                                                          "readDeltaOptions": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "startingTimestamp": {
+                                                                "type": "string"
+                                                              },
+                                                              "endingTimestamp": {
+                                                                "type": "string"
+                                                              },
+                                                              "startingVersion": {
+                                                                "type": "number"
+                                                              },
+                                                              "endingVersion": {
+                                                                "type": "number"
+                                                              }
+                                                            },
+                                                            "additionalProperties": true,
+                                                            "required": []
+                                                          },
                                                           "enableDataReconciliation": {
                                                             "type": "boolean"
                                                           },
@@ -1784,7 +1803,9 @@
                                                           }
                                                         },
                                                         "additionalProperties": true,
-                                                        "required": []
+                                                        "required": [
+                                                          "readDeltaOptions"
+                                                        ]
                                                       },
                                                       "alias": {
                                                         "type": "string"
