@@ -3201,7 +3201,109 @@
                                                       "stateStoreType"
                                                     ]
                                                   },
-                                                  "else": {}
+                                                  "else": {
+                                                    "if": {
+                                                      "properties": {
+                                                        "stateStoreType": {
+                                                          "const": "writeDataFrameToDeltaTable"
+                                                        }
+                                                      }
+                                                    },
+                                                    "then": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "tableWritePath": {
+                                                          "type": "string"
+                                                        },
+                                                        "optional": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "primaryKey": {
+                                                              "type": "string"
+                                                            },
+                                                            "timestampColumn": {
+                                                              "type": "string"
+                                                            },
+                                                            "changeTrackingColumns": {
+                                                              "type": "array",
+                                                              "items": {
+                                                                "type": "string"
+                                                              }
+                                                            },
+                                                            "partitionColumns": {
+                                                              "type": "array",
+                                                              "items": {
+                                                                "type": "string"
+                                                              }
+                                                            },
+                                                            "persistDataFrame": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "encodingType": {
+                                                              "type": "string"
+                                                            },
+                                                            "columnsToEncode": {
+                                                              "type": "array",
+                                                              "items": {
+                                                                "type": "string"
+                                                              }
+                                                            },
+                                                            "enableDataReconciliation": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "enforceSchema": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "enforceSchemaMethod": {
+                                                              "type": "string"
+                                                            },
+                                                            "connection": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "additionalProperties": true,
+                                                          "required": []
+                                                        },
+                                                        "alias": {
+                                                          "type": "string"
+                                                        },
+                                                        "logicalSchema": {
+                                                          "type": "object",
+                                                          "additionalProperties": true,
+                                                          "properties": {},
+                                                          "required": []
+                                                        },
+                                                        "isProfilingEnabled": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "isDynamic": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "retentionVersions": {
+                                                          "type": "string"
+                                                        },
+                                                        "stateStoreType": {
+                                                          "type": "string"
+                                                        },
+                                                        "updateStrategy": {
+                                                          "type": "string"
+                                                        },
+                                                        "updateStrategyOptions": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "tableWritePath",
+                                                        "alias",
+                                                        "logicalSchema",
+                                                        "isProfilingEnabled",
+                                                        "isDynamic",
+                                                        "retentionVersions",
+                                                        "stateStoreType"
+                                                      ]
+                                                    },
+                                                    "else": {}
+                                                  }
                                                 }
                                               }
                                             }

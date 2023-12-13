@@ -1744,7 +1744,84 @@
                                                     "isDynamic"
                                                   ]
                                                 },
-                                                "else": {}
+                                                "else": {
+                                                  "if": {
+                                                    "properties": {
+                                                      "type": {
+                                                        "const": "readDeltaTable"
+                                                      }
+                                                    }
+                                                  },
+                                                  "then": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "tableLocation": {
+                                                        "type": "string"
+                                                      },
+                                                      "optional": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "persistDataFrame": {
+                                                            "type": "boolean"
+                                                          },
+                                                          "columnsToDecrypt": {
+                                                            "type": "array",
+                                                            "items": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "readDeltaOptions": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "startingTimestamp": {
+                                                                "type": "string"
+                                                              },
+                                                              "endingTimestamp": {
+                                                                "type": "string"
+                                                              },
+                                                              "startingVersion": {
+                                                                "type": "number"
+                                                              },
+                                                              "endingVersion": {
+                                                                "type": "number"
+                                                              }
+                                                            },
+                                                            "additionalProperties": true,
+                                                            "required": []
+                                                          },
+                                                          "enableDataReconciliation": {
+                                                            "type": "boolean"
+                                                          },
+                                                          "enforceSchema": {
+                                                            "type": "boolean"
+                                                          },
+                                                          "enforceSchemaMethod": {
+                                                            "type": "string"
+                                                          },
+                                                          "connection": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "additionalProperties": true,
+                                                        "required": [
+                                                          "readDeltaOptions"
+                                                        ]
+                                                      },
+                                                      "alias": {
+                                                        "type": "string"
+                                                      },
+                                                      "isDynamic": {
+                                                        "type": "boolean"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "tableLocation",
+                                                      "alias",
+                                                      "isDynamic"
+                                                    ]
+                                                  },
+                                                  "else": {}
+                                                }
                                               }
                                             }
                                           }
