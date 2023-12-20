@@ -952,9 +952,7 @@
                 }
               },
               "additionalProperties": true,
-              "required": [
-                "partitionColumnList"
-              ]
+              "required": []
             },
             "alias": {
               "type": "string"
@@ -1808,10 +1806,7 @@
                                 }
                               },
                               "additionalProperties": true,
-                              "required": [
-                                "timestampColumn",
-                                "primaryKey"
-                              ]
+                              "required": []
                             },
                             "alias": {
                               "type": "string"
@@ -2525,9 +2520,7 @@
                                               }
                                             },
                                             "additionalProperties": true,
-                                            "required": [
-                                              "histogramThreshold"
-                                            ]
+                                            "required": []
                                           },
                                           "alias": {
                                             "type": "string"
@@ -2741,11 +2734,7 @@
                                                   }
                                                 },
                                                 "additionalProperties": true,
-                                                "required": [
-                                                  "template",
-                                                  "ccEmailList",
-                                                  "typeOfEmail"
-                                                ]
+                                                "required": []
                                               },
                                               "alias": {
                                                 "type": "string"
@@ -2911,9 +2900,7 @@
                                                       }
                                                     },
                                                     "additionalProperties": true,
-                                                    "required": [
-                                                      "temporaryPathS3"
-                                                    ]
+                                                    "required": []
                                                   },
                                                   "alias": {
                                                     "type": "string"
@@ -3153,11 +3140,7 @@
                                                           }
                                                         },
                                                         "additionalProperties": true,
-                                                        "required": [
-                                                          "partitionColumns",
-                                                          "primaryKey",
-                                                          "timestampColumn"
-                                                        ]
+                                                        "required": []
                                                       },
                                                       "alias": {
                                                         "type": "string"

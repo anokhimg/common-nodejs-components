@@ -7630,10 +7630,10 @@ export const insightExtract = [
   ...JSON.parse(JSON.stringify(extract)),
 ];
 
-export const curatedExtract = [
+const dpExtract = [
   {
-    nameOfComponent: 'sourceAlignedDataProduct',
-    displayName: 'Source Aligned Data Product',
+    nameOfComponent: 'dataProduct',
+    displayName: 'Data Product',
     typeOfComponent: 'Extract',
     sectionDetails: {
       basic: {
@@ -7641,7 +7641,7 @@ export const curatedExtract = [
         fields: [
           {
             typeOfComponent: 'Extract',
-            nameOfComponent: 'sourceAlignedDataProduct',
+            nameOfComponent: 'dataProduct',
             inputFieldName: 'stepName',
             isOptional: false,
             directInput: false,
@@ -7656,12 +7656,15 @@ export const curatedExtract = [
             otherOutput: '',
             specialValidation: '',
             displayName: 'Step Name',
+            dataverse: {
+              isDisabled: true,
+            },
           },
           {
             typeOfComponent: 'Extract',
-            nameOfComponent: 'sourceAlignedDataProduct',
+            nameOfComponent: 'dataProduct',
             inputFieldName: 'dataProductUrn',
-            isOptional: true,
+            isOptional: false,
             directInput: false,
             formInput: '',
             formInputType: 'String',
@@ -7679,7 +7682,7 @@ export const curatedExtract = [
           },
           {
             typeOfComponent: 'Extract',
-            nameOfComponent: 'sourceAlignedDataProduct',
+            nameOfComponent: 'dataProduct',
             inputFieldName: 'filter',
             isOptional: false,
             directInput: false,
@@ -7697,7 +7700,7 @@ export const curatedExtract = [
           },
           {
             typeOfComponent: 'Extract',
-            nameOfComponent: 'sourceAlignedDataProduct',
+            nameOfComponent: 'dataProduct',
             inputFieldName: 'projection',
             isOptional: false,
             directInput: false,
@@ -7715,7 +7718,7 @@ export const curatedExtract = [
           },
           {
             typeOfComponent: 'Extract',
-            nameOfComponent: 'sourceAlignedDataProduct',
+            nameOfComponent: 'dataProduct',
             inputFieldName: 'persistDataFrame',
             defaultValue: false,
             visualType: 'checkbox',
@@ -7751,11 +7754,11 @@ export const curatedExtract = [
         dataProductUrn: { type: 'string', required: true },
         filter: { type: 'string', required: true },
         projection: { type: 'string', required: true },
-        persistDataFrame: { type: 'boolean', required: false },
         optional: {
           type: 'object',
           required: false,
           properties: {
+            persistDataFrame: { type: 'boolean', required: false },
             jsonSchema: {
               type: 'string',
               required: false,
@@ -7771,151 +7774,6 @@ export const curatedExtract = [
     },
     dataverse: {
       type: ['dataproduct'],
-    },
-  },
-];
-
-export const aggregatedExtract = [
-  {
-    nameOfComponent: 'curatedDataProduct',
-    displayName: 'Curated Data Product',
-    typeOfComponent: 'Extract',
-    sectionDetails: {
-      basic: {
-        displayName: 'Basic',
-        fields: [
-          {
-            typeOfComponent: 'Extract',
-            nameOfComponent: 'curatedDataProduct',
-            inputFieldName: 'stepName',
-            isOptional: false,
-            directInput: false,
-            formInput: '',
-            formInputType: 'String',
-            formInputValidValues: '',
-            isAdvanceOption: '',
-            subInputFieldName: '',
-            subFormInputType: '',
-            subFormInputValidValues: '',
-            directOutput: '',
-            otherOutput: '',
-            specialValidation: '',
-            displayName: 'Step Name',
-          },
-          {
-            typeOfComponent: 'Extract',
-            nameOfComponent: 'curatedDataProduct',
-            inputFieldName: 'dataProductUrn',
-            isOptional: true,
-            directInput: false,
-            formInput: '',
-            formInputType: 'String',
-            formInputValidValues: '',
-            isAdvanceOption: true,
-            subInputFieldName: '',
-            subFormInputType: '',
-            subFormInputValidValues: '',
-            directOutput: '',
-            otherOutput: '',
-            displayName: 'Data Product Urn',
-            dataverse: {
-              isDisabled: true,
-            },
-          },
-          {
-            typeOfComponent: 'Extract',
-            nameOfComponent: 'curatedDataProduct',
-            inputFieldName: 'filter',
-            isOptional: false,
-            directInput: false,
-            formInput: '',
-            formInputType: 'String',
-            formInputValidValues: '',
-            isAdvanceOption: '',
-            subInputFieldName: '',
-            subFormInputType: '',
-            subFormInputValidValues: '',
-            directOutput: '',
-            otherOutput: '',
-            specialValidation: '',
-            displayName: 'Filter',
-          },
-          {
-            typeOfComponent: 'Extract',
-            nameOfComponent: 'curatedDataProduct',
-            inputFieldName: 'projection',
-            isOptional: false,
-            directInput: false,
-            formInput: '',
-            formInputType: 'String',
-            formInputValidValues: '',
-            isAdvanceOption: '',
-            subInputFieldName: '',
-            subFormInputType: '',
-            subFormInputValidValues: '',
-            directOutput: '',
-            otherOutput: '',
-            specialValidation: '',
-            displayName: 'Projection',
-          },
-          {
-            typeOfComponent: 'Extract',
-            nameOfComponent: 'curatedDataProduct',
-            inputFieldName: 'persistDataFrame',
-            defaultValue: false,
-            visualType: 'checkbox',
-            isOptional: true,
-            isOptionalInSchema: false,
-            directInput: false,
-            formInput: '',
-            formInputType: 'Boolean',
-            formInputValidValues: [true, false],
-            isAdvanceOption: '',
-            subInputFieldName: '',
-            subFormInputType: '',
-            subFormInputValidValues: '',
-            directOutput: '',
-            otherOutput: '',
-            specialValidation: '',
-            displayName: 'Persist Data Frame',
-            rowSpace: 0.5,
-          },
-        ],
-      },
-      jsonSchema: {
-        displayName: 'JSON Schema',
-        isOptional: true,
-        fields: [],
-        dataType: 'JSON',
-      },
-    },
-    sampleSchema: {
-      type: 'object',
-      properties: {
-        stepName: { type: 'string', required: true },
-        dataProductUrn: { type: 'string', required: true },
-        filter: { type: 'string', required: true },
-        projection: { type: 'string', required: true },
-        persistDataFrame: { type: 'boolean', required: false },
-        optional: {
-          type: 'object',
-          required: false,
-          properties: {
-            jsonSchema: {
-              type: 'string',
-              required: false,
-            },
-          },
-        },
-      },
-    },
-    UIDetails: {
-      input: [],
-      output: [{ displayName: 'Output Data', type: 'dataproduct' }],
-      properties: [],
-    },
-    dataverse: {
-      type: 'dataproduct',
     },
   },
 ];
@@ -17071,11 +16929,11 @@ export const load = [
             columnsToEncode: { required: false, type: 'array', items: { type: 'string' } },
             timestampColumn: {
               type: 'string',
-              required: true,
+              required: false,
             },
             primaryKey: {
               type: 'array',
-              required: true,
+              required: false,
               items: {
                 type: 'string',
               },
@@ -22989,4 +22847,14 @@ stateManagement.forEach((component: any) => {
       }
     });
   }
+});
+
+export const sourceAlignedDataProductExtract = _.cloneDeep(dpExtract);
+sourceAlignedDataProductExtract.forEach((t) => {
+  t.nameOfComponent = 'sourceAlignedDataProduct';
+});
+
+export const aggregatedDataProductExtract = _.cloneDeep(dpExtract);
+aggregatedDataProductExtract.forEach((t) => {
+  t.nameOfComponent = 'aggregatedDataProduct';
 });
