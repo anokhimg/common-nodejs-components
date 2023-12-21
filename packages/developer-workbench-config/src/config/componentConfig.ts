@@ -22852,9 +22852,29 @@ stateManagement.forEach((component: any) => {
 export const sourceAlignedDataProductExtract = _.cloneDeep(dpExtract);
 sourceAlignedDataProductExtract.forEach((t) => {
   t.nameOfComponent = 'sourceAlignedDataProduct';
+  if (t.sectionDetails.basic.fields) {
+    t.sectionDetails.basic.fields.forEach((field) => {
+      field.nameOfComponent = 'sourceAlignedDataProduct';
+    });
+  }
 });
 
 export const aggregatedDataProductExtract = _.cloneDeep(dpExtract);
 aggregatedDataProductExtract.forEach((t) => {
   t.nameOfComponent = 'aggregatedDataProduct';
+  if (t.sectionDetails.basic.fields) {
+    t.sectionDetails.basic.fields.forEach((field) => {
+      field.nameOfComponent = 'aggregatedDataProduct';
+    });
+  }
+});
+
+export const consumptionReadyDataProductExtract = _.cloneDeep(dpExtract);
+consumptionReadyDataProductExtract.forEach((t) => {
+  t.nameOfComponent = 'consumptionReadyDataProduct';
+  if (t.sectionDetails.basic.fields) {
+    t.sectionDetails.basic.fields.forEach((field) => {
+      field.nameOfComponent = 'consumptionReadyDataProduct';
+    });
+  }
 });

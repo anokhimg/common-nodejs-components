@@ -13,6 +13,7 @@ import {
   stateStoreTypeMapping,
   sourceAlignedDataProductExtract,
   aggregatedDataProductExtract,
+  consumptionReadyDataProductExtract,
   sourceExtract,
   stateManagement,
 } from './config/componentConfig';
@@ -32,6 +33,7 @@ export const config = {
   stateStoreTypeMapping,
   sourceAlignedDataProductExtract,
   aggregatedDataProductExtract,
+  consumptionReadyDataProductExtract,
   sourceExtract,
   stateManagement,
 };
