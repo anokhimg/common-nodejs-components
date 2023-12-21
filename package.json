@@ -1,6 +1,6 @@
 {
   "name": "@dataverse/common-nodejs-components",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "scripts": {
     "build": "lerna run build",
     "bootstrap": "lerna bootstrap",
