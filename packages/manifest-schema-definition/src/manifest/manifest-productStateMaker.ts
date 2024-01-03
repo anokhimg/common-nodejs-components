@@ -634,6 +634,9 @@ config.config.load.forEach((component: any) => {
     delete schema.properties.sequence;
 
     prepareAJVSchemaLoadJson(schema);
+    if (schema.properties.optional) {
+      schema.properties.optional.required = [];
+    }
     let reference: any = baseJson;
     if (currentKey.length > 1) {
       currentKey.forEach((t, index) => {

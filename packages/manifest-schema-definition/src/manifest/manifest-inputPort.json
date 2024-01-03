@@ -7,6 +7,7 @@
   "items": {
     "if": {
       "not": {
+        "type": "object",
         "properties": {
           "isDynamic": {
             "const": true
@@ -255,6 +256,7 @@
     },
     "else": {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "inputParquet"
@@ -324,6 +326,7 @@
       },
       "else": {
         "if": {
+          "type": "object",
           "properties": {
             "type": {
               "const": "inputDelimited"
@@ -481,6 +484,7 @@
         },
         "else": {
           "if": {
+            "type": "object",
             "properties": {
               "type": {
                 "const": "readMySqlDbUsingJdbc"
@@ -537,6 +541,7 @@
           },
           "else": {
             "if": {
+              "type": "object",
               "properties": {
                 "type": {
                   "const": "inputXLS"
@@ -633,6 +638,7 @@
             },
             "else": {
               "if": {
+                "type": "object",
                 "properties": {
                   "type": {
                     "const": "inputXML"
@@ -718,6 +724,7 @@
               },
               "else": {
                 "if": {
+                  "type": "object",
                   "properties": {
                     "type": {
                       "const": "inputJson"
@@ -767,6 +774,7 @@
                 },
                 "else": {
                   "if": {
+                    "type": "object",
                     "properties": {
                       "type": {
                         "const": "inputHive"
@@ -813,6 +821,7 @@
                   },
                   "else": {
                     "if": {
+                      "type": "object",
                       "properties": {
                         "type": {
                           "const": "readDB2DbUsingJdbc"
@@ -869,6 +878,7 @@
                     },
                     "else": {
                       "if": {
+                        "type": "object",
                         "properties": {
                           "type": {
                             "const": "readPostGreSqlDbUsingJdbc"
@@ -925,6 +935,7 @@
                       },
                       "else": {
                         "if": {
+                          "type": "object",
                           "properties": {
                             "type": {
                               "const": "readOracleDbUsingJdbc"
@@ -981,6 +992,7 @@
                         },
                         "else": {
                           "if": {
+                            "type": "object",
                             "properties": {
                               "type": {
                                 "const": "readSybaseDbUsingJdbc"
@@ -1037,6 +1049,7 @@
                           },
                           "else": {
                             "if": {
+                              "type": "object",
                               "properties": {
                                 "type": {
                                   "const": "readMsSqlServerDbUsingJdbc"
@@ -1093,6 +1106,7 @@
                             },
                             "else": {
                               "if": {
+                                "type": "object",
                                 "properties": {
                                   "type": {
                                     "const": "readSAPHANAUsingJdbc"
@@ -1149,6 +1163,7 @@
                               },
                               "else": {
                                 "if": {
+                                  "type": "object",
                                   "properties": {
                                     "type": {
                                       "const": "readRedshiftTableByQuery"
@@ -1216,6 +1231,7 @@
                                 },
                                 "else": {
                                   "if": {
+                                    "type": "object",
                                     "properties": {
                                       "type": {
                                         "const": "readDataFromAPIGet"
@@ -1277,6 +1293,7 @@
                                   },
                                   "else": {
                                     "if": {
+                                      "type": "object",
                                       "properties": {
                                         "type": {
                                           "const": "readDataFromAPIPost"
@@ -1344,6 +1361,7 @@
                                     },
                                     "else": {
                                       "if": {
+                                        "type": "object",
                                         "properties": {
                                           "type": {
                                             "const": "readBigQueryTable"
@@ -1406,6 +1424,7 @@
                                       },
                                       "else": {
                                         "if": {
+                                          "type": "object",
                                           "properties": {
                                             "type": {
                                               "const": "readSnowflakeTable"
@@ -1466,6 +1485,7 @@
                                         },
                                         "else": {
                                           "if": {
+                                            "type": "object",
                                             "properties": {
                                               "type": {
                                                 "const": "readFixedWidthFile"
@@ -1542,6 +1562,7 @@
                                           },
                                           "else": {
                                             "if": {
+                                              "type": "object",
                                               "properties": {
                                                 "type": {
                                                   "const": "readHudiTable"
@@ -1633,6 +1654,7 @@
                                             },
                                             "else": {
                                               "if": {
+                                                "type": "object",
                                                 "properties": {
                                                   "type": {
                                                     "const": "readTeradataDbUsingJdbc"
@@ -1683,6 +1705,7 @@
                                               },
                                               "else": {
                                                 "if": {
+                                                  "type": "object",
                                                   "properties": {
                                                     "type": {
                                                       "const": "readDataIceberg"
@@ -1746,6 +1769,7 @@
                                                 },
                                                 "else": {
                                                   "if": {
+                                                    "type": "object",
                                                     "properties": {
                                                       "type": {
                                                         "const": "readDeltaTable"

@@ -11,6 +11,7 @@ const baseInputJson = {
   items: {
     if: {
       not: {
+        type: 'object',
         properties: {
           isDynamic: { const: true },
         },
@@ -278,6 +279,7 @@ devConfig.config.extract.forEach((component: any) => {
     }
     reference[currentInputKey[currentInputKey.length - 1]] = {
       if: {
+        type: 'object',
         properties: {
           type: { const: component.nameOfComponent },
         },

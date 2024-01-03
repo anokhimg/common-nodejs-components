@@ -11,8 +11,9 @@ import {
   loggingOptions,
   loggingOptionsConfig,
   stateStoreTypeMapping,
-  curatedExtract,
-  aggregatedExtract,
+  sourceAlignedDataProductExtract,
+  aggregatedDataProductExtract,
+  consumptionReadyDataProductExtract,
   sourceExtract,
   stateManagement,
 } from './config/componentConfig';
@@ -30,8 +31,9 @@ export const config = {
   loggingOptions,
   loggingOptionsConfig,
   stateStoreTypeMapping,
-  curatedExtract,
-  aggregatedExtract,
+  sourceAlignedDataProductExtract,
+  aggregatedDataProductExtract,
+  consumptionReadyDataProductExtract,
   sourceExtract,
   stateManagement,
 };
