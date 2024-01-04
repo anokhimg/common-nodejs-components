@@ -1,3 +1,11 @@
+## 1.0.8 (2024-01-03)
+
+*  Adding support for sadp to sadp and adp to adp [View (https://gitlab.byteprophecy.accenture.com/dataverse/./common-nodejs-components/-/commits/c9ec443b650da22bc8229d6749feef8f2ac61b3b)
+*  In optional fields, required array would always be blank [View (https://gitlab.byteprophecy.accenture.com/dataverse/./common-nodejs-components/-/commits/ddf88560c43b1e15df469cefa92868ea1a9c6255)
+*  Release 1.0.7 [View (https://gitlab.byteprophecy.accenture.com/dataverse/./common-nodejs-components/-/commits/7e1c2b19d51df30732b30de00b261897961c3f0c)
+*  Release 1.0.7 [View (https://gitlab.byteprophecy.accenture.com/dataverse/./common-nodejs-components/-/commits/c8b46b6b813c4ce72338d07c3c6c529ac0b26352)
+*  Added CRDP and field name changes [View (https://gitlab.byteprophecy.accenture.com/dataverse/./common-nodejs-components/-/commits/8df859a963813284e81e22aeb395483978acde36)
+
 ## 1.0.7 (2023-12-13)
 
 *  Read iceberg component added [View (https://gitlab.byteprophecy.accenture.com/dataverse/./common-nodejs-components/-/commits/29c2bbe632e96a9b786936d774dd1357c981b0fb)
