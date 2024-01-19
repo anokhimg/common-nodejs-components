@@ -1,3 +1,5 @@
+## 1.0.9 (2024-01-18)
+
 ## 1.0.8 (2024-01-03)
 
 *  Adding support for sadp to sadp and adp to adp [View (https://gitlab.byteprophecy.accenture.com/dataverse/./common-nodejs-components/-/commits/c9ec443b650da22bc8229d6749feef8f2ac61b3b)
