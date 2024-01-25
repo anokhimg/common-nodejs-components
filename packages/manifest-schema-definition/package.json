@@ -26,7 +26,7 @@
   ],
   "gitHead": "d04d63f60bcaf1824075ec52e023205de0d5f4ae",
   "dependencies": {
-    "@dataverse/developer-workbench-config": "^0.0.14",
+    "@dataverse/developer-workbench-config": "^0.0.13",
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21"
   }
