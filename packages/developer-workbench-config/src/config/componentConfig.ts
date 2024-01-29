@@ -6430,7 +6430,7 @@ export const extract = [
             },
             readDeltaOptions: {
               type: 'object',
-              required: 'false',
+              required: false,
               properties: {
                 startingTimestamp: {
                   type: 'string',
