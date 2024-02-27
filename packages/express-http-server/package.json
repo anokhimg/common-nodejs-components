@@ -1,6 +1,6 @@
 {
   "name": "@dataverse/express-http-server",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "NodeJS dataverse express http server",
   "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
   "main": "dist/index.js",
