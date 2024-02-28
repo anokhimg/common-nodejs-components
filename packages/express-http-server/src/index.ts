@@ -81,7 +81,7 @@ export class App {
     this.reloadDynamicRouter(this.config.openapiSpec); // we need to create new instance first
     this.registerDynamicRouter();
 
-    if(this.config.openapiSpec){
+    if(this.config.openapiSpec || this.config.openapiBaseSchema){
     this.initOpenApiValidation(this.config.openapiSpec);
     }
 
@@ -148,7 +148,7 @@ export class App {
     this.logger.info('Reloading dynamic routes...');
     this.dynamicRouter = Router();
 
-    if(openApiSpec){
+    if(openApiSpec || this.config.openapiBaseSchema){
       this.initSwaggerUI(openApiSpec);
       this.initOpenApiValidation(openApiSpec);
     }
