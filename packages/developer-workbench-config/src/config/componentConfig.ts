@@ -269,7 +269,11 @@ export const extract = [
           required: false,
           properties: {
             persistDataFrame: { type: 'boolean', required: false },
-            columnsToDecrypt: { type: 'array', required: false, items: { type: 'string' } },
+            columnsToDecrypt: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             advanceOptions: {
               type: 'object',
               required: false,
@@ -1065,7 +1069,11 @@ export const extract = [
           required: false,
           properties: {
             persistDataFrame: { type: 'boolean', required: false },
-            columnsToDecrypt: { type: 'array', required: false, items: { type: 'string' } },
+            columnsToDecrypt: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             advanceOptions: {
               type: 'object',
               required: false,
@@ -1647,7 +1655,11 @@ export const extract = [
       properties: {
         stepName: { type: 'string', required: true },
         path: { type: 'string', required: true },
-        sheetNames: { type: 'array', required: true, items: { type: 'string' } },
+        sheetNames: {
+          type: 'array',
+          required: true,
+          items: { type: 'string' },
+        },
         cellAddress: { type: 'string', required: true },
         optional: {
           type: 'object',
@@ -4310,7 +4322,11 @@ export const extract = [
             header: { type: 'string', required: false },
             body: { type: 'string', required: false },
             responseKeyPresent: { type: 'boolean', required: false },
-            responseKeySeq: { type: 'array', required: false, items: { type: 'string' } },
+            responseKeySeq: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             enableDataReconciliation: { type: 'boolean', required: false },
             enforceSchema: { type: 'boolean', required: false },
             enforceSchemaMethod: { type: 'string', required: false },
@@ -4590,7 +4606,11 @@ export const extract = [
             header: { type: 'string', required: false },
             body: { type: 'string', required: false },
             responseKeyPresent: { type: 'boolean', required: false },
-            responseKeySeq: { type: 'array', required: false, items: { type: 'string' } },
+            responseKeySeq: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             connectionTimeout: { type: 'integer', required: false },
             readTimeout: { type: 'integer', required: false },
             enableDataReconciliation: { type: 'boolean', required: false },
@@ -5729,7 +5749,11 @@ export const extract = [
           required: false,
           properties: {
             persistDataFrame: { type: 'boolean', required: false },
-            columnsToDecrypt: { type: 'array', required: false, items: { type: 'string' } },
+            columnsToDecrypt: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             endPoint: { type: 'string', required: false },
             readTableType: { type: 'string', required: false },
             accessKey: { type: 'string', required: false },
@@ -6147,7 +6171,11 @@ export const extract = [
           properties: {
             persistDataFrame: { type: 'boolean', required: false },
             catalogType: { type: 'string', required: false },
-            columnsToDecrypt: { type: 'array', required: false, items: { type: 'string' } },
+            columnsToDecrypt: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             enforceSchema: { type: 'boolean', required: false },
             enforceSchemaMethod: { type: 'string', required: false },
             jsonSchema: {
@@ -6423,7 +6451,11 @@ export const extract = [
           required: false,
           properties: {
             persistDataFrame: { type: 'boolean', required: false },
-            columnsToDecrypt: { type: 'array', required: false, items: { type: 'string' } },
+            columnsToDecrypt: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             jsonSchema: {
               type: 'string',
               required: false,
@@ -13553,7 +13585,10 @@ export const transform = [
           required: false,
           properties: {
             dependencies: {
-              type: 'string',
+              type: 'array',
+              items: {
+                type: 'string',
+              },
               required: false,
             },
             sparkExtraConf: {
@@ -14266,9 +14301,17 @@ export const load = [
             persistDataFrame: { type: 'boolean', required: false },
             dynamicPartitionRequired: { type: 'boolean', required: false },
             encodingType: { type: 'string', required: false },
-            columnsToEncode: { required: false, type: 'array', items: { type: 'string' } },
+            columnsToEncode: {
+              required: false,
+              type: 'array',
+              items: { type: 'string' },
+            },
             partitionFiles: { type: 'integer', required: false },
-            partitionColumnList: { type: 'array', required: true, items: { type: 'string' } },
+            partitionColumnList: {
+              type: 'array',
+              required: true,
+              items: { type: 'string' },
+            },
             writeMode: { type: 'string', required: false },
             addRunIdColumn: { type: 'boolean', required: false },
             enableDataReconciliation: { type: 'boolean', required: false },
@@ -14773,7 +14816,11 @@ export const load = [
             persistDataFrame: { type: 'boolean', required: false },
             dynamicPartitionRequired: { type: 'boolean', required: false },
             encodingType: { type: 'string', required: false },
-            columnsToEncode: { required: false, type: 'array', items: { type: 'string' } },
+            columnsToEncode: {
+              required: false,
+              type: 'array',
+              items: { type: 'string' },
+            },
             overwrite: { type: 'boolean', required: false },
             advanceOptions: {
               type: 'object',
@@ -16393,7 +16440,11 @@ export const load = [
             delimiter: { type: 'string', required: false },
             escapeChar: { type: 'string', required: false },
             header: { type: 'boolean', required: false },
-            columnList: { type: 'array', required: false, items: { type: 'string' } },
+            columnList: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             newLineChar: { type: 'string', required: false },
             quoteChar: { type: 'string', required: false },
             persistDataFrame: { type: 'boolean', required: false },
@@ -17263,7 +17314,11 @@ export const load = [
               items: { type: 'string' },
             },
             encodingType: { type: 'string', required: false },
-            columnsToEncode: { required: false, type: 'array', items: { type: 'string' } },
+            columnsToEncode: {
+              required: false,
+              type: 'array',
+              items: { type: 'string' },
+            },
             timestampColumn: {
               type: 'string',
               required: false,
@@ -21251,7 +21306,11 @@ export const load = [
               items: { type: 'string' },
             },
             encodingType: { type: 'string', required: false },
-            columnsToEncode: { required: false, type: 'array', items: { type: 'string' } },
+            columnsToEncode: {
+              required: false,
+              type: 'array',
+              items: { type: 'string' },
+            },
             timestampColumn: {
               type: 'string',
               required: false,
@@ -21263,7 +21322,11 @@ export const load = [
                 type: 'string',
               },
             },
-            partitionColumns: { type: 'array', required: false, items: { type: 'string' } },
+            partitionColumns: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             jsonSchema: {
               type: 'string',
               required: false,
@@ -21643,8 +21706,16 @@ export const load = [
           required: false,
           properties: {
             encodingType: { type: 'string', required: false },
-            columnsToEncode: { required: false, type: 'array', items: { type: 'string' } },
-            partitionColumns: { type: 'array', required: true, items: { type: 'string' } },
+            columnsToEncode: {
+              required: false,
+              type: 'array',
+              items: { type: 'string' },
+            },
+            partitionColumns: {
+              type: 'array',
+              required: true,
+              items: { type: 'string' },
+            },
             primaryKey: {
               type: 'array',
               required: true,
@@ -21964,11 +22035,23 @@ export const load = [
           properties: {
             primaryKey: { type: 'string', required: false },
             timestampColumn: { type: 'string', required: false },
-            changeTrackingColumns: { type: 'array', required: false, items: { type: 'string' } },
-            partitionColumns: { type: 'array', required: false, items: { type: 'string' } },
+            changeTrackingColumns: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
+            partitionColumns: {
+              type: 'array',
+              required: false,
+              items: { type: 'string' },
+            },
             persistDataFrame: { type: 'boolean', required: false },
             encodingType: { type: 'string', required: false },
-            columnsToEncode: { required: false, type: 'array', items: { type: 'string' } },
+            columnsToEncode: {
+              required: false,
+              type: 'array',
+              items: { type: 'string' },
+            },
             enableDataReconciliation: { type: 'boolean', required: false },
             enforceSchema: { type: 'boolean', required: false },
             enforceSchemaMethod: { type: 'string', required: false },
@@ -23092,7 +23175,10 @@ extract.forEach((component: any) => {
       field.fillFormInputValuesFrom = 'connections';
       let schema: any = { ...component.sampleSchema };
       component.sectionDetails.basic.fields.push(field);
-      schema.properties.optional.properties.connection = { type: 'string', required: false };
+      schema.properties.optional.properties.connection = {
+        type: 'string',
+        required: false,
+      };
       component.sampleSchema = schema;
     }
   }
@@ -23121,7 +23207,10 @@ load.forEach((component: any) => {
       delete field.dataverse;
       let schema: any = { ...component.sampleSchema };
       component.sectionDetails.basic.fields.push(field);
-      schema.properties.optional.properties.connection = { type: 'string', required: false };
+      schema.properties.optional.properties.connection = {
+        type: 'string',
+        required: false,
+      };
       component.sampleSchema = schema;
     }
   }
@@ -23139,7 +23228,10 @@ sourceExtract.forEach((component: any) => {
     field.isOptional = true;
     let schema: any = { ...component.sampleSchema };
     component.sectionDetails.basic.fields.push(field);
-    schema.properties.optional.properties.dataSetUrn = { type: 'string', required: false };
+    schema.properties.optional.properties.dataSetUrn = {
+      type: 'string',
+      required: false,
+    };
     component.sampleSchema = schema;
   }
   Object.keys(component.sectionDetails).forEach((key) => {
@@ -23187,30 +23279,30 @@ stateManagement.forEach((component: any) => {
 });
 
 export const sourceAlignedDataProductExtract = _.cloneDeep(dpExtract);
-sourceAlignedDataProductExtract.forEach((t) => {
+sourceAlignedDataProductExtract.forEach((t: any) => {
   t.nameOfComponent = 'sourceAlignedDataProduct';
   if (t.sectionDetails.basic.fields) {
-    t.sectionDetails.basic.fields.forEach((field) => {
+    t.sectionDetails.basic.fields.forEach((field: any) => {
       field.nameOfComponent = 'sourceAlignedDataProduct';
     });
   }
 });
 
 export const aggregatedDataProductExtract = _.cloneDeep(dpExtract);
-aggregatedDataProductExtract.forEach((t) => {
+aggregatedDataProductExtract.forEach((t: any) => {
   t.nameOfComponent = 'aggregatedDataProduct';
   if (t.sectionDetails.basic.fields) {
-    t.sectionDetails.basic.fields.forEach((field) => {
+    t.sectionDetails.basic.fields.forEach((field: any) => {
       field.nameOfComponent = 'aggregatedDataProduct';
     });
   }
 });
 
 export const consumptionReadyDataProductExtract = _.cloneDeep(dpExtract);
-consumptionReadyDataProductExtract.forEach((t) => {
+consumptionReadyDataProductExtract.forEach((t: any) => {
   t.nameOfComponent = 'consumptionReadyDataProduct';
   if (t.sectionDetails.basic.fields) {
-    t.sectionDetails.basic.fields.forEach((field) => {
+    t.sectionDetails.basic.fields.forEach((field: any) => {
       field.nameOfComponent = 'consumptionReadyDataProduct';
     });
   }

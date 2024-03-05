@@ -2083,7 +2083,10 @@
                                                                 "type": "object",
                                                                 "properties": {
                                                                   "dependencies": {
-                                                                    "type": "string"
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                      "type": "string"
+                                                                    }
                                                                   },
                                                                   "sparkExtraConf": {
                                                                     "type": "object",
