@@ -1996,7 +1996,10 @@
                                                                   }
                                                                 },
                                                                 "additionalProperties": true,
-                                                                "required": []
+                                                                "required": [
+                                                                  "inputDataFrame",
+                                                                  "tempViewName"
+                                                                ]
                                                               }
                                                             },
                                                             "optional": {
@@ -2037,6 +2040,7 @@
                                                             }
                                                           },
                                                           "required": [
+                                                            "inputDataFrameList",
                                                             "alias",
                                                             "sequence",
                                                             "isDynamic"
@@ -2076,7 +2080,10 @@
                                                                     }
                                                                   },
                                                                   "additionalProperties": true,
-                                                                  "required": []
+                                                                  "required": [
+                                                                    "inputDataFrame",
+                                                                    "tempViewName"
+                                                                  ]
                                                                 }
                                                               },
                                                               "optional": {
@@ -2117,6 +2124,7 @@
                                                               }
                                                             },
                                                             "required": [
+                                                              "inputDataFrameList",
                                                               "alias",
                                                               "sequence",
                                                               "isDynamic"

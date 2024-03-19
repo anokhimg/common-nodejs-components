@@ -13132,7 +13132,7 @@ export const transform = [
       inputDataFrameList: {
         displayName: 'Arguments',
         visualType: 'column-reorder',
-        isOptional: true,
+        isOptional: false,
         dataType: 'array',
         isOtherFieldsVisibleByDefault: false,
         addOtherFields: true,
@@ -13283,17 +13283,17 @@ export const transform = [
         },
         inputDataFrameList: {
           type: 'array',
-          required: false,
+          required: true,
           items: {
             type: 'object',
             properties: {
               inputDataFrame: {
                 type: 'string',
-                required: false,
+                required: true,
               },
               tempViewName: {
                 type: 'string',
-                required: false,
+                required: true,
               },
             },
           },
@@ -13414,7 +13414,7 @@ export const transform = [
       inputDataFrameList: {
         displayName: 'Arguments',
         visualType: 'column-reorder',
-        isOptional: true,
+        isOptional: false,
         dataType: 'array',
         isOtherFieldsVisibleByDefault: false,
         addOtherFields: true,
@@ -13424,7 +13424,7 @@ export const transform = [
               typeOfComponent: 'Transform',
               nameOfComponent: 'customPySparkDatabricks',
               inputFieldName: 'tempViewName',
-              isOptional: true,
+              isOptional: false,
               directInput: false,
               formInput: '',
               formInputType: 'String',
@@ -13442,7 +13442,7 @@ export const transform = [
               typeOfComponent: 'Transform',
               nameOfComponent: 'customPySparkDatabricks',
               inputFieldName: 'inputDataFrame',
-              isOptional: true,
+              isOptional: false,
               directInput: false,
               formInput: '',
               formInputType: 'String',
@@ -13565,17 +13565,17 @@ export const transform = [
         },
         inputDataFrameList: {
           type: 'array',
-          required: false,
+          required: true,
           items: {
             type: 'object',
             properties: {
               inputDataFrame: {
                 type: 'string',
-                required: false,
+                required: true,
               },
               tempViewName: {
                 type: 'string',
-                required: false,
+                required: true,
               },
             },
           },
