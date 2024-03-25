@@ -23246,6 +23246,8 @@ const stateManagementKeys = [
   'readDataIceberg',
   'readDeltaTable',
 ];
+
+const expiredStateManagementKeys = ['inputDelimited', 'inputParquet'];
 export const stateManagement = _.cloneDeep(
   extract.filter((t) => stateManagementKeys.indexOf(t.nameOfComponent) !== -1),
 );
@@ -23275,6 +23277,9 @@ stateManagement.forEach((component: any) => {
         }
       }
     });
+  }
+  if(expiredStateManagementKeys.includes(component.nameOfComponent)){
+    component.componentExpired = true;
   }
 });
 
