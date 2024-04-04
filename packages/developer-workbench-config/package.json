@@ -1,6 +1,6 @@
 {
   "name": "@dataverse/developer-workbench-config",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "developer-workbench-config",
   "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
   "main": "dist/index.js",
@@ -20,7 +20,8 @@
   "devDependencies": {
     "@types/lodash": "^4.14.198",
     "@types/node": "^18.11.19",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "prettier": "^2.4.1"
   },
   "publishConfig": {
     "access": "restricted"

@@ -23187,31 +23187,293 @@ stateManagement.forEach((component: any) => {
 });
 
 export const sourceAlignedDataProductExtract = _.cloneDeep(dpExtract);
-sourceAlignedDataProductExtract.forEach((t) => {
+sourceAlignedDataProductExtract.forEach((t: any) => {
   t.nameOfComponent = 'sourceAlignedDataProduct';
   if (t.sectionDetails.basic.fields) {
-    t.sectionDetails.basic.fields.forEach((field) => {
+    t.sectionDetails.basic.fields.forEach((field: any) => {
       field.nameOfComponent = 'sourceAlignedDataProduct';
     });
   }
 });
 
 export const aggregatedDataProductExtract = _.cloneDeep(dpExtract);
-aggregatedDataProductExtract.forEach((t) => {
+aggregatedDataProductExtract.forEach((t: any) => {
   t.nameOfComponent = 'aggregatedDataProduct';
   if (t.sectionDetails.basic.fields) {
-    t.sectionDetails.basic.fields.forEach((field) => {
+    t.sectionDetails.basic.fields.forEach((field: any) => {
       field.nameOfComponent = 'aggregatedDataProduct';
     });
   }
 });
 
 export const consumptionReadyDataProductExtract = _.cloneDeep(dpExtract);
-consumptionReadyDataProductExtract.forEach((t) => {
+consumptionReadyDataProductExtract.forEach((t: any) => {
   t.nameOfComponent = 'consumptionReadyDataProduct';
   if (t.sectionDetails.basic.fields) {
-    t.sectionDetails.basic.fields.forEach((field) => {
+    t.sectionDetails.basic.fields.forEach((field: any) => {
       field.nameOfComponent = 'consumptionReadyDataProduct';
+    });
+  }
+});
+
+export const datasetsPipelines = [
+  {
+    nameOfComponent: 'dataSetsPipeline',
+    displayName: 'DataSets Pipeline',
+    typeOfComponent: 'DataSetsPipeline',
+    sectionDetails: {
+      basic: {
+        displayName: 'Default',
+        fields: [
+          {
+            typeOfComponent: 'DataSetsPipeline',
+            nameOfComponent: 'dataSetsPipeline',
+            inputFieldName: 'operator',
+            isOptional: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'String',
+            formInputValidValues: '',
+            isAdvanceOption: '',
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            specialValidation: '',
+            displayName: 'Operator',
+          },
+          {
+            typeOfComponent: 'DataSetsPipeline',
+            nameOfComponent: 'dataSetsPipeline',
+            inputFieldName: 'type',
+            isOptional: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'String',
+            formInputValidValues: '',
+            isAdvanceOption: true,
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            displayName: 'Type',
+          },
+          {
+            typeOfComponent: 'DataSetsPipeline',
+            nameOfComponent: 'dataSetsPipeline',
+            inputFieldName: 'portal',
+            isOptional: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'String',
+            formInputValidValues: '',
+            isAdvanceOption: '',
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            specialValidation: '',
+            displayName: 'Portal',
+          },
+          {
+            typeOfComponent: 'DataSetsPipeline',
+            nameOfComponent: 'dataSetsPipeline',
+            inputFieldName: 'triggerRule',
+            isOptional: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'String',
+            formInputValidValues: '',
+            isAdvanceOption: '',
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            specialValidation: '',
+            displayName: 'Trigger Rule',
+          },
+          {
+            typeOfComponent: 'DataSetsPipeline',
+            nameOfComponent: 'dataSetsPipeline',
+            inputFieldName: 'logResponse',
+            defaultValue: true,
+            visualType: 'checkbox',
+            isOptional: true,
+            isOptionalInSchema: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'Boolean',
+            formInputValidValues: [true, false],
+            isAdvanceOption: '',
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            specialValidation: '',
+            displayName: 'Log Response',
+            rowSpace: 0.5,
+          },
+        ],
+      },
+    },
+    sampleSchema: {
+      type: 'object',
+      properties: {
+        operator: { type: 'string', required: true },
+        type: { type: 'string', required: true },
+        portal: { type: 'string', required: true },
+        triggerRule: { type: 'string', required: true },
+        logResponse: { type: 'string', required: true },
+      },
+    },
+    UIDetails: {
+      input: [],
+      output: [{ displayName: 'DataSets Pipeline', type: 'dataSetsPipeline' }],
+      properties: [],
+    },
+  },
+];
+datasetsPipelines.forEach((t: any) => {
+  t.nameOfComponent = 'dataSetsPipeline';
+  if (t.sectionDetails.basic.fields) {
+    t.sectionDetails.basic.fields.forEach((field: any) => {
+      field.nameOfComponent = 'dataSetsPipeline';
+    });
+  }
+});
+
+export const ingestionPipelines = [
+  {
+    nameOfComponent: 'ingestionPipeline',
+    displayName: 'Ingestion Pipeline',
+    typeOfComponent: 'IngestionPipeline',
+    sectionDetails: {
+      basic: {
+        displayName: 'Default',
+        fields: [
+          {
+            typeOfComponent: 'IngestionPipeline',
+            nameOfComponent: 'ingestionPipeline',
+            inputFieldName: 'operator',
+            isOptional: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'String',
+            formInputValidValues: '',
+            isAdvanceOption: '',
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            specialValidation: '',
+            displayName: 'Operator',
+          },
+          {
+            typeOfComponent: 'IngestionPipeline',
+            nameOfComponent: 'ingestionPipeline',
+            inputFieldName: 'type',
+            isOptional: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'String',
+            formInputValidValues: '',
+            isAdvanceOption: true,
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            displayName: 'Type',
+          },
+          {
+            typeOfComponent: 'IngestionPipeline',
+            nameOfComponent: 'ingestionPipeline',
+            inputFieldName: 'portal',
+            isOptional: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'String',
+            formInputValidValues: '',
+            isAdvanceOption: '',
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            specialValidation: '',
+            displayName: 'Portal',
+          },
+          {
+            typeOfComponent: 'IngestionPipeline',
+            nameOfComponent: 'ingestionPipeline',
+            inputFieldName: 'triggerRule',
+            isOptional: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'String',
+            formInputValidValues: '',
+            isAdvanceOption: '',
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            specialValidation: '',
+            displayName: 'Trigger Rule',
+          },
+          {
+            typeOfComponent: 'IngestionPipeline',
+            nameOfComponent: 'ingestionPipeline',
+            inputFieldName: 'logResponse',
+            defaultValue: true,
+            visualType: 'checkbox',
+            isOptional: true,
+            isOptionalInSchema: false,
+            directInput: false,
+            formInput: '',
+            formInputType: 'Boolean',
+            formInputValidValues: [true, false],
+            isAdvanceOption: '',
+            subInputFieldName: '',
+            subFormInputType: '',
+            subFormInputValidValues: '',
+            directOutput: '',
+            otherOutput: '',
+            specialValidation: '',
+            displayName: 'Log Response',
+            rowSpace: 0.5,
+          },
+        ],
+      },
+    },
+    sampleSchema: {
+      type: 'object',
+      properties: {
+        operator: { type: 'string', required: true },
+        type: { type: 'string', required: true },
+        portal: { type: 'string', required: true },
+        triggerRule: { type: 'string', required: true },
+        logResponse: { type: 'string', required: true },
+      },
+    },
+    UIDetails: {
+      input: [],
+      output: [{ displayName: 'Ingestion Pipeline', type: 'ingestionPipeline' }],
+      properties: [],
+    },
+  },
+];
+ingestionPipelines.forEach((t: any) => {
+  t.nameOfComponent = 'ingestionPipeline';
+  if (t.sectionDetails.basic.fields) {
+    t.sectionDetails.basic.fields.forEach((field: any) => {
+      field.nameOfComponent = 'ingestionPipeline';
     });
   }
 });
