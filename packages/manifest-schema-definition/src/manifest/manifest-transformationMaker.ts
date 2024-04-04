@@ -1,4 +1,4 @@
-const devConfigForTransform = require('@dataverse/developer-workbench-config');
+const devConfigForTransform = require('developer-workbench-config');
 const lodashForTransform = require('lodash');
 const fileSysForTransform = require('fs');
 

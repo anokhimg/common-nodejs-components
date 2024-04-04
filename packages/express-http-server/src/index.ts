@@ -6,7 +6,7 @@ import httpStatus from 'http-status';
 import helmet from 'helmet';
 import * as swaggerUI from 'swagger-ui-express';
 import YAML from 'yamljs';
-import { Logger, getLogger, Config as LoggerConfig } from '@dataverse/logger';
+import { Logger, getLogger, Config as LoggerConfig } from 'commonjs-logger';
 import { GLOBAL, API } from './constants';
 import ApiError, {
   DetailedError,
@@ -16,9 +16,9 @@ import ApiError, {
   UnsupportedMediaTypeError,
   NotAcceptableError,
   EndpointNotFoundError,
-} from '@dataverse/errors';
+} from 'commonjs-errors';
 import cookieParser from 'cookie-parser';
-import { UnauthorizedError as JwtUnauthorizedError } from '@dataverse/express-jwt-validator';
+import { UnauthorizedError as JwtUnauthorizedError } from 'express-jwt-validator';
 
 export { API, GLOBAL } from './constants';
 
@@ -88,7 +88,7 @@ export class App {
     this.reloadDynamicRouter(this.config.openapiSpec); // we need to create new instance first
     this.registerDynamicRouter();
 
-    if (this.config.openapiSpec) {
+    if(this.config.openapiSpec || this.config.openapiBaseSchema){
       this.initOpenApiValidation(this.config.openapiSpec);
     }
 
@@ -155,7 +155,7 @@ export class App {
     this.logger.info('Reloading dynamic routes...');
     this.dynamicRouter = Router();
 
-    if (openApiSpec) {
+    if(openApiSpec || this.config.openapiBaseSchema){
       this.initSwaggerUI(openApiSpec);
       this.initOpenApiValidation(openApiSpec);
     }

@@ -1996,7 +1996,10 @@
                                                                   }
                                                                 },
                                                                 "additionalProperties": true,
-                                                                "required": []
+                                                                "required": [
+                                                                  "inputDataFrame",
+                                                                  "tempViewName"
+                                                                ]
                                                               }
                                                             },
                                                             "optional": {
@@ -2037,6 +2040,7 @@
                                                             }
                                                           },
                                                           "required": [
+                                                            "inputDataFrameList",
                                                             "alias",
                                                             "sequence",
                                                             "isDynamic"
@@ -2076,14 +2080,20 @@
                                                                     }
                                                                   },
                                                                   "additionalProperties": true,
-                                                                  "required": []
+                                                                  "required": [
+                                                                    "inputDataFrame",
+                                                                    "tempViewName"
+                                                                  ]
                                                                 }
                                                               },
                                                               "optional": {
                                                                 "type": "object",
                                                                 "properties": {
                                                                   "dependencies": {
-                                                                    "type": "string"
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                      "type": "string"
+                                                                    }
                                                                   },
                                                                   "sparkExtraConf": {
                                                                     "type": "object",
@@ -2114,6 +2124,7 @@
                                                               }
                                                             },
                                                             "required": [
+                                                              "inputDataFrameList",
                                                               "alias",
                                                               "sequence",
                                                               "isDynamic"

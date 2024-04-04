@@ -1,16 +1,16 @@
 {
-  "name": "@dataverse/express-http-server",
-  "version": "0.0.16",
+  "name": "express-http-server",
+  "version": "1.0.3",
   "description": "NodeJS dataverse express http server",
-  "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
+  "homepage": "https://github.com/anokhimg/common-nodejs-components/packages/express-http-server#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components.git"
+    "url": "git+https://github.com/anokhimg/common-nodejs-components.git"
   },
   "scripts": {
     "test": "jest -c ../../jest.config.js",
@@ -18,7 +18,7 @@
     "clean": "rm -r ./dist"
   },
   "bugs": {
-    "url": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/issues"
+    "url": "https://github.com/anokhimg/common-nodejs-components/issues"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.2",
@@ -31,10 +31,10 @@
     "supertest": "^6.1.6"
   },
   "dependencies": {
-    "@dataverse/errors": "^0.0.5",
-    "@dataverse/express-forward-error": "^0.0.1",
-    "@dataverse/express-jwt-validator": "^0.0.7",
-    "@dataverse/logger": "^0.0.2",
+    "commonjs-errors": "^1.0.0",
+    "express-forward-error": "^1.0.0",
+    "express-jwt-validator": "^1.0.0",
+    "commonjs-logger": "^1.0.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "express": "~4.18.2",
@@ -45,5 +45,12 @@
     "swagger-ui-express": "^4.1.6",
     "yamljs": "^0.3.0"
   },
-  "gitHead": "411e41f5e94703b0ee0bf93df4a39d919c76bf92"
+  "keywords": [
+    "http",
+    "express",
+    "winston",
+    "yamljs"
+  ],
+  "author": "Byteverse",
+  "license": "ISC"
 }
