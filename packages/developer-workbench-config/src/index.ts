@@ -16,6 +16,8 @@ import {
   consumptionReadyDataProductExtract,
   sourceExtract,
   stateManagement,
+  datasetsPipelines,
+  ingestionPipelines,
 } from './config/componentConfig';
 
 export const config = {
@@ -36,4 +38,6 @@ export const config = {
   consumptionReadyDataProductExtract,
   sourceExtract,
   stateManagement,
+  datasetsPipelines,
+  ingestionPipelines,
 };
