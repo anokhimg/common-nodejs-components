@@ -111,9 +111,8 @@ export class App {
     this.app.use((request: any, _response: any, next: any) => {
       if (request.body && request.body.data && envKey) {
         const decryptedData: any = decryptData(request.body.data, envKey);
-        request.body = decryptedData;
+        request.body = decryptedData.actualData;
         request.randNum = decryptedData.randNum;
-        delete request.body.randNum;
       }
       next();
     });
