@@ -1,4 +1,4 @@
-# `@dataverse/vault-provider`
+# `vault-provider`
 
 > node-vault Facade to use in dataverse NodeJS projects
 
@@ -15,9 +15,9 @@
 ## Usage
 
 ```js
-import VaultProvider from '@dataverse/vault-provider';
-import { VaultOptions } from '@dataverse/kafka-provider';
-import { Config as LoggerConfig } from '@dataverse/logger';
+import VaultProvider from 'vault-provider';
+import { VaultOptions } from 'kafka-provider';
+import { Config as LoggerConfig } from 'commonjs-logger';
 import { vaultAddr, vaultAuthType, vaultPassword, vaultSecretPath, vaultUser } from '../config/config';
 
 const config: VaultOptions = {
