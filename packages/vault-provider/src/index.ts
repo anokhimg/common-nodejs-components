@@ -1,5 +1,5 @@
-import ApiError, { ResourceNotFoundError } from '@dataverse/errors';
-import { Config as LoggerConfig, getLogger, Logger } from '@dataverse/logger';
+import ApiError, { ResourceNotFoundError } from 'commonjs-errors';
+import { Config as LoggerConfig, getLogger, Logger } from 'commonjs-logger';
 import httpStatus from 'http-status';
 import vaultClient, { client } from 'node-vault';
 
