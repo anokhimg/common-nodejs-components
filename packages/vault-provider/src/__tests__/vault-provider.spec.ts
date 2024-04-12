@@ -1,5 +1,5 @@
-import { ResourceNotFoundError } from '@dataverse/errors';
-import { Config as LoggerConfig } from '@dataverse/logger';
+import { ResourceNotFoundError } from 'commonjs-errors';
+import { Config as LoggerConfig } from 'commonjs-logger';
 import VaultProvider, { RequiredVaultOptionsMissing, VaultAccessError, VaultOptions } from '..';
 
 const mockUserpassLogin = jest.fn();
@@ -23,7 +23,7 @@ jest.mock('node-vault', () => {
   });
 });
 
-describe('@dataverse/vault-provider', () => {
+describe('vault-provider', () => {
   let testObject: VaultProvider;
   const config: VaultOptions = {
     vaultAddr: 'vaultAddress',
