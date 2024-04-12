@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Config as LoggerConfig } from '@dataverse/logger';
+import { Config as LoggerConfig } from 'commonjs-logger';
 import { ConsumerRunConfig, EachMessagePayload } from 'kafkajs';
 import KafkaClientProvider from '..';
 import { KafkaConfig } from '../types/kafka-config.interface';
@@ -58,7 +58,7 @@ jest.mock('kafkajs', () => {
   };
 });
 
-describe('@dataverse/kafka-provider', () => {
+describe('kafka-provider', () => {
   const username = 'user';
   const password = 'pass';
   const config: KafkaConfig = {
