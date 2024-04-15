@@ -1,206 +1,143 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { Config as LoggerConfig } from 'commonjs-logger';
-import { ConsumerRunConfig, EachMessagePayload } from 'kafkajs';
-import KafkaClientProvider from '..';
-import { KafkaConfig } from '../types/kafka-config.interface';
+import { Config as LoggerConfig, getLogger, Logger } from 'commonjs-logger';
+import {
+  Admin,
+  Consumer,
+  ConsumerSubscribeTopics,
+  EachMessagePayload,
+  ITopicConfig,
+  Kafka,
+  logLevel,
+  Producer,
+  ProducerBatch,
+  RecordMetadata,
+  SASLOptions,
+  TopicMessages,
+} from 'kafkajs';
+import { v4 as uuidv4 } from 'uuid';
+import { KafkaConfig } from './types/kafka-config.interface';
 
-const mockProducerConnect = jest.fn();
-const mockProducerDisconnect = jest.fn();
-const mockProducerSendBatch = jest.fn();
-const mockConsumerSubscribe = jest.fn();
-const mockConsumerRun = jest.fn();
-jest.mock('kafkajs', () => {
-  return {
-    Kafka: jest.fn().mockImplementation(() => {
+export class KafkaClientProvider {
+  private config: KafkaConfig;
+
+  private logger?: Logger;
+
+  private admin: Admin;
+
+  private producer: Producer;
+
+  private consumers: Array<Consumer> = [];
+
+  private kafka: Kafka;
+
+  constructor(config: KafkaConfig, username: string, password: string, loggerConfig?: LoggerConfig) {
+    this.config = config;
+    this.logger = loggerConfig ? getLogger(loggerConfig) : undefined;
+
+    this.kafka = this.initKafka(username, password);
+    this.admin = this.kafka.admin();
+    this.producer = this.kafka.producer();
+  }
+
+  public async initializeConnections(): Promise<void> {
+    try {
+      await Promise.all([this.admin.connect(), this.producer.connect()]);
+      this.logger?.info(`Kafka client "${this.config.clientName}" connected`);
+    } catch (error) {
+      this.logger?.error('Error in connecting to Kafka: ', error);
+      throw error;
+    }
+  }
+
+  public async shutdown(cb?: Function): Promise<void> {
+    try {
+      await Promise.all([this.admin.disconnect(), this.producer.disconnect()]);
+      await Promise.all(this.consumers?.map((consumer) => consumer.disconnect()));
+      this.logger?.info(`Kafka client "${this.config.clientName}" disconnected`);
+      if (cb) {
+        cb(null);
+      }
+    } catch (error) {
+      this.logger?.error('Error in disconnecting kafka client:', error);
+      throw error;
+    }
+  }
+
+  public sendBatch(topicName: string, messages: Array<any>): Promise<RecordMetadata[]> {
+    const kafkaMessages: Array<any> = messages.map((message) => {
       return {
-        producer: jest.fn().mockImplementation(() => {
-          return {
-            connect: mockProducerConnect,
-            disconnect: mockProducerDisconnect,
-            sendBatch: mockProducerSendBatch,
-          };
-        }),
-        consumer: jest.fn().mockImplementation(() => {
-          return {
-            connect: jest.fn(),
-            disconnect: jest.fn(),
-            subscribe: mockConsumerSubscribe,
-            run: mockConsumerRun.mockImplementation((config?: ConsumerRunConfig | undefined) => {
-              const payload: EachMessagePayload = {
-                topic: 'topic',
-                partition: 0,
-                message: {
-                  key: Buffer.from('key'),
-                  value: Buffer.from('value'),
-                  timestamp: 'timestamp',
-                  attributes: 1,
-                  offset: 'offset',
-                  size: 2,
-                },
-                heartbeat: jest.fn(),
-                pause: jest.fn(),
-              };
-              config?.eachMessage?.call(this, payload);
-            }),
-            commitOffsets: jest.fn(),
-          };
-        }),
-        admin: jest.fn().mockImplementation(() => {
-          return {
-            connect: jest.fn(),
-            disconnect: jest.fn(),
-          };
-        }),
-        logger: jest.fn(),
+        key: uuidv4(), // FIX ME : user may need to set key explicitly
+        value: JSON.stringify(message),
       };
-    }),
-    logLevel: { INFO: 4 },
-  };
-});
-
-describe('kafka-provider', () => {
-  const username = 'user';
-  const password = 'pass';
-  const config: KafkaConfig = {
-    clientName: 'clientName',
-    brokers: [],
-  };
-  const loggerConfig: LoggerConfig = {
-    appName: 'test-app-name',
-    moduleName: 'kafka-test',
-    logLevel: 'info',
-    logStyle: 'cli',
-  };
-  let testObject: KafkaClientProvider;
-  const messages = [{ msg: 'hello' }];
-  const topicName = 'topic';
-  const consumerGroupName = 'groupName';
-  const uuid4Matcher = /^[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}$/;
-
-  beforeEach(() => {
-    testObject = new KafkaClientProvider(config, username, password, loggerConfig);
-    mockProducerSendBatch.mockClear();
-    mockConsumerSubscribe.mockClear();
-    mockConsumerRun.mockClear();
-  });
-
-  it('should not throw when initializeConnections', async () => {
-    // arrange
-    let thrown = null;
-
-    // act
-    try {
-      await testObject.initializeConnections();
-    } catch (e) {
-      thrown = e;
-    }
-
-    // assert
-    expect(thrown).toBeNull();
-  });
-
-  it('should throw given connect throws when initializeConnections', async () => {
-    // arrange
-    mockProducerConnect.mockRejectedValueOnce(new Error('dummy error'));
-    let thrown = null;
-
-    // act
-    try {
-      await testObject.initializeConnections();
-    } catch (e) {
-      thrown = e;
-    }
-
-    // assert
-    expect(thrown).not.toBeNull();
-  });
-
-  it('should not throw when shutdown', async () => {
-    // arrange
-    let thrown = null;
-    const cb = jest.fn();
-    await testObject.startConsumer(consumerGroupName, [topicName]);
-
-    // act
-    try {
-      await testObject.shutdown(cb);
-    } catch (e) {
-      thrown = e;
-    }
-
-    // assert
-    expect(thrown).toBeNull();
-    expect(cb).toHaveBeenCalledTimes(1);
-  });
-
-  it('should throw given disconnect throws when shutdown', async () => {
-    // arrange
-    mockProducerDisconnect.mockRejectedValueOnce(new Error('dummy error'));
-    let thrown = null;
-    const cb = jest.fn();
-
-    // act
-    try {
-      await testObject.shutdown(cb);
-    } catch (e) {
-      thrown = e;
-    }
-
-    // assert
-    expect(thrown).not.toBeNull();
-    expect(cb).toHaveBeenCalledTimes(0);
-  });
-
-  it('should call sendBatch when sendBatch', async () => {
-    // act
-    await testObject.sendBatch(topicName, messages);
-
-    // assert
-    expect(mockProducerSendBatch).toHaveBeenCalledTimes(1);
-    expect(mockProducerSendBatch).toHaveBeenCalledWith({
-      topicMessages: [
-        {
-          messages: [
-            {
-              key: expect.stringMatching(uuid4Matcher),
-              value: '{"msg":"hello"}',
-            },
-          ],
-          topic: 'topic',
-        },
-      ],
     });
-  });
 
-  it('should call subscribe and run when startConsumer', async () => {
-    // arrange
-    const cb = jest.fn();
+    const topicMessages: TopicMessages = {
+      topic: topicName,
+      messages: kafkaMessages,
+    };
 
-    // act
-    await testObject.startConsumer(consumerGroupName, [topicName], cb);
+    const batch: ProducerBatch = {
+      topicMessages: [topicMessages],
+    };
+    return this.producer.sendBatch(batch);
+  }
 
-    // assert
-    expect(cb).toHaveBeenCalledTimes(1);
-    expect(cb).toHaveBeenCalledWith(expect.anything(), 'topic[0 | offset] / timestamp');
-    expect(mockConsumerSubscribe).toHaveBeenCalledTimes(1);
-    expect(mockConsumerRun).toHaveBeenCalledTimes(1);
-  });
-
-  it('should throw given subscribe throws when startConsumer', async () => {
-    // arrange
-    mockConsumerSubscribe.mockRejectedValueOnce(new Error('dummy error'));
-    const cb = jest.fn();
-    let thrown = null;
-
-    // act
+  public async startConsumer(consumerGroupName: string, topicNames: Array<string>, cb?: Function): Promise<void> {
+    const topics: ConsumerSubscribeTopics = {
+      topics: topicNames,
+      fromBeginning: false,
+    };
+    const consumer = this.kafka.consumer({
+      groupId: consumerGroupName,
+      sessionTimeout: this.config.sessionTimeout ?? 30000,
+    });
     try {
-      await testObject.startConsumer(consumerGroupName, [topicName], cb);
-    } catch (e) {
-      thrown = e;
+      await consumer.connect();
+      await consumer.subscribe(topics);
+      await consumer.run({
+        autoCommit: false,
+        eachMessage: async (messagePayload: EachMessagePayload) => {
+          const { topic, partition, message } = messagePayload;
+          const prefix: string = `${topic}[${partition} | ${message.offset}] / ${message.timestamp}`;
+          if (cb) await cb(messagePayload, prefix);
+          await consumer.commitOffsets([{ topic, partition, offset: (Number(message.offset) + 1).toString() }]);
+        },
+      });
+      this.consumers.push(consumer);
+    } catch (error) {
+      this.logger?.error(`Cannot consume topics ${topicNames}`, error);
+      throw error;
     }
+  }
 
-    // assert
-    expect(cb).toHaveBeenCalledTimes(0);
-    expect(thrown).not.toBeNull();
-  });
-});
+  private initKafka(username: string, password: string): Kafka {
+    let sasl = undefined;
+    if (username !== '' && password !== '' && !this.config.sasl) {
+      sasl = { mechanism: 'plain' as const, username, password };
+    } else if (this.config.sasl) {
+      sasl = this.config.sasl;
+    }
+    const kafka = new Kafka({
+      clientId: this.config.clientName,
+      brokers: this.config.brokers,
+      sasl: sasl as SASLOptions,
+      ssl: this.config.ssl ?? true,
+      logLevel: logLevel.INFO,
+      connectionTimeout: this.config.connectionTimeout,
+    });
+    return kafka;
+  }
+
+  public async createTopics(topics: ITopicConfig[]) {
+    await this.admin.createTopics({
+      topics: topics,
+    });
+  }
+
+  public async deleteTopics(topics: string[]) {
+    await this.admin.deleteTopics({
+      topics,
+    });
+  }
+}
+
+export default KafkaClientProvider;
