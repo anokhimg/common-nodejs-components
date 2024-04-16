@@ -18,6 +18,7 @@ import {
   stateManagement,
   datasetsPipelines,
   ingestionPipelines,
+  streaming,
 } from './config/componentConfig';
 
 export const config = {
@@ -40,4 +41,5 @@ export const config = {
   stateManagement,
   datasetsPipelines,
   ingestionPipelines,
+  streaming,
 };
