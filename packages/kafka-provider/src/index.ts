@@ -1,4 +1,4 @@
-import { Config as LoggerConfig, getLogger, Logger } from '@dataverse/logger';
+import { Config as LoggerConfig, getLogger, Logger } from 'commonjs-logger';
 import {
   Admin,
   Consumer,
