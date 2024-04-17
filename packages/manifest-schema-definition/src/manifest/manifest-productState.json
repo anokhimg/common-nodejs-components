@@ -3441,7 +3441,92 @@
                                                           "stateStoreType"
                                                         ]
                                                       },
-                                                      "else": {}
+                                                      "else": {
+                                                        "if": {
+                                                          "properties": {
+                                                            "stateStoreType": {
+                                                              "const": "writeDataFrameToOracleTable"
+                                                            }
+                                                          }
+                                                        },
+                                                        "then": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "connection": {
+                                                              "type": "string"
+                                                            },
+                                                            "tableName": {
+                                                              "type": "string"
+                                                            },
+                                                            "optional": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "columnList": {
+                                                                  "type": "array",
+                                                                  "items": {
+                                                                    "type": "string"
+                                                                  }
+                                                                },
+                                                                "persistDataFrame": {
+                                                                  "type": "boolean"
+                                                                },
+                                                                "enableDataReconciliation": {
+                                                                  "type": "boolean"
+                                                                },
+                                                                "enforceSchema": {
+                                                                  "type": "boolean"
+                                                                },
+                                                                "enforceSchemaMethod": {
+                                                                  "type": "string"
+                                                                }
+                                                              },
+                                                              "additionalProperties": true,
+                                                              "required": []
+                                                            },
+                                                            "alias": {
+                                                              "type": "string"
+                                                            },
+                                                            "logicalSchema": {
+                                                              "type": "object",
+                                                              "additionalProperties": true,
+                                                              "properties": {},
+                                                              "required": []
+                                                            },
+                                                            "isProfilingEnabled": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "isDynamic": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "retentionVersions": {
+                                                              "type": "string"
+                                                            },
+                                                            "stateStoreType": {
+                                                              "type": "string"
+                                                            },
+                                                            "updateStrategy": {
+                                                              "type": "string"
+                                                            },
+                                                            "updateStrategyOptions": {
+                                                              "type": "object",
+                                                              "additionalProperties": true,
+                                                              "properties": {},
+                                                              "required": []
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "connection",
+                                                            "tableName",
+                                                            "alias",
+                                                            "logicalSchema",
+                                                            "isProfilingEnabled",
+                                                            "isDynamic",
+                                                            "retentionVersions",
+                                                            "stateStoreType"
+                                                          ]
+                                                        },
+                                                        "else": {}
+                                                      }
                                                     }
                                                   }
                                                 }
