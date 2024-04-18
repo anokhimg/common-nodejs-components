@@ -24626,7 +24626,7 @@ export const streaming = [
             defaultValue: true,
             visualType: 'checkbox',
             displayName: 'Fail On Data Loss',
-            isOptional: true,
+            isOptional: false,
             directInput: false,
             formInput: '',
             formInputType: 'Boolean',
@@ -24970,7 +24970,7 @@ export const streaming = [
               properties: {
                 failOnDataLoss: {
                   type: 'boolean',
-                  required: false,
+                  required: true,
                 },
                 'kafka.group.id': {
                   type: 'string',
