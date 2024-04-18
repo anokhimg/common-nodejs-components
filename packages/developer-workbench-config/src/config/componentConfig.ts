@@ -24130,9 +24130,13 @@ export const datasetsPipelines = [
         job_id: { type: 'string', required: true },
         domain: { type: 'string', required: true },
         default: {
-          operator: { type: 'string', required: true },
-          type: { type: 'string', required: true },
-          portal: { type: 'string', required: true },
+          type: 'object',
+          required: true,
+          properties: {
+            operator: { type: 'string', required: true },
+            type: { type: 'string', required: true },
+            portal: { type: 'string', required: true },
+          },
         },
         optional: {
           type: 'object',
@@ -24502,9 +24506,13 @@ export const ingestionPipelines = [
         job_id: { type: 'string', required: true },
         domain: { type: 'string', required: true },
         default: {
-          operator: { type: 'string', required: true },
-          type: { type: 'string', required: true },
-          portal: { type: 'string', required: true },
+          type: 'object',
+          required: true,
+          properties: {
+            operator: { type: 'string', required: true },
+            type: { type: 'string', required: true },
+            portal: { type: 'string', required: true },
+          },
         },
         optional: {
           type: 'object',
