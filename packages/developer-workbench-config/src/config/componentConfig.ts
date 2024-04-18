@@ -24623,7 +24623,7 @@ export const streaming = [
             typeOfComponent: 'Stream',
             nameOfComponent: 'kafkaStream',
             inputFieldName: 'failOnDataLoss',
-            defaultValue: false,
+            defaultValue: true,
             visualType: 'checkbox',
             displayName: 'Fail On Data Loss',
             isOptional: true,
