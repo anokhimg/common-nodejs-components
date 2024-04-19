@@ -89,6 +89,7 @@ export class KafkaClientProvider {
     const consumer = this.kafka.consumer({
       groupId: consumerGroupName,
       sessionTimeout: this.config.sessionTimeout ?? 30000,
+      maxBytesPerPartition: this.config.maxBytesPerPartition || 1048576,
     });
     try {
       await consumer.connect();
