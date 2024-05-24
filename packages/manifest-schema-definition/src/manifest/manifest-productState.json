@@ -1557,6 +1557,9 @@
                         "optional": {
                           "type": "object",
                           "properties": {
+                            "deleteQuery": {
+                              "type": "string"
+                            },
                             "delimiter": {
                               "type": "string"
                             },

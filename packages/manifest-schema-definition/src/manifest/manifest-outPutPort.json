@@ -95,6 +95,23 @@
                 ]
               }
             }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "channelType": {
+                "type": "string",
+                "enum": [
+                  "Gen-AI"
+                ]
+              },
+              "queryType": {
+                "type": "string",
+                "enum": [
+                  "SQL"
+                ]
+              }
+            }
           }
         ]
       },
