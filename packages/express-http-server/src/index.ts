@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import * as swaggerUI from 'swagger-ui-express';
 import YAML from 'yamljs';
 import { Logger, getLogger, Config as LoggerConfig } from 'commonjs-logger';
-import { GLOBAL, API } from './constants';
+import { GLOBAL, API, ENVIRONMENT_MODE_TYPE } from './constants';
 import ApiError, {
   DetailedError,
   ExtendableError,
@@ -35,7 +35,7 @@ interface Config {
   requestPayloadLimit?: string;
   corsOptions?: CorsOptions;
   encryptionKey?: string;
-
+  environmentMode?: string
   /**
    * Allows you to disable default body parsers (urlencoded, json & cookie-parser)
    * and provides you with express app instance to register your own.
@@ -108,8 +108,9 @@ export class App {
 
   private decoder() {
     const envKey = this.config.encryptionKey;
+    const environmentMode =  this.config.environmentMode;
     this.app.use((request: any, _response: any, next: any) => {
-      if (request.body && request.body.data && envKey) {
+      if (request.body && request.body.data && envKey && environmentMode !== ENVIRONMENT_MODE_TYPE.dev) {
         const decryptedData: any = decryptData(request.body.data, envKey);
         request.body = decryptedData.actualData;
         request.randNum = decryptedData.randNum;
@@ -208,8 +209,9 @@ export class App {
 
   private modifyResponseBody() {
     const envKey = this.config.encryptionKey;
+    const environmentMode =  this.config.environmentMode;
     this.app.use((req: any, res: any, next: any) => {
-      if (envKey) {
+      if (envKey && environmentMode !== ENVIRONMENT_MODE_TYPE.dev) {
         let oldSend = res.send;
         let randNum = 0;
         if (req.method === 'GET') {

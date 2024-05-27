@@ -1,6 +1,6 @@
 {
   "name": "express-http-server",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "NodeJS dataverse express http server",
   "homepage": "https://github.com/anokhimg/common-nodejs-components/packages/express-http-server#readme",
   "main": "dist/index.js",
