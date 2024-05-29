@@ -3,7 +3,7 @@ import { ArangoDocumentQueryBuilder } from '../querybuilder/document-query-build
 import { ArangoEdgeQueryBuilder } from '../querybuilder/edge-query-builder';
 import { Direction } from '../types/arango-query-options.interface';
 
-describe('@dataverse/arangodb/querybuilder', () => {
+describe('arangodb/querybuilder', () => {
   it('should prepare query when complex related query 1', () => {
     // arrange
     const builder = new ArangoDocumentQueryBuilder({

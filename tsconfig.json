@@ -14,12 +14,13 @@
     "strict":true,
     "outDir": "dist",
     "baseUrl": "packages",
+    "experimentalDecorators": true,
     "paths": {
       "*": ["node_modules/*", "src/types/*"]
     },
-    "declaration": true,
     "incremental": true,
-    "lib": ["es7"],
-    "resolveJsonModule": true
+    "declaration": true,
+    "resolveJsonModule": true,
+    "lib": ["es7"]
   }
 }

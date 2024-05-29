@@ -1,16 +1,16 @@
 {
-  "name": "@dataverse/aws-provider",
-  "version": "0.0.1",
+  "name": "aws-provider",
+  "version": "1.0.0",
   "description": "NodeJS Dataverse AWS Provider",
-  "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
+  "homepage": "https://github.com/anokhimg/common-nodejs-components/packages/aws-provider#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components.git"
+    "url": "git+https://github.com/anokhimg/common-nodejs-components.git"
   },
   "scripts": {
     "test": "jest -c ../../jest.config.js",
@@ -18,10 +18,16 @@
     "clean": "rm -r ./dist"
   },
   "bugs": {
-    "url": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/issues"
+    "url": "https://github.com/anokhimg/common-nodejs-components/issues"
   },
   "dependencies": {
-    "@dataverse/logger": "^0.0.2",
+    "commonjs-logger": "^1.0.0",
     "aws-sdk": "^2.0.0"
-  }
+  },
+  "keywords": [
+    "Aws",
+    "aws-sdk"
+  ],
+  "author": "Byteverse",
+  "license": "ISC"
 }

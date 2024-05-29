@@ -1,12 +1,12 @@
 {
-  "name": "@dataverse/oauth-client",
-  "version": "0.0.2",
+  "name": "commonjs-oauth-client",
+  "version": "1.0.0",
   "description": "NodeJS OAuth Client",
-  "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components#readme",
+  "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/packages/oauth-client#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -25,12 +25,17 @@
     "nock": "^13.2.4"
   },
   "dependencies": {
-    "@dataverse/errors": "^0.0.5",
-    "@dataverse/http-resilient-executor": "^0.0.1",
-    "@dataverse/logger": "^0.0.2",
+    "commonjs-errors": "^1.0.0",
+    "http-resilient-executor": "^1.0.0",
+    "commonjs-logger": "^1.0.0",
     "axios": "^0.24.0",
     "cache-manager": "^3.6.1",
     "http-status": "~1.5.0"
   },
-  "gitHead": "411e41f5e94703b0ee0bf93df4a39d919c76bf92"
+  "keywords": [
+    "oauth",
+    "cache"
+  ],
+  "author": "Byteverse",
+  "license": "ISC"
 }

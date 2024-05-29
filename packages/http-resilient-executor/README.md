@@ -1,4 +1,4 @@
-# `@dataverse/http-resilient-executor`
+# `http-resilient-executor`
 
 Helper for creating retry policies , circuit breaker for functions and external requests
 
@@ -18,7 +18,7 @@ For logger configuration properties see the
 
 ```typescript
 // init ResilientExecutor instance (should use 1 instance per app)
-import { ResilientExecutor } from '@dataverse/http-resilient-executor';
+import { ResilientExecutor } from 'http-resilient-executor';
 
 const config = {
   /** logger configuration */

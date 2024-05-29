@@ -1,6 +1,6 @@
-import { Config as LoggerConfig, Logger, getLogger } from '@dataverse/logger';
+import { Config as LoggerConfig, Logger, getLogger } from 'commonjs-logger';
 import axios from 'axios';
-import ApiError from '@dataverse/errors';
+import ApiError from 'commonjs-errors';
 import qs from 'qs';
 import { AdminGetUserResponse } from './types/AdminGetUserResponse';
 

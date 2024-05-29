@@ -1,6 +1,6 @@
 import ImmudbClient from 'immudb-node';
 import Parameters from 'immudb-node/dist/types/parameters';
-import { Config as LoggerConfig, getLogger, Logger } from '@dataverse/logger';
+import { Config as LoggerConfig, getLogger, Logger } from 'commonjs-logger';
 
 interface ImmuDbConfig {
   host: string;

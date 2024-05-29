@@ -11,7 +11,7 @@ function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-describe('@dataverse/http-resilient-executor', () => {
+describe('http-resilient-executor', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });

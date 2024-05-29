@@ -1,4 +1,4 @@
-# `@dataverse/kafka-provider`
+# `kafka-provider`
 
 > KafkaJS Facade to use in dataverse NodeJS projects
 
@@ -13,9 +13,9 @@
 ## Usage
 
 ```js
-import KafkaClientProvider from '@dataverse/kafka-provider';
-import { KafkaConfig } from '@dataverse/kafka-provider/src/types/kafka-config.interface';
-import { Config as LoggerConfig } from '@dataverse/logger';
+import KafkaClientProvider from 'kafka-provider';
+import { KafkaConfig } from 'kafka-provider/src/types/kafka-config.interface';
+import { Config as LoggerConfig } from 'commonjs-logger';
 import {
   appName,
   kafkaBrokers,

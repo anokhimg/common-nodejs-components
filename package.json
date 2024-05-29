@@ -1,18 +1,10 @@
 {
-  "name": "@dataverse/common-nodejs-components",
-  "version": "1.0.10",
-  "scripts": {
-    "build": "lerna run build",
-    "bootstrap": "lerna bootstrap",
-    "publish": "lerna publish from-package",
-    "test": "jest",
-    "lint": "esw --ext .js,.jsx,.ts,.tsx ./packages --color",
-    "lint:watch": "esw --ext .js,.jsx,.ts,.tsx ./packages --color --watch",
-    "lint:fix": "esw --ext .js,.jsx,.ts,.tsx ./packages --color --fix"
-  },
+  "name": "common-nodejs-components",
+  "version": "1.0.3",
+  
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components.git"
+    "url": "git+https://github.com/anokhimg/common-nodejs-components.git"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
@@ -33,6 +25,23 @@
     "typescript": "^4.4.3"
   },
   "publishConfig": {
-    "@dataverse:registry": "https://gitlab.byteprophecy.accenture.com/api/v4/projects/739/packages/npm/"
-  }
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "description": "Common Utility Components for Byteverse",
+  "bugs": {
+    "url": "https://github.com/anokhimg/common-nodejs-components/issues"
+  },
+  "homepage": "https://github.com/anokhimg/common-nodejs-components#readme",
+  "main": "jest.config.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "keywords": [
+    "arangodb",
+    "immudb",
+    "keycloak"
+  ],
+  "author": "Byteverse",
+  "license": "ISC"
 }

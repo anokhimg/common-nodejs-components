@@ -1,10 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
 
 import httpStatus from 'http-status';
-import ApiError from '@dataverse/errors';
-import { Executor } from '@dataverse/http-resilient-executor';
+import ApiError from 'commonjs-errors';
+import { Executor } from 'http-resilient-executor';
 import cacheManager from 'cache-manager';
-import { Logger, getLogger, Config as LoggerConfig } from '@dataverse/logger';
+import { Logger, getLogger, Config as LoggerConfig } from 'commonjs-logger';
 
 const memoryCache = cacheManager.caching({ store: 'memory', max: 100, ttl: 3600 /*seconds*/ });
 

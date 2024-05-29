@@ -10,7 +10,7 @@ import {
   wrap,
 } from 'cockatiel';
 
-import { Logger, getLogger, Config as LoggerConfig } from '@dataverse/logger';
+import { Logger, getLogger, Config as LoggerConfig } from 'commonjs-logger';
 
 interface ResilientConfig {
   /** logger configuration */

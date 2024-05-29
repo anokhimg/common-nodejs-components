@@ -1,8 +1,8 @@
 {
-  "name": "commonjs-keycloak-provider",
-  "version": "1.0.0",
-  "description": "NodeJS Dataverse KeyCloak Provider",
-  "homepage": "https://github.com/anokhimg/common-nodejs-components/packages/keycloak-provider#readme",
+  "name": "commonjs-logger",
+  "version": "1.0.1",
+  "description": "NodeJS dataverse logger",
+  "homepage": "https://github.com/anokhimg/common-nodejs-components/packages/logger",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
@@ -13,6 +13,7 @@
     "url": "git+https://github.com/anokhimg/common-nodejs-components.git"
   },
   "scripts": {
+    "test": "jest -c ../../jest.config.js",
     "build": "tsc",
     "clean": "rm -r ./dist"
   },
@@ -20,19 +21,11 @@
     "url": "https://github.com/anokhimg/common-nodejs-components/issues"
   },
   "dependencies": {
-    "commonjs-errors": "^1.0.0",
-    "commonjs-logger": "^1.0.0",
-    "@types/node": "^20.4.2",
-    "axios": "^1.4.0",
-    "http-status": "^1.5.0",
-    "qs": "^6.11.2"
-  },
-  "devDependencies": {
-    "@types/qs": "^6.9.7"
+    "winston": "^3.3.3"
   },
   "keywords": [
-    "Keycloak",
-    "axios"
+    "logger",
+    "winston"
   ],
   "author": "Byteverse",
   "license": "ISC"

@@ -1,5 +1,5 @@
 import * as AWS from 'aws-sdk';
-import { Config as LoggerConfig, getLogger, Logger } from '@dataverse/logger';
+import { Config as LoggerConfig, getLogger, Logger } from 'commonjs-logger';
 
 export type AWSProviderCredentials = {
   accessKeyId: string;

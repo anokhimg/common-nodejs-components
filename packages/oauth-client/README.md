@@ -1,4 +1,4 @@
-# `@dataverse/oauth-client`
+# `oauth-client`
 
 Helper for exchanging authentication credentials
 
@@ -19,7 +19,7 @@ For resilient executor configuration properties see the
 
 ```typescript
 /** init oauthclient instance (should use 1 instance per app) */
-import { OAuthClient } from '@dataverse/oauth-client';
+import { OAuthClient } from 'commonjs-oauth-client';
 
 const loggerConfig = : { logLevel: 'cli', logStyle: 'debug', appName: 'nodejs-commons', moduleName: 'ResilientExecutor' }, // logger configuration
 
@@ -34,8 +34,8 @@ await oauthClient.exchangeCredentialsForToken({
 /** with resilient executor */
 
 /** init oauthclient instance (should use 1 instance per app) */
-import { OAuthClient } from '@dataverse/oauth-client';
-import { ResilientExecutor } from '@dataverse/http-resilient-executor';
+import { OAuthClient } from 'commonjs-oauth-client';
+import { ResilientExecutor } from 'http-resilient-executor';
 
 const resilientConfig = {
   logger: { logLevel: 'cli', logStyle: 'debug', appName: 'nodejs-commons', moduleName: 'ResilientExecutor' }, // logger configuration

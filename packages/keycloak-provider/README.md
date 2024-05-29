@@ -1,1 +1,1 @@
-# `@dataverse/keycloak-provider`
+# `keycloak-provider`
