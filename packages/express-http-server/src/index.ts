@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response, Express, Router } from 'express';
-import cors from 'cors';
+import cors, { CorsOptions } from 'cors';
 import * as OpenApiValidator from 'express-openapi-validator';
 import expressWinston from 'express-winston';
 import httpStatus from 'http-status';
@@ -19,6 +19,8 @@ import ApiError, {
 } from 'commonjs-errors';
 import cookieParser from 'cookie-parser';
 import { UnauthorizedError as JwtUnauthorizedError } from 'express-jwt-validator';
+import decryptData from './decryptData';
+import encryptData from './encryptData';
 
 export { API, GLOBAL } from './constants';
 
@@ -29,8 +31,10 @@ interface Config {
   openapiBaseSchema?: string;
   openapiSpec?: any;
   env: string;
-  shouldCheckOpenApiBaseSchema?: boolean
-  requestPayloadLimit?:string
+  shouldCheckOpenApiBaseSchema?: boolean;
+  requestPayloadLimit?: string;
+  corsOptions?: CorsOptions;
+  encryptionKey?: string;
 
   /**
    * Allows you to disable default body parsers (urlencoded, json & cookie-parser)
@@ -52,7 +56,8 @@ export class App {
   private dynamicRouter?: express.Router;
 
   constructor(appConfig: Config) {
-    let shouldCheckOpenApiBaseSchema = appConfig.shouldCheckOpenApiBaseSchema === false ? appConfig.shouldCheckOpenApiBaseSchema: true
+    let shouldCheckOpenApiBaseSchema =
+      appConfig.shouldCheckOpenApiBaseSchema === false ? appConfig.shouldCheckOpenApiBaseSchema : true;
     if (shouldCheckOpenApiBaseSchema && !appConfig.openapiBaseSchema && !appConfig.openapiSpec) {
       throw new Error('Error in app configuration either openapiBaseSchema or openapiSpec have to be provided.');
     }
@@ -60,11 +65,16 @@ export class App {
     this.logger = getLogger(appConfig.logger);
     this.config = appConfig;
     this.app = express();
-    this.app.use(cors())
+
+    if (!this.config.corsOptions) {
+      this.app.use(cors());
+    } else {
+      this.app.use(cors(appConfig.corsOptions));
+    }
 
     if (!this.config.customBodyParser) {
       this.app.use(express.urlencoded({ extended: true }));
-      this.app.use(express.json({limit: appConfig.requestPayloadLimit}));
+      this.app.use(express.json({ limit: appConfig.requestPayloadLimit }));
       this.app.use(cookieParser());
     } else {
       this.config.customBodyParser(this.app);
@@ -76,15 +86,15 @@ export class App {
     this.initLogging();
     this.initSecurity();
     this.initHealth();
-
+    this.decoder();
     // Setup dynamic router for reloading routes that can change with feature toggles
     this.reloadDynamicRouter(this.config.openapiSpec); // we need to create new instance first
     this.registerDynamicRouter();
 
-    if(this.config.openapiSpec || this.config.openapiBaseSchema){
-    this.initOpenApiValidation(this.config.openapiSpec);
+    if (this.config.openapiSpec || this.config.openapiBaseSchema) {
+      this.initOpenApiValidation(this.config.openapiSpec);
     }
-
+    this.modifyResponseBody();
     // Regular routes, error translation and error handling has to come last
     this.initRoutes();
     this.initErrorTranslation();
@@ -94,6 +104,18 @@ export class App {
     this.readyState = true;
 
     return this.app;
+  }
+
+  private decoder() {
+    const envKey = this.config.encryptionKey;
+    this.app.use((request: any, _response: any, next: any) => {
+      if (request.body && request.body.data && envKey) {
+        const decryptedData: any = decryptData(request.body.data, envKey);
+        request.body = decryptedData.actualData;
+        request.randNum = decryptedData.randNum;
+      }
+      next();
+    });
   }
 
   private initLogging() {
@@ -148,11 +170,10 @@ export class App {
     this.logger.info('Reloading dynamic routes...');
     this.dynamicRouter = Router();
 
-    if(openApiSpec || this.config.openapiBaseSchema){
+    if (openApiSpec || this.config.openapiBaseSchema) {
       this.initSwaggerUI(openApiSpec);
       this.initOpenApiValidation(openApiSpec);
     }
-
   }
 
   private initSwaggerUI(openApiSpec?: any) {
@@ -183,6 +204,37 @@ export class App {
         },
       }),
     );
+  }
+
+  private modifyResponseBody() {
+    const envKey = this.config.encryptionKey;
+    this.app.use((req: any, res: any, next: any) => {
+      if (envKey) {
+        let oldSend = res.send;
+        let randNum = 0;
+        if (req.method === 'GET') {
+          randNum = req.headers['x-token'] || 0;
+        } else if (req.body) {
+          randNum = req.randNum || 0;
+        }
+        res.send = function (data: any) {
+          if (typeof data === 'object') {
+            let obj = {
+              data: encryptData(
+                {
+                  responseData: data,
+                  randNum,
+                },
+                envKey,
+              ),
+            };
+            arguments[0] = obj;
+          }
+          oldSend.apply(res, arguments);
+        };
+      }
+      next();
+    });
   }
 
   private initRoutes() {

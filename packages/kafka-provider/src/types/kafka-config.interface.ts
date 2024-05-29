@@ -6,5 +6,6 @@ export interface KafkaConfig {
   connectionTimeout?: number;
   sessionTimeout?: number;
   ssl?: boolean;
-  sasl?: SASLOptions
+  sasl?: SASLOptions;
+  maxBytesPerPartition?: number;
 }

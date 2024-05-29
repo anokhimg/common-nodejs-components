@@ -111,15 +111,28 @@ export class VaultProvider {
   }
 
   private async vaultAuth(): Promise<any> {
-    try {
-      const login = await this.client.userpassLogin({
-        username: this.options.vaultUser,
-        password: this.options.vaultPassword,
-      });
-      return login;
-    } catch (err) {
-      this.logger?.error(`Vault authentication error ${err}`);
-      throw err;
+    if (this.options.vaultAuthType === 'ldap') {
+      try {
+        const login = await this.client.ldapLogin({
+          username: this.options.vaultUser,
+          password: this.options.vaultPassword,
+        });
+        return login;
+      } catch (err) {
+        this.logger?.error(`Vault authentication error ${err}`);
+        throw err;
+      }
+    } else {
+      try {
+        const login = await this.client.userpassLogin({
+          username: this.options.vaultUser,
+          password: this.options.vaultPassword,
+        });
+        return login;
+      } catch (err) {
+        this.logger?.error(`Vault authentication error ${err}`);
+        throw err;
+      }
     }
   }
 }

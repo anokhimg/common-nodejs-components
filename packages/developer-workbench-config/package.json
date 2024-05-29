@@ -1,6 +1,6 @@
 {
   "name": "developer-workbench-config",
-  "version": "1.0.0",
+  "version": "1.1.5",
   "description": "developer-workbench-config",
   "homepage": "https://github.com/anokhimg/common-nodejs-components/packages/developer-workbench-config#readme",
   "main": "dist/index.js",
@@ -18,9 +18,10 @@
   "author": "Byteverse",
   "license": "ISC",
   "devDependencies": {
-    "@types/lodash": "^4.14.198",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^18.11.19",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "prettier": "^2.4.1"
   },
   "publishConfig": {
     "access": "public"

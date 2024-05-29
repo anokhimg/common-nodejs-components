@@ -1,6 +1,6 @@
 {
   "name": "vault-provider",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "NodeJS dataverse Vault Provider",
   "homepage": "https://gitlab.byteprophecy.accenture.com/dataverse/common-nodejs-components/packages/vault-provider#readme",
   "main": "dist/index.js",
@@ -24,7 +24,7 @@
     "commonjs-errors": "^1.0.0",
     "commonjs-logger": "^1.0.0",
     "http-status": "^1.5.0",
-    "node-vault": "^0.9.22"
+    "node-vault": "^0.10.2"
   },
   "devDependencies": {
     "@types/request": "^2.48.8"
