@@ -1,0 +1,32 @@
+{
+  "name": "query-limit-modifier",
+  "version": "1.0.0",
+  "description": "query-limit-modifier is a lightweight and efficient utility designed to simplify the process of adding default limit and offset values to your database queries.",
+  "homepage": "https://github.com/anokhimg/common-nodejs-components/packages/express-http-server#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anokhimg/common-nodejs-components.git"
+  },
+  "scripts": {
+    "test": "jest -c ../../jest.config.js",
+    "build": "tsc",
+    "clean": "rm -r ./dist"
+  },
+  "bugs": {
+    "url": "https://github.com/anokhimg/common-nodejs-components/issues"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^4.31.2",
+    "@types/lodash": "^4.14.191"
+  },
+  "dependencies": {
+    "commonjs-logger": "^1.0.1",
+    "node-sql-parser": "^5.1.0",
+    "lodash": "^4.17.21"
+  }
+}
