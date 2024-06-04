@@ -1,6 +1,6 @@
 {
   "name": "express-http-server",
-  "version": "1.0.8",
+  "version": "1.0.11",
   "description": "NodeJS dataverse express http server",
   "homepage": "https://github.com/anokhimg/common-nodejs-components/packages/express-http-server#readme",
   "main": "dist/index.js",
@@ -28,7 +28,9 @@
     "@types/supertest": "^2.0.11",
     "@types/swagger-ui-express": "^4.1.3",
     "@types/yamljs": "^0.2.31",
-    "supertest": "^6.1.6"
+    "supertest": "^6.1.6",
+    "@types/node": "^18.11.19",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
     "@types/crypto-js": "^4.2.2",
