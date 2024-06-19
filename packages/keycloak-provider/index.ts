@@ -184,8 +184,10 @@ export class KeyCloakAdminProvider {
     } else {
       try {
         this.logger?.debug('Getting a user in keycloak: %O');
+        const defaultQP = 'max=10000';
         const response = await axios.get(
-          `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users` + (queryParams ? queryParams : ''),
+          `${this.keycloak_base_url}/admin/realms/${this.keycloak_realm_name}/users` +
+            (queryParams ? queryParams + '&' + defaultQP : '?' + defaultQP),
           {
             headers: {
               'Content-Type': 'application/json',

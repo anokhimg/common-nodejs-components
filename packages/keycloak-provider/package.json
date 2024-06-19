@@ -1,6 +1,6 @@
 {
   "name": "commonjs-keycloak-provider",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NodeJS Dataverse KeyCloak Provider",
   "homepage": "https://github.com/anokhimg/common-nodejs-components/packages/keycloak-provider#readme",
   "main": "dist/index.js",
