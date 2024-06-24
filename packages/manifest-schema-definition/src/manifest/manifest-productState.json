@@ -1584,6 +1584,21 @@
                             "persistDataFrame": {
                               "type": "boolean"
                             },
+                            "primaryKeyList": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "changeTrackingColumns": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "timestampColumn": {
+                              "type": "string"
+                            },
                             "addRunIdColumn": {
                               "type": "boolean"
                             },
@@ -1792,6 +1807,9 @@
                                 "persistDataFrame": {
                                   "type": "boolean"
                                 },
+                                "deleteQuery": {
+                                  "type": "string"
+                                },
                                 "addRunIdColumn": {
                                   "type": "boolean"
                                 },
@@ -1902,6 +1920,27 @@
                               "optional": {
                                 "type": "object",
                                 "properties": {
+                                  "primaryKeyList": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "changeTrackingColumns": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "timestampColumn": {
+                                    "type": "string"
+                                  },
+                                  "deleteQuery": {
+                                    "type": "string"
+                                  },
+                                  "tempWriteOutPath": {
+                                    "type": "string"
+                                  },
                                   "persistDataFrame": {
                                     "type": "boolean"
                                   },
@@ -2940,6 +2979,21 @@
                                                       "dbServerType": {
                                                         "type": "string"
                                                       },
+                                                      "primaryKey": {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "warehouse": {
+                                                        "type": "string"
+                                                      },
+                                                      "timestampColumn": {
+                                                        "type": "string"
+                                                      },
+                                                      "snowflakeRole": {
+                                                        "type": "string"
+                                                      },
                                                       "temporaryPathS3": {
                                                         "type": "string"
                                                       },
@@ -3389,6 +3443,27 @@
                                                               "persistDataFrame": {
                                                                 "type": "boolean"
                                                               },
+                                                              "primaryKeyList": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                  "type": "string"
+                                                                }
+                                                              },
+                                                              "changeTrackingColumns": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                  "type": "string"
+                                                                }
+                                                              },
+                                                              "timestampColumn": {
+                                                                "type": "string"
+                                                              },
+                                                              "deleteQuery": {
+                                                                "type": "string"
+                                                              },
+                                                              "tempWriteOutPath": {
+                                                                "type": "string"
+                                                              },
                                                               "enableDataReconciliation": {
                                                                 "type": "boolean"
                                                               },
@@ -3472,6 +3547,27 @@
                                                                 },
                                                                 "persistDataFrame": {
                                                                   "type": "boolean"
+                                                                },
+                                                                "primaryKeyList": {
+                                                                  "type": "array",
+                                                                  "items": {
+                                                                    "type": "string"
+                                                                  }
+                                                                },
+                                                                "changeTrackingColumns": {
+                                                                  "type": "array",
+                                                                  "items": {
+                                                                    "type": "string"
+                                                                  }
+                                                                },
+                                                                "timestampColumn": {
+                                                                  "type": "string"
+                                                                },
+                                                                "deleteQuery": {
+                                                                  "type": "string"
+                                                                },
+                                                                "tempWriteOutPath": {
+                                                                  "type": "string"
                                                                 },
                                                                 "enableDataReconciliation": {
                                                                   "type": "boolean"

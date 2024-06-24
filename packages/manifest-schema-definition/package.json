@@ -1,6 +1,6 @@
 {
   "name": "manifest-schema-definition",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Manifest schema definition",
   "scripts": {
     "build": "ts-node src/manifest/manifest-productStateMaker.ts && ts-node src/manifest/manifest-inputPortMaker.ts && ts-node src/manifest/manifest-transformationMaker.ts  && tsc"
@@ -25,7 +25,7 @@
     "src/manifest/**/*.json"
   ],
   "dependencies": {
-    "developer-workbench-config": "^1.1.5",
+    "developer-workbench-config": "^1.1.6",
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21"
   },
