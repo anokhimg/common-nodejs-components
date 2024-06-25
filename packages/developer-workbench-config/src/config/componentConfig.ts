@@ -25331,6 +25331,8 @@ export const streaming = [
             typeOfComponent: 'Stream',
             nameOfComponent: 'kafkaStream',
             inputFieldName: 'messageProducedTimestampAsField',
+            defaultValue: false,
+            visualType: 'checkbox',
             isOptional: true,
             directInput: false,
             formInput: '',
@@ -25544,6 +25546,8 @@ export const streaming = [
           type: 'object',
           required: false,
           properties: {
+            messageProducedTimestampAsField: { type: 'boolean', required: false },
+            rawDataPath: { type: 'string', required: false },
             advanceOptions: {
               type: 'object',
               required: false,
@@ -25589,8 +25593,6 @@ export const streaming = [
                   required: false,
                 },
                 checkpointLocation: { type: 'string', required: false },
-                messageProducedTimestampAsField: { type: 'boolean', required: false },
-                rawDataPath: { type: 'string', required: false },
                 s3Connection: { type: 'string', required: false },
                 includeHeaders: {
                   type: 'boolean',
