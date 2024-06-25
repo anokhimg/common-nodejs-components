@@ -2969,6 +2969,12 @@
                                                   "tableName": {
                                                     "type": "string"
                                                   },
+                                                  "primaryKey": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "string"
+                                                    }
+                                                  },
                                                   "optional": {
                                                     "type": "object",
                                                     "properties": {
@@ -2977,12 +2983,6 @@
                                                       },
                                                       "dbServerType": {
                                                         "type": "string"
-                                                      },
-                                                      "primaryKey": {
-                                                        "type": "array",
-                                                        "items": {
-                                                          "type": "string"
-                                                        }
                                                       },
                                                       "warehouse": {
                                                         "type": "string"

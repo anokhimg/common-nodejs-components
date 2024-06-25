@@ -21229,19 +21229,19 @@ export const load = [
         connection: { type: 'string', required: true },
         inputDataFrame: { type: 'string', required: true },
         tableName: { type: 'string', required: true },
+        primaryKey: {
+          type: 'array',
+          required: false,
+          items: {
+            type: 'string',
+          },
+        },
         optional: {
           type: 'object',
           required: false,
           properties: {
             persistDataFrame: { type: 'boolean', required: false },
             dbServerType: { type: 'string', required: false },
-            primaryKey: {
-              type: 'array',
-              required: false,
-              items: {
-                type: 'string',
-              },
-            },
             warehouse: { type: 'string', required: false },
             timestampColumn: { type: 'string', required: false },
             snowflakeRole: { type: 'string', required: false },
