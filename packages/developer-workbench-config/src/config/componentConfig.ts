@@ -15634,7 +15634,7 @@ export const load = [
         URL: { type: 'string', required: true },
         userId: { type: 'string', required: true },
         viewID: { type: 'string', required: true },
-        tempWriteOutPath: { type: 'string', required: true },
+        tempWriteOutPath: { type: 'string', required: false },
         optional: {
           type: 'object',
           required: false,
