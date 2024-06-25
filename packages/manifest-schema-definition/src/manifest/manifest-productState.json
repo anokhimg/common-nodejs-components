@@ -1356,7 +1356,6 @@
                   "URL",
                   "userId",
                   "viewID",
-                  "tempWriteOutPath",
                   "alias",
                   "logicalSchema",
                   "isProfilingEnabled",
