@@ -25369,12 +25369,13 @@ export const streaming = [
           {
             typeOfComponent: 'Stream',
             nameOfComponent: 'kafkaStream',
-            inputFieldName: 's3Connection',
+            inputFieldName: 's3connections',
             isOptional: true,
-            directInput: false,
-            formInput: '',
+            directInput: '',
+            formInput: 'from previously defined database connections',
             formInputType: 'String',
-            formInputValidValues: '',
+            formInputValidValues: [],
+            fillFormInputValuesFrom: 'connections',
             isAdvanceOption: '',
             subInputFieldName: '',
             subFormInputType: '',
@@ -25547,6 +25548,7 @@ export const streaming = [
           required: false,
           properties: {
             messageProducedTimestampAsField: { type: 'boolean', required: false },
+            s3connections: { type: 'string', required: false },
             rawDataPath: { type: 'string', required: false },
             advanceOptions: {
               type: 'object',
@@ -25593,7 +25595,6 @@ export const streaming = [
                   required: false,
                 },
                 checkpointLocation: { type: 'string', required: false },
-                s3Connection: { type: 'string', required: false },
                 includeHeaders: {
                   type: 'boolean',
                   required: false,
