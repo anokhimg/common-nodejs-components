@@ -15437,7 +15437,7 @@ export const load = [
             typeOfComponent: 'Load',
             nameOfComponent: 'saveTableAPI',
             inputFieldName: 'tempWriteOutPath',
-            isOptional: true,
+            isOptional: false,
             directInput: false,
             formInput: '',
             formInputType: 'String',
@@ -15634,7 +15634,7 @@ export const load = [
         URL: { type: 'string', required: true },
         userId: { type: 'string', required: true },
         viewID: { type: 'string', required: true },
-        tempWriteOutPath: { type: 'string', required: false },
+        tempWriteOutPath: { type: 'string', required: true },
         optional: {
           type: 'object',
           required: false,
