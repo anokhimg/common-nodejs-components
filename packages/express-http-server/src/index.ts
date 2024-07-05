@@ -198,7 +198,7 @@ export class App {
         fileUploader: false,
         validateResponses: {
           onError: (err) => {
-            this.logger.error('Response validation failed with error: %o', err);
+            this.logger.debug('Response validation failed with error: %o', err);
           },
         },
       }),
