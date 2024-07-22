@@ -2190,7 +2190,72 @@
                                                                 "isDynamic"
                                                               ]
                                                             },
-                                                            "else": {}
+                                                            "else": {
+                                                              "if": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "type": {
+                                                                    "const": "customAWSGlue"
+                                                                  }
+                                                                }
+                                                              },
+                                                              "then": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "type": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "pipelineName": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "inputDataFrame": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "optional": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                      "persistDataFrame": {
+                                                                        "type": "boolean"
+                                                                      },
+                                                                      "arguments": {
+                                                                        "type": "object",
+                                                                        "properties": {},
+                                                                        "patternProperties": {
+                                                                          "^[0-9A-Za-z_]+": {
+                                                                            "type": "string"
+                                                                          }
+                                                                        },
+                                                                        "additionalProperties": true,
+                                                                        "required": []
+                                                                      }
+                                                                    },
+                                                                    "additionalProperties": true,
+                                                                    "required": []
+                                                                  },
+                                                                  "alias": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "description": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "sequence": {
+                                                                    "type": "number"
+                                                                  },
+                                                                  "isDynamic": {
+                                                                    "type": "boolean"
+                                                                  }
+                                                                },
+                                                                "required": [
+                                                                  "type",
+                                                                  "pipelineName",
+                                                                  "inputDataFrame",
+                                                                  "alias",
+                                                                  "sequence",
+                                                                  "isDynamic"
+                                                                ]
+                                                              },
+                                                              "else": {}
+                                                            }
                                                           }
                                                         }
                                                       }
