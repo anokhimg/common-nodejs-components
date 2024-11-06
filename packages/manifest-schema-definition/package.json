@@ -1,6 +1,6 @@
 {
   "name": "manifest-schema-definition",
-  "version": "1.0.16",
+  "version": "1.0.18",
   "description": "Manifest schema definition",
   "scripts": {
     "build": "ts-node src/manifest/manifest-productStateMaker.ts && ts-node src/manifest/manifest-inputPortMaker.ts && ts-node src/manifest/manifest-transformationMaker.ts  && tsc"
