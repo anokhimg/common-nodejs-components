@@ -861,8 +861,45 @@
           "logicalSchema": {
             "type": "object",
             "additionalProperties": true,
-            "properties": {},
-            "required": []
+            "properties": {
+              "properties": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true,
+                "required": [],
+                "patternProperties": {
+                  "^[0-9A-Za-z_]+": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "sourceTable",
+                      "sourceColumn"
+                    ],
+                    "additionalProperties": true,
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "sourceTable": {
+                        "type": "string"
+                      },
+                      "sourceColumn": {
+                        "type": "string"
+                      },
+                      "isPII": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "properties"
+            ]
           },
           "isProfilingEnabled": {
             "type": "boolean"
@@ -963,8 +1000,45 @@
             "logicalSchema": {
               "type": "object",
               "additionalProperties": true,
-              "properties": {},
-              "required": []
+              "properties": {
+                "properties": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true,
+                  "required": [],
+                  "patternProperties": {
+                    "^[0-9A-Za-z_]+": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "sourceTable",
+                        "sourceColumn"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "sourceTable": {
+                          "type": "string"
+                        },
+                        "sourceColumn": {
+                          "type": "string"
+                        },
+                        "isPII": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "properties"
+              ]
             },
             "isProfilingEnabled": {
               "type": "boolean"
@@ -1092,8 +1166,45 @@
               "logicalSchema": {
                 "type": "object",
                 "additionalProperties": true,
-                "properties": {},
-                "required": []
+                "properties": {
+                  "properties": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "required": [],
+                    "patternProperties": {
+                      "^[0-9A-Za-z_]+": {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "sourceTable",
+                          "sourceColumn"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "description": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "sourceTable": {
+                            "type": "string"
+                          },
+                          "sourceColumn": {
+                            "type": "string"
+                          },
+                          "isPII": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "properties"
+                ]
               },
               "isProfilingEnabled": {
                 "type": "boolean"
@@ -1229,8 +1340,45 @@
                 "logicalSchema": {
                   "type": "object",
                   "additionalProperties": true,
-                  "properties": {},
-                  "required": []
+                  "properties": {
+                    "properties": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": true,
+                      "required": [],
+                      "patternProperties": {
+                        "^[0-9A-Za-z_]+": {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "sourceTable",
+                            "sourceColumn"
+                          ],
+                          "additionalProperties": true,
+                          "properties": {
+                            "description": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "sourceTable": {
+                              "type": "string"
+                            },
+                            "sourceColumn": {
+                              "type": "string"
+                            },
+                            "isPII": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "properties"
+                  ]
                 },
                 "isProfilingEnabled": {
                   "type": "boolean"
@@ -1327,8 +1475,45 @@
                   "logicalSchema": {
                     "type": "object",
                     "additionalProperties": true,
-                    "properties": {},
-                    "required": []
+                    "properties": {
+                      "properties": {
+                        "type": "object",
+                        "properties": {},
+                        "additionalProperties": true,
+                        "required": [],
+                        "patternProperties": {
+                          "^[0-9A-Za-z_]+": {
+                            "type": "object",
+                            "required": [
+                              "type",
+                              "sourceTable",
+                              "sourceColumn"
+                            ],
+                            "additionalProperties": true,
+                            "properties": {
+                              "description": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "sourceTable": {
+                                "type": "string"
+                              },
+                              "sourceColumn": {
+                                "type": "string"
+                              },
+                              "isPII": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "required": [
+                      "properties"
+                    ]
                   },
                   "isProfilingEnabled": {
                     "type": "boolean"
@@ -1413,8 +1598,45 @@
                     "logicalSchema": {
                       "type": "object",
                       "additionalProperties": true,
-                      "properties": {},
-                      "required": []
+                      "properties": {
+                        "properties": {
+                          "type": "object",
+                          "properties": {},
+                          "additionalProperties": true,
+                          "required": [],
+                          "patternProperties": {
+                            "^[0-9A-Za-z_]+": {
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "sourceTable",
+                                "sourceColumn"
+                              ],
+                              "additionalProperties": true,
+                              "properties": {
+                                "description": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "sourceTable": {
+                                  "type": "string"
+                                },
+                                "sourceColumn": {
+                                  "type": "string"
+                                },
+                                "isPII": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "properties"
+                      ]
                     },
                     "isProfilingEnabled": {
                       "type": "boolean"
@@ -1498,8 +1720,45 @@
                       "logicalSchema": {
                         "type": "object",
                         "additionalProperties": true,
-                        "properties": {},
-                        "required": []
+                        "properties": {
+                          "properties": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true,
+                            "required": [],
+                            "patternProperties": {
+                              "^[0-9A-Za-z_]+": {
+                                "type": "object",
+                                "required": [
+                                  "type",
+                                  "sourceTable",
+                                  "sourceColumn"
+                                ],
+                                "additionalProperties": true,
+                                "properties": {
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "sourceTable": {
+                                    "type": "string"
+                                  },
+                                  "sourceColumn": {
+                                    "type": "string"
+                                  },
+                                  "isPII": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "required": [
+                          "properties"
+                        ]
                       },
                       "isProfilingEnabled": {
                         "type": "boolean"
@@ -1621,8 +1880,45 @@
                         "logicalSchema": {
                           "type": "object",
                           "additionalProperties": true,
-                          "properties": {},
-                          "required": []
+                          "properties": {
+                            "properties": {
+                              "type": "object",
+                              "properties": {},
+                              "additionalProperties": true,
+                              "required": [],
+                              "patternProperties": {
+                                "^[0-9A-Za-z_]+": {
+                                  "type": "object",
+                                  "required": [
+                                    "type",
+                                    "sourceTable",
+                                    "sourceColumn"
+                                  ],
+                                  "additionalProperties": true,
+                                  "properties": {
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "sourceTable": {
+                                      "type": "string"
+                                    },
+                                    "sourceColumn": {
+                                      "type": "string"
+                                    },
+                                    "isPII": {
+                                      "type": "boolean"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "required": [
+                            "properties"
+                          ]
                         },
                         "isProfilingEnabled": {
                           "type": "boolean"
@@ -1737,8 +2033,45 @@
                           "logicalSchema": {
                             "type": "object",
                             "additionalProperties": true,
-                            "properties": {},
-                            "required": []
+                            "properties": {
+                              "properties": {
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true,
+                                "required": [],
+                                "patternProperties": {
+                                  "^[0-9A-Za-z_]+": {
+                                    "type": "object",
+                                    "required": [
+                                      "type",
+                                      "sourceTable",
+                                      "sourceColumn"
+                                    ],
+                                    "additionalProperties": true,
+                                    "properties": {
+                                      "description": {
+                                        "type": "string"
+                                      },
+                                      "type": {
+                                        "type": "string"
+                                      },
+                                      "sourceTable": {
+                                        "type": "string"
+                                      },
+                                      "sourceColumn": {
+                                        "type": "string"
+                                      },
+                                      "isPII": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "required": [
+                              "properties"
+                            ]
                           },
                           "isProfilingEnabled": {
                             "type": "boolean"
@@ -1862,8 +2195,45 @@
                             "logicalSchema": {
                               "type": "object",
                               "additionalProperties": true,
-                              "properties": {},
-                              "required": []
+                              "properties": {
+                                "properties": {
+                                  "type": "object",
+                                  "properties": {},
+                                  "additionalProperties": true,
+                                  "required": [],
+                                  "patternProperties": {
+                                    "^[0-9A-Za-z_]+": {
+                                      "type": "object",
+                                      "required": [
+                                        "type",
+                                        "sourceTable",
+                                        "sourceColumn"
+                                      ],
+                                      "additionalProperties": true,
+                                      "properties": {
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "type": {
+                                          "type": "string"
+                                        },
+                                        "sourceTable": {
+                                          "type": "string"
+                                        },
+                                        "sourceColumn": {
+                                          "type": "string"
+                                        },
+                                        "isPII": {
+                                          "type": "boolean"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "required": [
+                                "properties"
+                              ]
                             },
                             "isProfilingEnabled": {
                               "type": "boolean"
@@ -1966,8 +2336,45 @@
                               "logicalSchema": {
                                 "type": "object",
                                 "additionalProperties": true,
-                                "properties": {},
-                                "required": []
+                                "properties": {
+                                  "properties": {
+                                    "type": "object",
+                                    "properties": {},
+                                    "additionalProperties": true,
+                                    "required": [],
+                                    "patternProperties": {
+                                      "^[0-9A-Za-z_]+": {
+                                        "type": "object",
+                                        "required": [
+                                          "type",
+                                          "sourceTable",
+                                          "sourceColumn"
+                                        ],
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "description": {
+                                            "type": "string"
+                                          },
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "sourceTable": {
+                                            "type": "string"
+                                          },
+                                          "sourceColumn": {
+                                            "type": "string"
+                                          },
+                                          "isPII": {
+                                            "type": "boolean"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "properties"
+                                ]
                               },
                               "isProfilingEnabled": {
                                 "type": "boolean"
@@ -2096,8 +2503,45 @@
                                 "logicalSchema": {
                                   "type": "object",
                                   "additionalProperties": true,
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {
+                                    "properties": {
+                                      "type": "object",
+                                      "properties": {},
+                                      "additionalProperties": true,
+                                      "required": [],
+                                      "patternProperties": {
+                                        "^[0-9A-Za-z_]+": {
+                                          "type": "object",
+                                          "required": [
+                                            "type",
+                                            "sourceTable",
+                                            "sourceColumn"
+                                          ],
+                                          "additionalProperties": true,
+                                          "properties": {
+                                            "description": {
+                                              "type": "string"
+                                            },
+                                            "type": {
+                                              "type": "string"
+                                            },
+                                            "sourceTable": {
+                                              "type": "string"
+                                            },
+                                            "sourceColumn": {
+                                              "type": "string"
+                                            },
+                                            "isPII": {
+                                              "type": "boolean"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "properties"
+                                  ]
                                 },
                                 "isProfilingEnabled": {
                                   "type": "boolean"
@@ -2216,8 +2660,45 @@
                                   "logicalSchema": {
                                     "type": "object",
                                     "additionalProperties": true,
-                                    "properties": {},
-                                    "required": []
+                                    "properties": {
+                                      "properties": {
+                                        "type": "object",
+                                        "properties": {},
+                                        "additionalProperties": true,
+                                        "required": [],
+                                        "patternProperties": {
+                                          "^[0-9A-Za-z_]+": {
+                                            "type": "object",
+                                            "required": [
+                                              "type",
+                                              "sourceTable",
+                                              "sourceColumn"
+                                            ],
+                                            "additionalProperties": true,
+                                            "properties": {
+                                              "description": {
+                                                "type": "string"
+                                              },
+                                              "type": {
+                                                "type": "string"
+                                              },
+                                              "sourceTable": {
+                                                "type": "string"
+                                              },
+                                              "sourceColumn": {
+                                                "type": "string"
+                                              },
+                                              "isPII": {
+                                                "type": "boolean"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "properties"
+                                    ]
                                   },
                                   "isProfilingEnabled": {
                                     "type": "boolean"
@@ -2320,8 +2801,45 @@
                                     "logicalSchema": {
                                       "type": "object",
                                       "additionalProperties": true,
-                                      "properties": {},
-                                      "required": []
+                                      "properties": {
+                                        "properties": {
+                                          "type": "object",
+                                          "properties": {},
+                                          "additionalProperties": true,
+                                          "required": [],
+                                          "patternProperties": {
+                                            "^[0-9A-Za-z_]+": {
+                                              "type": "object",
+                                              "required": [
+                                                "type",
+                                                "sourceTable",
+                                                "sourceColumn"
+                                              ],
+                                              "additionalProperties": true,
+                                              "properties": {
+                                                "description": {
+                                                  "type": "string"
+                                                },
+                                                "type": {
+                                                  "type": "string"
+                                                },
+                                                "sourceTable": {
+                                                  "type": "string"
+                                                },
+                                                "sourceColumn": {
+                                                  "type": "string"
+                                                },
+                                                "isPII": {
+                                                  "type": "boolean"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "required": [
+                                        "properties"
+                                      ]
                                     },
                                     "isProfilingEnabled": {
                                       "type": "boolean"
@@ -2414,8 +2932,45 @@
                                       "logicalSchema": {
                                         "type": "object",
                                         "additionalProperties": true,
-                                        "properties": {},
-                                        "required": []
+                                        "properties": {
+                                          "properties": {
+                                            "type": "object",
+                                            "properties": {},
+                                            "additionalProperties": true,
+                                            "required": [],
+                                            "patternProperties": {
+                                              "^[0-9A-Za-z_]+": {
+                                                "type": "object",
+                                                "required": [
+                                                  "type",
+                                                  "sourceTable",
+                                                  "sourceColumn"
+                                                ],
+                                                "additionalProperties": true,
+                                                "properties": {
+                                                  "description": {
+                                                    "type": "string"
+                                                  },
+                                                  "type": {
+                                                    "type": "string"
+                                                  },
+                                                  "sourceTable": {
+                                                    "type": "string"
+                                                  },
+                                                  "sourceColumn": {
+                                                    "type": "string"
+                                                  },
+                                                  "isPII": {
+                                                    "type": "boolean"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "properties"
+                                        ]
                                       },
                                       "isProfilingEnabled": {
                                         "type": "boolean"
@@ -2526,8 +3081,45 @@
                                         "logicalSchema": {
                                           "type": "object",
                                           "additionalProperties": true,
-                                          "properties": {},
-                                          "required": []
+                                          "properties": {
+                                            "properties": {
+                                              "type": "object",
+                                              "properties": {},
+                                              "additionalProperties": true,
+                                              "required": [],
+                                              "patternProperties": {
+                                                "^[0-9A-Za-z_]+": {
+                                                  "type": "object",
+                                                  "required": [
+                                                    "type",
+                                                    "sourceTable",
+                                                    "sourceColumn"
+                                                  ],
+                                                  "additionalProperties": true,
+                                                  "properties": {
+                                                    "description": {
+                                                      "type": "string"
+                                                    },
+                                                    "type": {
+                                                      "type": "string"
+                                                    },
+                                                    "sourceTable": {
+                                                      "type": "string"
+                                                    },
+                                                    "sourceColumn": {
+                                                      "type": "string"
+                                                    },
+                                                    "isPII": {
+                                                      "type": "boolean"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "properties"
+                                          ]
                                         },
                                         "isProfilingEnabled": {
                                           "type": "boolean"
@@ -2618,8 +3210,45 @@
                                           "logicalSchema": {
                                             "type": "object",
                                             "additionalProperties": true,
-                                            "properties": {},
-                                            "required": []
+                                            "properties": {
+                                              "properties": {
+                                                "type": "object",
+                                                "properties": {},
+                                                "additionalProperties": true,
+                                                "required": [],
+                                                "patternProperties": {
+                                                  "^[0-9A-Za-z_]+": {
+                                                    "type": "object",
+                                                    "required": [
+                                                      "type",
+                                                      "sourceTable",
+                                                      "sourceColumn"
+                                                    ],
+                                                    "additionalProperties": true,
+                                                    "properties": {
+                                                      "description": {
+                                                        "type": "string"
+                                                      },
+                                                      "type": {
+                                                        "type": "string"
+                                                      },
+                                                      "sourceTable": {
+                                                        "type": "string"
+                                                      },
+                                                      "sourceColumn": {
+                                                        "type": "string"
+                                                      },
+                                                      "isPII": {
+                                                        "type": "boolean"
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "required": [
+                                              "properties"
+                                            ]
                                           },
                                           "isProfilingEnabled": {
                                             "type": "boolean"
@@ -2751,8 +3380,45 @@
                                             "logicalSchema": {
                                               "type": "object",
                                               "additionalProperties": true,
-                                              "properties": {},
-                                              "required": []
+                                              "properties": {
+                                                "properties": {
+                                                  "type": "object",
+                                                  "properties": {},
+                                                  "additionalProperties": true,
+                                                  "required": [],
+                                                  "patternProperties": {
+                                                    "^[0-9A-Za-z_]+": {
+                                                      "type": "object",
+                                                      "required": [
+                                                        "type",
+                                                        "sourceTable",
+                                                        "sourceColumn"
+                                                      ],
+                                                      "additionalProperties": true,
+                                                      "properties": {
+                                                        "description": {
+                                                          "type": "string"
+                                                        },
+                                                        "type": {
+                                                          "type": "string"
+                                                        },
+                                                        "sourceTable": {
+                                                          "type": "string"
+                                                        },
+                                                        "sourceColumn": {
+                                                          "type": "string"
+                                                        },
+                                                        "isPII": {
+                                                          "type": "boolean"
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              "required": [
+                                                "properties"
+                                              ]
                                             },
                                             "isProfilingEnabled": {
                                               "type": "boolean"
@@ -2838,8 +3504,45 @@
                                               "logicalSchema": {
                                                 "type": "object",
                                                 "additionalProperties": true,
-                                                "properties": {},
-                                                "required": []
+                                                "properties": {
+                                                  "properties": {
+                                                    "type": "object",
+                                                    "properties": {},
+                                                    "additionalProperties": true,
+                                                    "required": [],
+                                                    "patternProperties": {
+                                                      "^[0-9A-Za-z_]+": {
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type",
+                                                          "sourceTable",
+                                                          "sourceColumn"
+                                                        ],
+                                                        "additionalProperties": true,
+                                                        "properties": {
+                                                          "description": {
+                                                            "type": "string"
+                                                          },
+                                                          "type": {
+                                                            "type": "string"
+                                                          },
+                                                          "sourceTable": {
+                                                            "type": "string"
+                                                          },
+                                                          "sourceColumn": {
+                                                            "type": "string"
+                                                          },
+                                                          "isPII": {
+                                                            "type": "boolean"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "properties"
+                                                ]
                                               },
                                               "isProfilingEnabled": {
                                                 "type": "boolean"
@@ -2916,8 +3619,45 @@
                                                 "logicalSchema": {
                                                   "type": "object",
                                                   "additionalProperties": true,
-                                                  "properties": {},
-                                                  "required": []
+                                                  "properties": {
+                                                    "properties": {
+                                                      "type": "object",
+                                                      "properties": {},
+                                                      "additionalProperties": true,
+                                                      "required": [],
+                                                      "patternProperties": {
+                                                        "^[0-9A-Za-z_]+": {
+                                                          "type": "object",
+                                                          "required": [
+                                                            "type",
+                                                            "sourceTable",
+                                                            "sourceColumn"
+                                                          ],
+                                                          "additionalProperties": true,
+                                                          "properties": {
+                                                            "description": {
+                                                              "type": "string"
+                                                            },
+                                                            "type": {
+                                                              "type": "string"
+                                                            },
+                                                            "sourceTable": {
+                                                              "type": "string"
+                                                            },
+                                                            "sourceColumn": {
+                                                              "type": "string"
+                                                            },
+                                                            "isPII": {
+                                                              "type": "boolean"
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "properties"
+                                                  ]
                                                 },
                                                 "isProfilingEnabled": {
                                                   "type": "boolean"
@@ -3025,8 +3765,45 @@
                                                   "logicalSchema": {
                                                     "type": "object",
                                                     "additionalProperties": true,
-                                                    "properties": {},
-                                                    "required": []
+                                                    "properties": {
+                                                      "properties": {
+                                                        "type": "object",
+                                                        "properties": {},
+                                                        "additionalProperties": true,
+                                                        "required": [],
+                                                        "patternProperties": {
+                                                          "^[0-9A-Za-z_]+": {
+                                                            "type": "object",
+                                                            "required": [
+                                                              "type",
+                                                              "sourceTable",
+                                                              "sourceColumn"
+                                                            ],
+                                                            "additionalProperties": true,
+                                                            "properties": {
+                                                              "description": {
+                                                                "type": "string"
+                                                              },
+                                                              "type": {
+                                                                "type": "string"
+                                                              },
+                                                              "sourceTable": {
+                                                                "type": "string"
+                                                              },
+                                                              "sourceColumn": {
+                                                                "type": "string"
+                                                              },
+                                                              "isPII": {
+                                                                "type": "boolean"
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "properties"
+                                                    ]
                                                   },
                                                   "isProfilingEnabled": {
                                                     "type": "boolean"
@@ -3142,8 +3919,45 @@
                                                     "logicalSchema": {
                                                       "type": "object",
                                                       "additionalProperties": true,
-                                                      "properties": {},
-                                                      "required": []
+                                                      "properties": {
+                                                        "properties": {
+                                                          "type": "object",
+                                                          "properties": {},
+                                                          "additionalProperties": true,
+                                                          "required": [],
+                                                          "patternProperties": {
+                                                            "^[0-9A-Za-z_]+": {
+                                                              "type": "object",
+                                                              "required": [
+                                                                "type",
+                                                                "sourceTable",
+                                                                "sourceColumn"
+                                                              ],
+                                                              "additionalProperties": true,
+                                                              "properties": {
+                                                                "description": {
+                                                                  "type": "string"
+                                                                },
+                                                                "type": {
+                                                                  "type": "string"
+                                                                },
+                                                                "sourceTable": {
+                                                                  "type": "string"
+                                                                },
+                                                                "sourceColumn": {
+                                                                  "type": "string"
+                                                                },
+                                                                "isPII": {
+                                                                  "type": "boolean"
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "properties"
+                                                      ]
                                                     },
                                                     "isProfilingEnabled": {
                                                       "type": "boolean"
@@ -3271,8 +4085,45 @@
                                                       "logicalSchema": {
                                                         "type": "object",
                                                         "additionalProperties": true,
-                                                        "properties": {},
-                                                        "required": []
+                                                        "properties": {
+                                                          "properties": {
+                                                            "type": "object",
+                                                            "properties": {},
+                                                            "additionalProperties": true,
+                                                            "required": [],
+                                                            "patternProperties": {
+                                                              "^[0-9A-Za-z_]+": {
+                                                                "type": "object",
+                                                                "required": [
+                                                                  "type",
+                                                                  "sourceTable",
+                                                                  "sourceColumn"
+                                                                ],
+                                                                "additionalProperties": true,
+                                                                "properties": {
+                                                                  "description": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "type": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "sourceTable": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "sourceColumn": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "isPII": {
+                                                                    "type": "boolean"
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "properties"
+                                                        ]
                                                       },
                                                       "isProfilingEnabled": {
                                                         "type": "boolean"
@@ -3379,8 +4230,45 @@
                                                         "logicalSchema": {
                                                           "type": "object",
                                                           "additionalProperties": true,
-                                                          "properties": {},
-                                                          "required": []
+                                                          "properties": {
+                                                            "properties": {
+                                                              "type": "object",
+                                                              "properties": {},
+                                                              "additionalProperties": true,
+                                                              "required": [],
+                                                              "patternProperties": {
+                                                                "^[0-9A-Za-z_]+": {
+                                                                  "type": "object",
+                                                                  "required": [
+                                                                    "type",
+                                                                    "sourceTable",
+                                                                    "sourceColumn"
+                                                                  ],
+                                                                  "additionalProperties": true,
+                                                                  "properties": {
+                                                                    "description": {
+                                                                      "type": "string"
+                                                                    },
+                                                                    "type": {
+                                                                      "type": "string"
+                                                                    },
+                                                                    "sourceTable": {
+                                                                      "type": "string"
+                                                                    },
+                                                                    "sourceColumn": {
+                                                                      "type": "string"
+                                                                    },
+                                                                    "isPII": {
+                                                                      "type": "boolean"
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "properties"
+                                                          ]
                                                         },
                                                         "isProfilingEnabled": {
                                                           "type": "boolean"
@@ -3483,8 +4371,45 @@
                                                           "logicalSchema": {
                                                             "type": "object",
                                                             "additionalProperties": true,
-                                                            "properties": {},
-                                                            "required": []
+                                                            "properties": {
+                                                              "properties": {
+                                                                "type": "object",
+                                                                "properties": {},
+                                                                "additionalProperties": true,
+                                                                "required": [],
+                                                                "patternProperties": {
+                                                                  "^[0-9A-Za-z_]+": {
+                                                                    "type": "object",
+                                                                    "required": [
+                                                                      "type",
+                                                                      "sourceTable",
+                                                                      "sourceColumn"
+                                                                    ],
+                                                                    "additionalProperties": true,
+                                                                    "properties": {
+                                                                      "description": {
+                                                                        "type": "string"
+                                                                      },
+                                                                      "type": {
+                                                                        "type": "string"
+                                                                      },
+                                                                      "sourceTable": {
+                                                                        "type": "string"
+                                                                      },
+                                                                      "sourceColumn": {
+                                                                        "type": "string"
+                                                                      },
+                                                                      "isPII": {
+                                                                        "type": "boolean"
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "required": [
+                                                              "properties"
+                                                            ]
                                                           },
                                                           "isProfilingEnabled": {
                                                             "type": "boolean"
@@ -3588,8 +4513,45 @@
                                                             "logicalSchema": {
                                                               "type": "object",
                                                               "additionalProperties": true,
-                                                              "properties": {},
-                                                              "required": []
+                                                              "properties": {
+                                                                "properties": {
+                                                                  "type": "object",
+                                                                  "properties": {},
+                                                                  "additionalProperties": true,
+                                                                  "required": [],
+                                                                  "patternProperties": {
+                                                                    "^[0-9A-Za-z_]+": {
+                                                                      "type": "object",
+                                                                      "required": [
+                                                                        "type",
+                                                                        "sourceTable",
+                                                                        "sourceColumn"
+                                                                      ],
+                                                                      "additionalProperties": true,
+                                                                      "properties": {
+                                                                        "description": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "type": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "sourceTable": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "sourceColumn": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "isPII": {
+                                                                          "type": "boolean"
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "properties"
+                                                              ]
                                                             },
                                                             "isProfilingEnabled": {
                                                               "type": "boolean"
