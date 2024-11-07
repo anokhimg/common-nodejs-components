@@ -611,7 +611,7 @@ config.config.load.forEach((component: any) => {
       required: true,
       additionalProperties: true,
       properties: {},
-      patternProperties: {
+      /* patternProperties: {
         "^[0-9A-Za-z_]+": {
           type: "object",
           required: ['type', 'sourceTable', 'sourceColumn'],
@@ -634,7 +634,7 @@ config.config.load.forEach((component: any) => {
             }
           }
         }
-      },
+      }, */
     };
     delete schema.properties.optional.properties.jsonSchema;
 
