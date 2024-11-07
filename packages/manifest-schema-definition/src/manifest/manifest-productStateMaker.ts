@@ -610,31 +610,13 @@ config.config.load.forEach((component: any) => {
       type: 'object',
       required: true,
       additionalProperties: true,
-      properties: {},
-      /* patternProperties: {
-        "^[0-9A-Za-z_]+": {
+      properties: {
+        properties: {
           type: "object",
-          required: ['type', 'sourceTable', 'sourceColumn'],
-          additionalProperties: true,
-          properties: {
-            description: {
-              type: 'string'
-            },
-            type: {
-              type: 'string'
-            },
-            sourceTable: {
-              type: 'string'
-            },
-            sourcecolumn: {
-              type: 'string'
-            },
-            isPII: {
-              type: 'boolean'
-            }
-          }
+          required: true,
+          properties:{}
         }
-      }, */
+      },
     };
     delete schema.properties.optional.properties.jsonSchema;
 
@@ -663,6 +645,32 @@ config.config.load.forEach((component: any) => {
     delete schema.properties.sequence;
 
     prepareAJVSchemaLoadJson(schema);
+
+    schema.properties.logicalSchema.properties.properties.patternProperties = {
+      "^[0-9A-Za-z_]+": {
+        type: "object",
+        required: ['type', 'sourceTable', 'sourceColumn'],
+        additionalProperties: true,
+        properties: {
+          description: {
+            type: 'string'
+          },
+          type: {
+            type: 'string'
+          },
+          sourceTable: {
+            type: 'string'
+          },
+          sourceColumn: {
+            type: 'string'
+          },
+          isPII: {
+            type: 'boolean'
+          }
+        }
+      }
+    }
+
     if (schema.properties.optional) {
       schema.properties.optional.required = [];
     }
