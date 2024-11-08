@@ -67,27 +67,47 @@ const baseJson = {
         enableDataReconciliation: { type: 'boolean' },
         enforceSchemaMethod: { type: 'string' },
         logicalSchema: {
-          type: 'object',
-          properties: {
-            properties: {
-              type: 'object',
-            },
-            required: {
-              type: 'array',
-              items: {
-                type: 'object',
-                properties: {
-                  type: {
-                    type: 'string',
-                  },
-                  description: {
-                    type: 'string',
-                  },
-                },
-              },
-              minItems: 1,
-            },
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "properties": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true,
+              "required": [],
+              "patternProperties": {
+                "^[0-9A-Za-z_]+": {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "sourceTable",
+                    "sourceColumn"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "sourceTable": {
+                      "type": "string"
+                    },
+                    "sourceColumn": {
+                      "type": "string"
+                    },
+                    "isPII": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
           },
+          "required": [
+            "properties"
+          ]
         },
       },
     },
@@ -111,27 +131,47 @@ const baseJson = {
           enforceSchema: { type: 'boolean' },
           enableDataReconciliation: { type: 'boolean' },
           logicalSchema: {
-            type: 'object',
-            properties: {
-              properties: {
-                type: 'object',
-              },
-              required: {
-                type: 'array',
-                items: {
-                  type: 'object',
-                  properties: {
-                    type: {
-                      type: 'string',
-                    },
-                    description: {
-                      type: 'string',
-                    },
-                  },
-                },
-                minItems: 1,
-              },
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "properties": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true,
+                "required": [],
+                "patternProperties": {
+                  "^[0-9A-Za-z_]+": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "sourceTable",
+                      "sourceColumn"
+                    ],
+                    "additionalProperties": true,
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "sourceTable": {
+                        "type": "string"
+                      },
+                      "sourceColumn": {
+                        "type": "string"
+                      },
+                      "isPII": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
             },
+            "required": [
+              "properties"
+            ]
           },
         },
       },
@@ -158,27 +198,47 @@ const baseJson = {
             enforceSchema: { type: 'boolean' },
             enableDataReconciliation: { type: 'boolean' },
             logicalSchema: {
-              type: 'object',
-              properties: {
-                properties: {
-                  type: 'object',
-                },
-                required: {
-                  type: 'array',
-                  items: {
-                    type: 'object',
-                    properties: {
-                      type: {
-                        type: 'string',
-                      },
-                      description: {
-                        type: 'string',
-                      },
-                    },
-                  },
-                  minItems: 1,
-                },
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "properties": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true,
+                  "required": [],
+                  "patternProperties": {
+                    "^[0-9A-Za-z_]+": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "sourceTable",
+                        "sourceColumn"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "sourceTable": {
+                          "type": "string"
+                        },
+                        "sourceColumn": {
+                          "type": "string"
+                        },
+                        "isPII": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
               },
+              "required": [
+                "properties"
+              ]
             },
           },
         },
@@ -203,27 +263,48 @@ const baseJson = {
               enforceSchema: { type: 'boolean' },
               enableDataReconciliation: { type: 'boolean' },
               logicalSchema: {
-                type: 'object',
-                properties: {
-                  properties: {
-                    type: 'object',
-                  },
-                  required: {
-                    type: 'array',
-                    items: {
-                      type: 'object',
-                      properties: {
-                        type: {
-                          type: 'string',
-                        },
-                        description: {
-                          type: 'string',
-                        },
-                      },
-                    },
-                    minItems: 1,
-                  },
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "properties": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "required": [],
+                    "patternProperties": {
+                      "^[0-9A-Za-z_]+": {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "sourceTable",
+                          "sourceColumn"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "description": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "sourceTable": {
+                            "type": "string",
+                            
+                          },
+                          "sourceColumn": {
+                            "type": "string"
+                          },
+                          "isPII": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
                 },
+                "required": [
+                  "properties"
+                ]
               },
               isDataProfilingEnabled: { type: 'boolean' },
             },
@@ -249,27 +330,47 @@ const baseJson = {
                 enforceSchema: { type: 'boolean' },
                 enableDataReconciliation: { type: 'boolean' },
                 logicalSchema: {
-                  type: 'object',
-                  properties: {
-                    properties: {
-                      type: 'object',
-                    },
-                    required: {
-                      type: 'array',
-                      items: {
-                        type: 'object',
-                        properties: {
-                          type: {
-                            type: 'string',
-                          },
-                          description: {
-                            type: 'string',
-                          },
-                        },
-                      },
-                      minItems: 1,
-                    },
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "properties": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": true,
+                      "required": [],
+                      "patternProperties": {
+                        "^[0-9A-Za-z_]+": {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "sourceTable",
+                            "sourceColumn"
+                          ],
+                          "additionalProperties": true,
+                          "properties": {
+                            "description": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "sourceTable": {
+                              "type": "string"
+                            },
+                            "sourceColumn": {
+                              "type": "string"
+                            },
+                            "isPII": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
                   },
+                  "required": [
+                    "properties"
+                  ]
                 },
                 isDataProfilingEnabled: { type: 'boolean' },
               },
@@ -319,27 +420,47 @@ const baseJson = {
               pattern: '^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$',
             },
             logicalSchema: {
-              type: 'object',
-              properties: {
-                properties: {
-                  type: 'object',
-                },
-                required: {
-                  type: 'array',
-                  items: {
-                    type: 'object',
-                    properties: {
-                      type: {
-                        type: 'string',
-                      },
-                      description: {
-                        type: 'string',
-                      },
-                    },
-                  },
-                  minItems: 1,
-                },
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "properties": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true,
+                  "required": [],
+                  "patternProperties": {
+                    "^[0-9A-Za-z_]+": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "sourceTable",
+                        "sourceColumn"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "sourceTable": {
+                          "type": "string"
+                        },
+                        "sourceColumn": {
+                          "type": "string"
+                        },
+                        "isPII": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
               },
+              "required": [
+                "properties"
+              ]
             },
             partitionColumns: {
               type: 'array',
@@ -408,19 +529,47 @@ const baseJson = {
               pattern: '^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$',
             },
             logicalSchema: {
-              type: 'object',
-              properties: {
-                properties: {
-                  type: 'object',
-                },
-                required: {
-                  type: 'array',
-                  items: {
-                    type: 'string',
-                  },
-                  minItems: 1,
-                },
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "properties": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true,
+                  "required": [],
+                  "patternProperties": {
+                    "^[0-9A-Za-z_]+": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "sourceTable",
+                        "sourceColumn"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "sourceTable": {
+                          "type": "string"
+                        },
+                        "sourceColumn": {
+                          "type": "string"
+                        },
+                        "isPII": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
               },
+              "required": [
+                "properties"
+              ]
             },
             partitionColumns: {
               type: 'array',
@@ -534,19 +683,47 @@ const baseJson = {
               pattern: '^(?:urn|URN):(?:dv|DV):schema:[A-Za-z0-9\\-]+$',
             },
             logicalSchema: {
-              type: 'object',
-              properties: {
-                properties: {
-                  type: 'object',
-                },
-                required: {
-                  type: 'array',
-                  items: {
-                    type: 'string',
-                  },
-                  minItems: 1,
-                },
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "properties": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true,
+                  "required": [],
+                  "patternProperties": {
+                    "^[0-9A-Za-z_]+": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "sourceTable",
+                        "sourceColumn"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "sourceTable": {
+                          "type": "string"
+                        },
+                        "sourceColumn": {
+                          "type": "string"
+                        },
+                        "isPII": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
               },
+              "required": [
+                "properties"
+              ]
             },
             encodingOptions: {
               type: 'object',
@@ -614,7 +791,7 @@ config.config.load.forEach((component: any) => {
         properties: {
           type: "object",
           required: true,
-          properties:{}
+          properties: {}
         }
       },
     };

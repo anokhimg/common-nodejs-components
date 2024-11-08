@@ -148,26 +148,46 @@
         },
         "logicalSchema": {
           "type": "object",
+          "additionalProperties": true,
           "properties": {
             "properties": {
-              "type": "object"
-            },
-            "required": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true,
+              "required": [],
+              "patternProperties": {
+                "^[0-9A-Za-z_]+": {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "sourceTable",
+                    "sourceColumn"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "sourceTable": {
+                      "type": "string"
+                    },
+                    "sourceColumn": {
+                      "type": "string"
+                    },
+                    "isPII": {
+                      "type": "boolean"
+                    }
                   }
                 }
-              },
-              "minItems": 1
+              }
             }
-          }
+          },
+          "required": [
+            "properties"
+          ]
         }
       }
     },
@@ -218,26 +238,46 @@
           },
           "logicalSchema": {
             "type": "object",
+            "additionalProperties": true,
             "properties": {
               "properties": {
-                "type": "object"
-              },
-              "required": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "type": {
-                      "type": "string"
-                    },
-                    "description": {
-                      "type": "string"
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true,
+                "required": [],
+                "patternProperties": {
+                  "^[0-9A-Za-z_]+": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "sourceTable",
+                      "sourceColumn"
+                    ],
+                    "additionalProperties": true,
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "sourceTable": {
+                        "type": "string"
+                      },
+                      "sourceColumn": {
+                        "type": "string"
+                      },
+                      "isPII": {
+                        "type": "boolean"
+                      }
                     }
                   }
-                },
-                "minItems": 1
+                }
               }
-            }
+            },
+            "required": [
+              "properties"
+            ]
           }
         }
       },
@@ -296,26 +336,46 @@
             },
             "logicalSchema": {
               "type": "object",
+              "additionalProperties": true,
               "properties": {
                 "properties": {
-                  "type": "object"
-                },
-                "required": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true,
+                  "required": [],
+                  "patternProperties": {
+                    "^[0-9A-Za-z_]+": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "sourceTable",
+                        "sourceColumn"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "sourceTable": {
+                          "type": "string"
+                        },
+                        "sourceColumn": {
+                          "type": "string"
+                        },
+                        "isPII": {
+                          "type": "boolean"
+                        }
                       }
                     }
-                  },
-                  "minItems": 1
+                  }
                 }
-              }
+              },
+              "required": [
+                "properties"
+              ]
             }
           }
         },
@@ -367,26 +427,46 @@
               },
               "logicalSchema": {
                 "type": "object",
+                "additionalProperties": true,
                 "properties": {
                   "properties": {
-                    "type": "object"
-                  },
-                  "required": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string"
-                        },
-                        "description": {
-                          "type": "string"
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "required": [],
+                    "patternProperties": {
+                      "^[0-9A-Za-z_]+": {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "sourceTable",
+                          "sourceColumn"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "description": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "sourceTable": {
+                            "type": "string"
+                          },
+                          "sourceColumn": {
+                            "type": "string"
+                          },
+                          "isPII": {
+                            "type": "boolean"
+                          }
                         }
                       }
-                    },
-                    "minItems": 1
+                    }
                   }
-                }
+                },
+                "required": [
+                  "properties"
+                ]
               },
               "isDataProfilingEnabled": {
                 "type": "boolean"
@@ -445,26 +525,46 @@
                 },
                 "logicalSchema": {
                   "type": "object",
+                  "additionalProperties": true,
                   "properties": {
                     "properties": {
-                      "type": "object"
-                    },
-                    "required": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "type": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": true,
+                      "required": [],
+                      "patternProperties": {
+                        "^[0-9A-Za-z_]+": {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "sourceTable",
+                            "sourceColumn"
+                          ],
+                          "additionalProperties": true,
+                          "properties": {
+                            "description": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "sourceTable": {
+                              "type": "string"
+                            },
+                            "sourceColumn": {
+                              "type": "string"
+                            },
+                            "isPII": {
+                              "type": "boolean"
+                            }
                           }
                         }
-                      },
-                      "minItems": 1
+                      }
                     }
-                  }
+                  },
+                  "required": [
+                    "properties"
+                  ]
                 },
                 "isDataProfilingEnabled": {
                   "type": "boolean"
@@ -524,26 +624,46 @@
             },
             "logicalSchema": {
               "type": "object",
+              "additionalProperties": true,
               "properties": {
                 "properties": {
-                  "type": "object"
-                },
-                "required": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true,
+                  "required": [],
+                  "patternProperties": {
+                    "^[0-9A-Za-z_]+": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "sourceTable",
+                        "sourceColumn"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "sourceTable": {
+                          "type": "string"
+                        },
+                        "sourceColumn": {
+                          "type": "string"
+                        },
+                        "isPII": {
+                          "type": "boolean"
+                        }
                       }
                     }
-                  },
-                  "minItems": 1
+                  }
                 }
-              }
+              },
+              "required": [
+                "properties"
+              ]
             },
             "partitionColumns": {
               "type": "array",
@@ -628,18 +748,46 @@
             },
             "logicalSchema": {
               "type": "object",
+              "additionalProperties": true,
               "properties": {
                 "properties": {
-                  "type": "object"
-                },
-                "required": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "minItems": 1
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true,
+                  "required": [],
+                  "patternProperties": {
+                    "^[0-9A-Za-z_]+": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "sourceTable",
+                        "sourceColumn"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "sourceTable": {
+                          "type": "string"
+                        },
+                        "sourceColumn": {
+                          "type": "string"
+                        },
+                        "isPII": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
                 }
-              }
+              },
+              "required": [
+                "properties"
+              ]
             },
             "partitionColumns": {
               "type": "array",
@@ -774,18 +922,46 @@
             },
             "logicalSchema": {
               "type": "object",
+              "additionalProperties": true,
               "properties": {
                 "properties": {
-                  "type": "object"
-                },
-                "required": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "minItems": 1
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true,
+                  "required": [],
+                  "patternProperties": {
+                    "^[0-9A-Za-z_]+": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "sourceTable",
+                        "sourceColumn"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "sourceTable": {
+                          "type": "string"
+                        },
+                        "sourceColumn": {
+                          "type": "string"
+                        },
+                        "isPII": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
                 }
-              }
+              },
+              "required": [
+                "properties"
+              ]
             },
             "encodingOptions": {
               "type": "object",
