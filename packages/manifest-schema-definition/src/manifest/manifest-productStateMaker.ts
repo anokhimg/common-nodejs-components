@@ -786,7 +786,7 @@ config.config.load.forEach((component: any) => {
     schema.properties.logicalSchema = {
       type: 'object',
       required: true,
-      additionalProperties: true,
+      additionalProperties: false,
       properties: {
         properties: {
           type: "object",
@@ -822,9 +822,13 @@ config.config.load.forEach((component: any) => {
     delete schema.properties.sequence;
 
     prepareAJVSchemaLoadJson(schema);
+    schema.properties.logicalSchema.additionalProperties = false;
+    schema.properties.logicalSchema.properties.properties.additionalProperties = false;
+    delete schema.properties.logicalSchema.properties.properties.properties;
+    delete schema.properties.logicalSchema.properties.properties.required;
 
     schema.properties.logicalSchema.properties.properties.patternProperties = {
-      "^[0-9A-Za-z_]+": {
+      "^[a-z][0-9a-z_]*$": {
         type: "object",
         required: ['type', 'sourceTable', 'sourceColumn'],
         additionalProperties: true,
