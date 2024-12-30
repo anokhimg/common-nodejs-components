@@ -1042,7 +1042,7 @@
                 "type": "object",
                 "additionalProperties": false,
                 "patternProperties": {
-                  "^[a-z_]+$": {
+                  "^[a-z][0-9a-z_]*$": {
                     "type": "object",
                     "required": [
                       "type",
@@ -1179,7 +1179,7 @@
                   "type": "object",
                   "additionalProperties": false,
                   "patternProperties": {
-                    "^[a-z_]+$": {
+                    "^[a-z][0-9a-z_]*$": {
                       "type": "object",
                       "required": [
                         "type",
@@ -1343,7 +1343,7 @@
                     "type": "object",
                     "additionalProperties": false,
                     "patternProperties": {
-                      "^[a-z_]+$": {
+                      "^[a-z][0-9a-z_]*$": {
                         "type": "object",
                         "required": [
                           "type",
@@ -1515,7 +1515,7 @@
                       "type": "object",
                       "additionalProperties": false,
                       "patternProperties": {
-                        "^[a-z_]+$": {
+                        "^[a-z][0-9a-z_]*$": {
                           "type": "object",
                           "required": [
                             "type",
@@ -1648,7 +1648,7 @@
                         "type": "object",
                         "additionalProperties": false,
                         "patternProperties": {
-                          "^[a-z_]+$": {
+                          "^[a-z][0-9a-z_]*$": {
                             "type": "object",
                             "required": [
                               "type",
@@ -1769,7 +1769,7 @@
                           "type": "object",
                           "additionalProperties": false,
                           "patternProperties": {
-                            "^[a-z_]+$": {
+                            "^[a-z][0-9a-z_]*$": {
                               "type": "object",
                               "required": [
                                 "type",
@@ -1889,7 +1889,7 @@
                             "type": "object",
                             "additionalProperties": false,
                             "patternProperties": {
-                              "^[a-z_]+$": {
+                              "^[a-z][0-9a-z_]*$": {
                                 "type": "object",
                                 "required": [
                                   "type",
@@ -2047,7 +2047,7 @@
                               "type": "object",
                               "additionalProperties": false,
                               "patternProperties": {
-                                "^[a-z_]+$": {
+                                "^[a-z][0-9a-z_]*$": {
                                   "type": "object",
                                   "required": [
                                     "type",
@@ -2198,7 +2198,7 @@
                                 "type": "object",
                                 "additionalProperties": false,
                                 "patternProperties": {
-                                  "^[a-z_]+$": {
+                                  "^[a-z][0-9a-z_]*$": {
                                     "type": "object",
                                     "required": [
                                       "type",
@@ -2358,7 +2358,7 @@
                                   "type": "object",
                                   "additionalProperties": false,
                                   "patternProperties": {
-                                    "^[a-z_]+$": {
+                                    "^[a-z][0-9a-z_]*$": {
                                       "type": "object",
                                       "required": [
                                         "type",
@@ -2497,7 +2497,7 @@
                                     "type": "object",
                                     "additionalProperties": false,
                                     "patternProperties": {
-                                      "^[a-z_]+$": {
+                                      "^[a-z][0-9a-z_]*$": {
                                         "type": "object",
                                         "required": [
                                           "type",
@@ -2662,7 +2662,7 @@
                                       "type": "object",
                                       "additionalProperties": false,
                                       "patternProperties": {
-                                        "^[a-z_]+$": {
+                                        "^[a-z][0-9a-z_]*$": {
                                           "type": "object",
                                           "required": [
                                             "type",
@@ -2817,7 +2817,7 @@
                                         "type": "object",
                                         "additionalProperties": false,
                                         "patternProperties": {
-                                          "^[a-z_]+$": {
+                                          "^[a-z][0-9a-z_]*$": {
                                             "type": "object",
                                             "required": [
                                               "type",
@@ -2956,7 +2956,7 @@
                                           "type": "object",
                                           "additionalProperties": false,
                                           "patternProperties": {
-                                            "^[a-z_]+$": {
+                                            "^[a-z][0-9a-z_]*$": {
                                               "type": "object",
                                               "required": [
                                                 "type",
@@ -3085,7 +3085,7 @@
                                             "type": "object",
                                             "additionalProperties": false,
                                             "patternProperties": {
-                                              "^[a-z_]+$": {
+                                              "^[a-z][0-9a-z_]*$": {
                                                 "type": "object",
                                                 "required": [
                                                   "type",
@@ -3232,7 +3232,7 @@
                                               "type": "object",
                                               "additionalProperties": false,
                                               "patternProperties": {
-                                                "^[a-z_]+$": {
+                                                "^[a-z][0-9a-z_]*$": {
                                                   "type": "object",
                                                   "required": [
                                                     "type",
@@ -3359,7 +3359,7 @@
                                                 "type": "object",
                                                 "additionalProperties": false,
                                                 "patternProperties": {
-                                                  "^[a-z_]+$": {
+                                                  "^[a-z][0-9a-z_]*$": {
                                                     "type": "object",
                                                     "required": [
                                                       "type",
@@ -3527,7 +3527,7 @@
                                                   "type": "object",
                                                   "additionalProperties": false,
                                                   "patternProperties": {
-                                                    "^[a-z_]+$": {
+                                                    "^[a-z][0-9a-z_]*$": {
                                                       "type": "object",
                                                       "required": [
                                                         "type",
@@ -3649,7 +3649,7 @@
                                                     "type": "object",
                                                     "additionalProperties": false,
                                                     "patternProperties": {
-                                                      "^[a-z_]+$": {
+                                                      "^[a-z][0-9a-z_]*$": {
                                                         "type": "object",
                                                         "required": [
                                                           "type",
@@ -3762,7 +3762,7 @@
                                                       "type": "object",
                                                       "additionalProperties": false,
                                                       "patternProperties": {
-                                                        "^[a-z_]+$": {
+                                                        "^[a-z][0-9a-z_]*$": {
                                                           "type": "object",
                                                           "required": [
                                                             "type",
@@ -3906,7 +3906,7 @@
                                                         "type": "object",
                                                         "additionalProperties": false,
                                                         "patternProperties": {
-                                                          "^[a-z_]+$": {
+                                                          "^[a-z][0-9a-z_]*$": {
                                                             "type": "object",
                                                             "required": [
                                                               "type",
@@ -4058,7 +4058,7 @@
                                                           "type": "object",
                                                           "additionalProperties": false,
                                                           "patternProperties": {
-                                                            "^[a-z_]+$": {
+                                                            "^[a-z][0-9a-z_]*$": {
                                                               "type": "object",
                                                               "required": [
                                                                 "type",
@@ -4222,7 +4222,7 @@
                                                             "type": "object",
                                                             "additionalProperties": false,
                                                             "patternProperties": {
-                                                              "^[a-z_]+$": {
+                                                              "^[a-z][0-9a-z_]*$": {
                                                                 "type": "object",
                                                                 "required": [
                                                                   "type",
@@ -4365,7 +4365,7 @@
                                                               "type": "object",
                                                               "additionalProperties": false,
                                                               "patternProperties": {
-                                                                "^[a-z_]+$": {
+                                                                "^[a-z][0-9a-z_]*$": {
                                                                   "type": "object",
                                                                   "required": [
                                                                     "type",
@@ -4504,7 +4504,7 @@
                                                                 "type": "object",
                                                                 "additionalProperties": false,
                                                                 "patternProperties": {
-                                                                  "^[a-z_]+$": {
+                                                                  "^[a-z][0-9a-z_]*$": {
                                                                     "type": "object",
                                                                     "required": [
                                                                       "type",
@@ -4644,7 +4644,7 @@
                                                                   "type": "object",
                                                                   "additionalProperties": false,
                                                                   "patternProperties": {
-                                                                    "^[a-z_]+$": {
+                                                                    "^[a-z][0-9a-z_]*$": {
                                                                       "type": "object",
                                                                       "required": [
                                                                         "type",
