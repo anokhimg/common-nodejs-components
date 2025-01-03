@@ -1,6 +1,6 @@
 {
   "name": "kafka-provider",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NodeJS dataverse Kafka Provider",
   "homepage": "https://github.com/anokhimg/common-nodejs-components/tree/main/packages/kafka-provider",
   "main": "dist/index.js",
