@@ -8,4 +8,5 @@ export interface KafkaConfig {
   ssl?: boolean;
   sasl?: SASLOptions;
   maxBytesPerPartition?: number;
+  heartbeatInterval?: number;
 }
